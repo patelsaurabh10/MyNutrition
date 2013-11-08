@@ -131,8 +131,6 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="BMR.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -203,7 +201,6 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
-    <Content Include="CheckFoodCalories.aspx" />
     <Content Include="viewProvidedPlans.aspx" />
     <Content Include="WebForm3.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
@@ -288,20 +285,6 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BMR.aspx.cs">
-      <DependentUpon>BMR.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BMR.aspx.designer.cs">
-      <DependentUpon>BMR.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CustomizeDietPlan.aspx.cs">
       <DependentUpon>CustomizeDietPlan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -344,13 +327,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="CheckFoodCalories.aspx.cs">
-      <DependentUpon>CheckFoodCalories.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CheckFoodCalories.aspx.designer.cs">
-      <DependentUpon>CheckFoodCalories.aspx</DependentUpon>
     </Compile>
     <Compile Include="viewProvidedPlans.aspx.cs">
       <DependentUpon>viewProvidedPlans.aspx</DependentUpon>
