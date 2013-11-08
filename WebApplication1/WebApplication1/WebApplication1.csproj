@@ -205,6 +205,7 @@
     <Content Include="packages.config" />
     <Content Include="CheckFoodCalories.aspx" />
     <Content Include="viewProvidedPlans.aspx" />
+    <Content Include="WebForm3.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="reserved by neo.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -358,9 +359,16 @@
     <Compile Include="viewProvidedPlans.aspx.designer.cs">
       <DependentUpon>viewProvidedPlans.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
