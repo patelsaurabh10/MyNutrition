@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  <!--AMIR -->
         <asp:Label ID="Label1" runat="server" Text="Food Category"></asp:Label>
         &nbsp;<asp:DropDownList ID="ddlFoodCategory" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FoodCategory" DataValueField="FoodCategory" OnSelectedIndexChanged="ddlFoodCategory_SelectedIndexChanged">

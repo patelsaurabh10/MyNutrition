@@ -323,6 +323,13 @@
     <Compile Include="reserved by neo.aspx.designer.cs">
       <DependentUpon>reserved by neo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -359,6 +366,7 @@
     <Content Include="Account\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
