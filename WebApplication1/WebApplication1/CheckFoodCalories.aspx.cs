@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.OleDb;
 using System.Data;
 using System.Data.SqlClient;
+using WebApplication1.App_Code;
 
 namespace WebApplication1
 {
@@ -27,55 +28,15 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-
-            SqlConnection conn = GetConnection(builder);
-            conn.Open();
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select FoodCalorie,FoodUnit from Food where FoodName=@FoodName";
-            SqlParameter param = cmd.CreateParameter();
-            param.ParameterName = "@FoodName";
-            param.Value = ddlFoodName.Text;
-
-            cmd.Parameters.Add(param);
-            cmd.CommandType = CommandType.Text;
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    calorie = reader.GetDecimal(0);
-                    unit = Convert.ToInt32(reader.GetString(1));
-                }
-            }
-            conn.Close();
-
+            calorie = CatalogAccess.getFoodCalorie(ddlFoodName.Text);
+            unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
+            
         }
         protected void ddlFoodName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-            SqlConnection conn = GetConnection(builder);
-            conn.Open();
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select FoodCalorie,FoodUnit from Food where FoodName=@FoodName";
-            SqlParameter param = cmd.CreateParameter();
-            param.ParameterName = "@FoodName";
-            param.Value = ddlFoodName.Text;
-
-            cmd.Parameters.Add(param);
-            cmd.CommandType = CommandType.Text;
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    calorie = reader.GetDecimal(0);
-                    unit = Convert.ToInt32(reader.GetString(1));
-                }
-            }
-            conn.Close();
-
+            calorie = CatalogAccess.getFoodCalorie(ddlFoodName.Text);
+            unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
             if (unit == 1)
             {
                 rbtnWeight.Checked = false;
