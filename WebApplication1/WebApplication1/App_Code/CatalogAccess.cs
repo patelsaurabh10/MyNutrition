@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace WebApplication1.App_Code
 {
@@ -57,7 +58,7 @@ namespace WebApplication1.App_Code
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection conn = GetConnection(builder);
             conn.Open();
-              
+
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "select FoodCalorie from Food where FoodName=@FoodName";
             SqlParameter param = cmd.CreateParameter();
@@ -102,6 +103,27 @@ namespace WebApplication1.App_Code
             }
             conn.Close();
             return unit;
+        }
+        public static double getGridViewSumCalorie(GridView GridView1)
+        {
+            decimal foodCalorie = 0;
+            int quantity = 0;
+            decimal weight = 0;
+            double totalCalorie = 0;
+            double unit = 0;
+            for (int i = 0; i < GridView1.Rows.Count; i++)
+            {
+                if (decimal.TryParse(GridView1.Rows[i].Cells[3].Text, out foodCalorie) && int.TryParse(GridView1.Rows[i].Cells[1].Text, out quantity))
+                {
+                    totalCalorie += (double)foodCalorie * quantity;
+                }
+                else if (decimal.TryParse(GridView1.Rows[i].Cells[3].Text, out foodCalorie) && decimal.TryParse(GridView1.Rows[i].Cells[2].Text, out weight))
+                {
+                    unit = CatalogAccess.getFoodUnit(GridView1.Rows[i].Cells[0].Text);
+                    totalCalorie += (double)(foodCalorie * weight) / unit;
+                }
+            }
+            return totalCalorie;
         }
     }
 }
