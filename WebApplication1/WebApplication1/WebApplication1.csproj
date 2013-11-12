@@ -202,6 +202,7 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
+    <Content Include="ViewMyPlan.aspx" />
     <Content Include="viewProvidedPlans.aspx" />
     <Content Include="WebForm3.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
@@ -329,6 +330,12 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMyPlan.aspx.cs">
+      <DependentUpon>ViewMyPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMyPlan.aspx.designer.cs">
+      <DependentUpon>ViewMyPlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
