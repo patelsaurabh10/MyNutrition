@@ -17,15 +17,6 @@ namespace WebApplication1
         decimal calorie = 0;
         double quantity = 0;
         double totalCalorie = 0;
-        private static SqlConnection GetConnection(SqlConnectionStringBuilder builder)
-        {
-            builder.DataSource = ".\\SQLEXPRESS";
-            builder.IntegratedSecurity = true;
-            builder.InitialCatalog = "MyNutrition";
-            SqlConnection conn = new SqlConnection(builder.ConnectionString);
-            return conn;
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             calorie = CatalogAccess.getFoodCalorie(ddlFoodName.Text);
@@ -76,9 +67,8 @@ namespace WebApplication1
             //The default food unit as number is 1 in database
             if (rbtnQuantity.Checked)
             {
-                if (!String.IsNullOrEmpty(tbxQuantity.Text))
+                if (!String.IsNullOrEmpty(tbxQuantity.Text) && double.TryParse(tbxQuantity.Text, out quantity))
                 {
-                    quantity = Convert.ToInt32(tbxQuantity.Text);
                     totalCalorie = (double)calorie * quantity;
                     lblQuantityResult.Text = tbxQuantity.Text;
                 }
@@ -87,27 +77,24 @@ namespace WebApplication1
             //The default unit in database is 'g'
             else if (rbtnWeight.Checked)
             {
-                if (!String.IsNullOrEmpty(tbxQuantity.Text))
+                if (!String.IsNullOrEmpty(tbxQuantity.Text) && double.TryParse(tbxQuantity.Text, out quantity))
                 {
                     lblQuantityResult.Text = tbxQuantity.Text + ddlUnit.Text;
                     if (ddlUnit.Text == "g")
                     {
-                        quantity = Convert.ToInt32(tbxQuantity.Text);
+                      
                     }
                     else if (ddlUnit.Text == "oz")
                     {
-                        quantity = Convert.ToInt32(tbxQuantity.Text) * 28.3495;
+                        quantity = quantity* 28.3495;
                     }
                     totalCalorie = (double)calorie * quantity / unit;
                 }
-
             }
 
             lblCalories.Text = Convert.ToString(totalCalorie);
-
             lblFoodName.Text = ddlFoodName.Text;
         }
-
         protected void ddlFoodCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
 

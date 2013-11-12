@@ -33,7 +33,7 @@ namespace WebApplication1
         {
             List<Plans> lstPlans = new List<Plans>();
             SqlConnection oCon = new SqlConnection(strCon);
-            SqlCommand cmd = new SqlCommand("Select PlanID,CreatedDate,LastModifiedDate,Categories,PlanDesc,Tracked from Plans where CustID=@CustID", oCon);
+            SqlCommand cmd = new SqlCommand("Select PlanID,CreatedDate,LastModifiedDate,Categories,PlanDesc,Tracked from [Plan] where CustID=@CustID", oCon);
             cmd.Parameters.AddWithValue("@CustID", ddlCustomer.SelectedValue);
             oCon.Open();
             SqlDataReader dr = cmd.ExecuteReader();

@@ -333,6 +333,7 @@
     </Compile>
     <Compile Include="ViewMyPlan.aspx.cs">
       <DependentUpon>ViewMyPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewMyPlan.aspx.designer.cs">
       <DependentUpon>ViewMyPlan.aspx</DependentUpon>
