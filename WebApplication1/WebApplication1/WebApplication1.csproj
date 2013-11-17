@@ -132,6 +132,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="CheckFoodCalories.aspx" />
+    <Content Include="ChoosePlan.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -201,7 +202,9 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="NutritionLogo.png" />
     <Content Include="packages.config" />
+    <Content Include="Template.css" />
     <Content Include="ViewMyPlan.aspx" />
     <Content Include="viewProvidedPlans.aspx" />
     <Content Include="WebForm3.aspx" />
@@ -294,6 +297,13 @@
     </Compile>
     <Compile Include="CheckFoodCalories.aspx.designer.cs">
       <DependentUpon>CheckFoodCalories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChoosePlan.aspx.cs">
+      <DependentUpon>ChoosePlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChoosePlan.aspx.designer.cs">
+      <DependentUpon>ChoosePlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomizeDietPlan.aspx.cs">
       <DependentUpon>CustomizeDietPlan.aspx</DependentUpon>
