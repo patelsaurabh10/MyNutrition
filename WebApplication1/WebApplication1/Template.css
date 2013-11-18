@@ -5,8 +5,9 @@
         }
         #mainBody {
             width:850px;
-            height:650px;
+            height:auto;
             margin:0 auto 0 auto;
+            
           
 
         }
@@ -45,6 +46,7 @@ nav{
 text-align: center;
 /*padding-top: 50px;
 padding-left: 5px;*/
+padding-bottom:25px;
 
 }
 
@@ -201,7 +203,8 @@ ul#horizontal-list {
         #footer {
             width:850px;
             height:20px;
-            
+            margin-top:25px;
+            padding-top:10px;
             margin: 0 auto 0 auto; 
         }
        

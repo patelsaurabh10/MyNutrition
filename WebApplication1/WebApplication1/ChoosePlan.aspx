@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <div><br /><br />
+    <div>
     <asp:Button ID="BtnLoose" runat="server" Text="Loose" OnClick="BtnLoose_Click" />
     <asp:Button ID="BtnMaintain" runat="server" Text="Maintain" OnClick="BtnMaintain_Click" />
     <asp:Button ID="BtnGain" runat="server" Text="Gain" OnClick="BtnGain_Click" />
