@@ -1246,6 +1246,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TableCell TableCell60;
         
         /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
         /// btnView control.
         /// </summary>
         /// <remarks>
