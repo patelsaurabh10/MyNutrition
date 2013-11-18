@@ -125,5 +125,43 @@ namespace WebApplication1.App_Code
             }
             return totalCalorie;
         }
+        public static DataTable getMealDetail(int PlanID, String Day, String MealType)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+
+            //Create a SqlDataAdapter for the Suppliers table.
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            // A table mapping names the DataTable.
+            // adapter.TableMappings.Add("Table", "MealDetail");
+
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = @Day) AND (Meal.MealType = @MealType)";
+            SqlParameter param1 = cmd.CreateParameter();
+            SqlParameter param2 = cmd.CreateParameter();
+            SqlParameter param3 = cmd.CreateParameter();
+
+            param1.ParameterName = "@PlanID";
+            param1.Value = PlanID;
+            cmd.Parameters.Add(param1);
+            param2.ParameterName = "@Day";
+            param2.Value = Day;
+            cmd.Parameters.Add(param2);
+            param3.ParameterName = "@MealType";
+            param3.Value = MealType;
+            cmd.Parameters.Add(param3);
+
+            // Set the SqlDataAdapter's SelectCommand.
+            adapter.SelectCommand = cmd;
+
+            // Fill the DataSet.
+            DataTable MealDetail = new DataTable("MealDetail");
+            adapter.Fill(MealDetail);
+
+            return MealDetail;
+        }
     }
 }

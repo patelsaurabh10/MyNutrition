@@ -463,5 +463,5 @@
      </asp:Table>
 
 
-    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="View Plan" />
+    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="View Plan" style="height: 26px" />
 </asp:Content>
