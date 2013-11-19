@@ -18,30 +18,164 @@ namespace WebApplication1
 {
     public partial class CustomizeDietPlan : System.Web.UI.Page
     {
-        DataTable MealDetail = null;
+        //DataTable MealDetail = null;
+        String FoodName = null;
+        int MealID = 0;
+        String Day = null;
+        String MealType = null;
+        int FoodID = 0;
+        int PlanID = 0;
+
+        double unit = 0;
+        decimal calorie = 0;
+        double quantity=0;
+        double weight=0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["PlanID"] = 1;
+            PlanID = (int)Session["PlanID"];
+
             if (!IsPostBack)
             {
-              
+                lblAddDisplay.Text = "";
+                lblDeleteResult.Text = "";
+                Table3.Visible = false;
+                Table4.Visible = false;
 
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+       /* protected void Button1_Click(object sender, EventArgs e)
         {
-            MealDetail = CatalogAccess.getMealDetail(1, "Monday", "Breakfast");
-            DataTableReader reader = new DataTableReader(MealDetail);
-            MealDetail.Load(reader);
-            foreach (DataRow row in MealDetail.Rows)
+            MealDetail = CatalogAccess.getMealDetail(PlanID, "Monday", "Breakfast");
+        }*/
+
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            FoodName = DropDownList3.Text;
+            Day = DropDownList1.Text;
+            MealType = DropDownList2.Text;
+            if (FoodName == null)
             {
-                for (int i = 0; i < MealDetail.Columns.Count; i++)
+                lblDeleteResult.Text = "Please select an item to delete";
+            }
+            MealID = CatalogAccess.getMealID(Day,MealType);
+
+
+           int a = CatalogAccess.deleteFoodInMeal(FoodName, MealID);
+           if (a != 0)
+           {
+               lblDeleteResult.Text = FoodName + " has been deleted from your meal";
+           }
+           else
+           {
+               lblDeleteResult.Text = "OOooppps!";
+           }
+        }
+
+        protected void btnShowAdd_Click(object sender, EventArgs e)
+        {
+            Table4.Visible = true;
+            Table3.Visible = false;
+        }
+
+        protected void btnShowDelete_Click(object sender, EventArgs e)
+        {
+            Table3.Visible = true;
+            Table4.Visible = false;
+        }
+
+        protected void ddlFoodName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            calorie = CatalogAccess.getFoodCalorie(ddlFoodName.Text);
+            unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
+            if (unit == 1)
+            {
+                rbtnWeight.Checked = false;
+                rbtnQuantity.Checked = true;
+                ddlUnit.Visible = false;
+            }
+            else if (unit != 1)
+            {
+                rbtnQuantity.Checked = false;
+                rbtnWeight.Checked = true;
+                ddlUnit.Visible = true;
+            }
+        }
+
+
+        protected void ddlFoodCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void tbxQuantity_TextChanged(object sender, EventArgs e)
+        {
+            unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
+            if (unit == 1)
+            {
+                rbtnWeight.Checked = false;
+                rbtnQuantity.Checked = true;
+                ddlUnit.Visible = false;
+            }
+            else if (unit != 1)
+            {
+                rbtnQuantity.Checked = false;
+                rbtnWeight.Checked = true;
+                ddlUnit.Visible = true;
+            }
+        }
+
+        protected void btnAddConfirm_Click(object sender, EventArgs e)
+        {
+            int a = 0;
+            FoodName = ddlFoodName.Text;
+            FoodID = CatalogAccess.getFoodID(FoodName);
+
+            Day = DropDownList1.Text;
+            MealType = DropDownList2.Text;
+            MealID = CatalogAccess.getMealID(Day, MealType);
+
+            if (rbtnQuantity.Checked)
+            {
+                if (!String.IsNullOrEmpty(tbxQuantity.Text) && double.TryParse(tbxQuantity.Text, out quantity))
                 {
-                    TextBox1.Text += row[i].ToString();
+                    a = CatalogAccess.insert_Into_FoodDetail(MealID, FoodID, quantity);
                 }
             }
+            //This is for food unit as 'g' or 'oz'
+            //The default unit in database is 'g'
+            else if (rbtnWeight.Checked)
+            {
+                if (!String.IsNullOrEmpty(tbxQuantity.Text) && double.TryParse(tbxQuantity.Text, out weight))
+                {
+                    if (ddlUnit.Text == "g")
+                    {
+
+                    }
+                    else if (ddlUnit.Text == "oz")  
+                    {
+                        weight = weight * 28.3495;
+                    }
+                    a = CatalogAccess.insert_Into_FoodDetail(MealID, weight, FoodID);
+                }
+            }
+
+            if (a != 0)
+            {
+                lblAddDisplay.Text = FoodName + " has been added to your meal " + Day + " " + MealType;
+            }
+            else
+            {
+                lblAddDisplay.Text = " Woooooops";
+            }
         }
-       
     }
 }

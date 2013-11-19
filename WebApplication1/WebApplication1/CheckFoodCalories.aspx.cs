@@ -99,5 +99,24 @@ namespace WebApplication1
         {
 
         }
+
+        protected void tbxQuantity_TextChanged(object sender, EventArgs e)
+        {
+            unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
+            if (unit == 1)
+            {
+                rbtnWeight.Checked = false;
+                rbtnQuantity.Checked = true;
+                ddlUnit.Visible = false;
+            }
+            else if (unit != 1)
+            {
+                rbtnQuantity.Checked = false;
+                rbtnWeight.Checked = true;
+                ddlUnit.Visible = true;
+            }
+        }
+
+
     }
 }

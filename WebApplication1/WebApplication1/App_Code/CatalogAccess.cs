@@ -163,5 +163,131 @@ namespace WebApplication1.App_Code
 
             return MealDetail;
         }
+        //delete one row in foodDetail table by FoodName and MealID
+        public static int deleteFoodInMeal(String FoodName, int MealID)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "delete from FoodDetail where MealID=@MealID and FoodID = (select FoodID from Food where FoodName=@FoodName)";
+            SqlParameter param1 = cmd.CreateParameter();
+            SqlParameter param2 = cmd.CreateParameter();
+
+            param1.ParameterName = "@FoodName";
+            param1.Value = FoodName;
+            cmd.Parameters.Add(param1);
+
+            param2.ParameterName = "@MealID";
+            param2.Value = MealID;
+            cmd.Parameters.Add(param2);
+
+            int a = cmd.ExecuteNonQuery();  
+            conn.Close();
+            return a;
+        }
+        //get MealID by Day and MealType
+        public static int getMealID(String Day, String MealType)
+        {
+            int MealID = 0;
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select MealID from Meal where Day=@Day and MealType=@MealType";
+            SqlParameter param1 = cmd.CreateParameter();
+            SqlParameter param2 = cmd.CreateParameter();
+
+            param1.ParameterName = "@Day";
+            param1.Value = Day;
+            cmd.Parameters.Add(param1);
+
+            param2.ParameterName = "@MealType";
+            param2.Value = MealType;
+            cmd.Parameters.Add(param2);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    MealID = Convert.ToInt32(reader.GetInt32(0));
+                }
+            }
+            conn.Close();
+            return MealID;
+        }
+
+        public static int getFoodID(String FoodName)
+        {
+            int FoodID = 0;
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select FoodID from Food where FoodName=@FoodName";
+            SqlParameter param1 = cmd.CreateParameter();
+
+            param1.ParameterName = "@FoodName";
+            param1.Value = FoodName;
+            cmd.Parameters.Add(param1);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    FoodID = Convert.ToInt32(reader.GetInt32(0));
+                }
+            }
+            conn.Close();
+            return FoodID;
+        }
+
+        //create new item in a meal with quantity
+        public static int insert_Into_FoodDetail(int MealID, int FoodID, double Quantity)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "insert into FoodDetail(MealID, FoodID, Quantity) values (@MealID, @FoodID, @Quantity)";
+
+            cmd.Parameters.AddWithValue("@MealID", MealID);
+            cmd.Parameters.AddWithValue("@FoodID", FoodID);
+            cmd.Parameters.AddWithValue("@Quantity", Quantity);
+
+            int a = cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            cmd = null;
+            conn.Close();
+
+            return a;
+        }
+
+        //create new item in a meal with weight
+        public static int insert_Into_FoodDetail(int MealID, double Weight,int FoodID)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "insert into FoodDetail(MealID, FoodID, Weight) values (@MealID, @FoodID, @Weight)";
+            cmd.Parameters.AddWithValue("@MealID", MealID);
+            cmd.Parameters.AddWithValue("@FoodID", FoodID);
+            cmd.Parameters.AddWithValue("@Weight", Weight);
+
+            int a = cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            cmd = null;
+            conn.Close();
+
+            return a;
+        }
     }
 }

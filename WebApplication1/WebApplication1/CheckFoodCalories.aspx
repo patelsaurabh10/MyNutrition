@@ -20,11 +20,11 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-&nbsp;<asp:RadioButton ID="rbtnWeight" runat="server" GroupName="Unit" Text="Weight" Width="70px" Enabled="False" />
+&nb&nbsp;<asp:RadioButton ID="rbtnWeight" runat="server" GroupName="Unit" Text="Weight" Width="70px" Enabled="False" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:RadioButton ID="rbtnQuantity" runat="server" GroupName="Unit" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Quantity" Width="71px" Enabled="False" />
 &nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="tbxQuantity" runat="server" Width="74px"></asp:TextBox>
+        <asp:TextBox ID="tbxQuantity" runat="server" Width="74px" OnTextChanged="tbxQuantity_TextChanged"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="ddlUnit" runat="server" AutoPostBack="True">
             <asp:ListItem>g</asp:ListItem>
@@ -33,7 +33,7 @@
         <br />
         <asp:Button ID="btnCheck" runat="server" OnClick="btnCheck_Click" Text="Check" />
         <br />
-        Result<br />
+        Result />
         Food Name:
         <asp:Label ID="lblFoodName" runat="server"></asp:Label>
         <br />
