@@ -10,7 +10,7 @@
                 <asp:TableRow ID="TableRow21" runat="server">
             <asp:TableCell>Choose Day:</asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
+                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem>Monday</asp:ListItem>
         <asp:ListItem>Tuesday</asp:ListItem>
         <asp:ListItem>Wendesday</asp:ListItem>
@@ -29,7 +29,7 @@
         <asp:TableRow ID="TableRow22" runat="server">
             <asp:TableCell>Choose Meal Type:</asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataSourceID="SqlDataSourceMealType" DataTextField="MealType" DataValueField="MealType"></asp:DropDownList>
+                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataSourceID="SqlDataSourceMealType" DataTextField="MealType" DataValueField="MealType" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged"></asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSourceMealType" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT DISTINCT [MealType] FROM [Meal] WHERE ([PlanID] = @PlanID)">
         <SelectParameters>
             <asp:SessionParameter DefaultValue="1" Name="PlanID" SessionField="PlanID" Type="Int32" />
@@ -37,11 +37,13 @@
     </asp:SqlDataSource>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow ID="TableRow23" runat="server"><asp:TableCell><br /></asp:TableCell></asp:TableRow>
+        <asp:TableRow ID="TableRow23" runat="server"><asp:TableCell><br />
+           
+            </asp:TableCell></asp:TableRow>
        
         <asp:TableRow ID="TableRow25" runat="server">
             <asp:TableCell>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceMeal" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="FoodName">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceMeal" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="FoodName" Visible="True">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
@@ -71,10 +73,17 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
+            <asp:TableCell>
+                 <asp:Button ID="btnCheckCalorie" runat="server" Text="Check Calorie" OnClick="btnCheckCalorie_Click" />
+                <br />
+                <asp:Label ID="lblMealCalorie" runat="server" Text="This meal's total calorie is:"></asp:Label>
+                <br /><br />
+                <asp:Label ID="lblTotalCalorie" runat="server" Text="Today's total calorie is:"></asp:Label>
+            </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
     <br />
-    Do you want to <asp:Button ID="btnShowAdd" runat="server" Text="Add" OnClick="btnShowAdd_Click" /> or <asp:Button ID="btnShowDelete" runat="server" Text="Delete" OnClick="btnShowDelete_Click" /> a item from this meal?
+    Do you want to <asp:Button ID="btnShowAdd" runat="server" Text="Add" OnClick="btnShowAdd_Click" /> or <asp:Button ID="btnShowDelete" runat="server" Text="Delete" OnClick="btnShowDelete_Click" /> an item from this meal?
     <br /><br />
     <asp:Table ID="Table3" runat="server" Visible="False">
          <asp:TableRow ID="TableRow24" runat="server">
@@ -84,7 +93,7 @@
         <asp:TableRow runat="server">
             <asp:TableCell><asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" OnClientClick = "return confirm('Are you sure you want to delete?');"/></asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSourceFoodName" DataTextField="FoodName" DataValueField="FoodName" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSourceFoodName" DataTextField="FoodName" DataValueField="FoodName">
     </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSourceFoodName" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT FoodName FROM Food WHERE FoodName = @FoodName">
          <SelectParameters>

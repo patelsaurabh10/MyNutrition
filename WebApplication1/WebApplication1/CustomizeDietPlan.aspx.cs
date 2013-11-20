@@ -31,18 +31,25 @@ namespace WebApplication1
         double quantity=0;
         double weight=0;
 
+        double mealCalorie = 0;
+        double dailyCalorie = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["PlanID"] = 1;
             PlanID = (int)Session["PlanID"];
+            
 
             if (!IsPostBack)
             {
+                DropDownList1.Text = Request.QueryString["Day"];
+                DropDownList2.Text = Request.QueryString["MealType"];
                 lblAddDisplay.Text = "";
                 lblDeleteResult.Text = "";
                 Table3.Visible = false;
                 Table4.Visible = false;
 
+                
             }
         }
 
@@ -51,7 +58,13 @@ namespace WebApplication1
             MealDetail = CatalogAccess.getMealDetail(PlanID, "Monday", "Breakfast");
         }*/
 
-        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -61,11 +74,12 @@ namespace WebApplication1
             FoodName = DropDownList3.Text;
             Day = DropDownList1.Text;
             MealType = DropDownList2.Text;
+            PlanID = (int)Session["PlanID"];
             if (FoodName == null)
             {
                 lblDeleteResult.Text = "Please select an item to delete";
             }
-            MealID = CatalogAccess.getMealID(Day,MealType);
+            MealID = CatalogAccess.getMealID(Day,MealType,PlanID);
 
 
            int a = CatalogAccess.deleteFoodInMeal(FoodName, MealID);
@@ -77,6 +91,8 @@ namespace WebApplication1
            {
                lblDeleteResult.Text = "OOooppps!";
            }
+           Response.Redirect("CustomizeDietPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
+            DropDownList2.Text);
         }
 
         protected void btnShowAdd_Click(object sender, EventArgs e)
@@ -141,7 +157,7 @@ namespace WebApplication1
 
             Day = DropDownList1.Text;
             MealType = DropDownList2.Text;
-            MealID = CatalogAccess.getMealID(Day, MealType);
+            MealID = CatalogAccess.getMealID(Day, MealType,PlanID);
 
             if (rbtnQuantity.Checked)
             {
@@ -176,6 +192,30 @@ namespace WebApplication1
             {
                 lblAddDisplay.Text = " Woooooops";
             }
+            Response.Redirect("CustomizeDietPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
+                DropDownList2.Text);
         }
+        //dailyCalorie not finish yet
+        protected void btnCheckCalorie_Click(object sender, EventArgs e)
+        {
+            List<String> MealTypes = new List<String>();
+            MealTypes = (List<String>)DropDownList2.DataSource;
+            Day = DropDownList1.Text;
+
+            PlanID = (int)Session["PlanID"];
+
+            mealCalorie = CatalogAccess.getGridViewSumCalorieWithSelection(GridView1);
+        //    for (int i = 0; i < MealTypes.Count; i++)
+          //  {
+                //dailyCalorie += CatalogAccess.getMealCalorie(Day, PlanID, MealTypes[0]) ;
+          //  }
+
+           // dailyCalorie += CatalogAccess.getMealCalorie(Day, PlanID, "Lunch");
+            lblMealCalorie.Text = "This meal's total calorie is:" + mealCalorie;
+
+            //lblTotalCalorie.Text = "Today's total calorie is:" + dailyCalorie;
+        }
+
+
     }
 }

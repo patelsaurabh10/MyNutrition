@@ -15,8 +15,10 @@ namespace WebApplication1.App_Code
     {
         public CatalogAccess()
         {
+            
 
         }
+
         private static SqlConnection GetConnection(SqlConnectionStringBuilder builder)
         {
             builder.DataSource = ".\\SQLEXPRESS";
@@ -125,6 +127,29 @@ namespace WebApplication1.App_Code
             }
             return totalCalorie;
         }
+
+        //for gridview with selection function
+        public static double getGridViewSumCalorieWithSelection(GridView GridView1)
+        {
+            decimal foodCalorie = 0;
+            int quantity = 0;
+            decimal weight = 0;
+            double totalCalorie = 0;
+            double unit = 0;
+            for (int i = 0; i < GridView1.Rows.Count; i++)
+            {
+                if (decimal.TryParse(GridView1.Rows[i].Cells[4].Text, out foodCalorie) && int.TryParse(GridView1.Rows[i].Cells[2].Text, out quantity))
+                {
+                    totalCalorie += (double)foodCalorie * quantity;
+                }
+                else if (decimal.TryParse(GridView1.Rows[i].Cells[4].Text, out foodCalorie) && decimal.TryParse(GridView1.Rows[i].Cells[3].Text, out weight))
+                {
+                    unit = CatalogAccess.getFoodUnit(GridView1.Rows[i].Cells[1].Text);
+                    totalCalorie += (double)(foodCalorie * weight) / unit;
+                }
+            }
+            return totalCalorie;
+        }
         public static DataTable getMealDetail(int PlanID, String Day, String MealType)
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -183,12 +208,12 @@ namespace WebApplication1.App_Code
             param2.Value = MealID;
             cmd.Parameters.Add(param2);
 
-            int a = cmd.ExecuteNonQuery();  
+            int a = cmd.ExecuteNonQuery();
             conn.Close();
             return a;
         }
         //get MealID by Day and MealType
-        public static int getMealID(String Day, String MealType)
+        public static int getMealID(String Day, String MealType, int PlanID)
         {
             int MealID = 0;
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -196,9 +221,10 @@ namespace WebApplication1.App_Code
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select MealID from Meal where Day=@Day and MealType=@MealType";
+            cmd.CommandText = "select MealID from Meal where Day=@Day and MealType=@MealType and PlanID=@PlanID";
             SqlParameter param1 = cmd.CreateParameter();
             SqlParameter param2 = cmd.CreateParameter();
+            SqlParameter param3 = cmd.CreateParameter();
 
             param1.ParameterName = "@Day";
             param1.Value = Day;
@@ -207,6 +233,10 @@ namespace WebApplication1.App_Code
             param2.ParameterName = "@MealType";
             param2.Value = MealType;
             cmd.Parameters.Add(param2);
+
+            param3.ParameterName = "@PlanID";
+            param3.Value = PlanID;
+            cmd.Parameters.Add(param3);
 
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -218,6 +248,41 @@ namespace WebApplication1.App_Code
             }
             conn.Close();
             return MealID;
+        }
+
+        //get MealID by day and PlanID
+        public static List<int> getMealID(String Day, int PlanID)
+        {
+            List<int> MealIDs = new List<int>();
+            int MealID = 0;
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select MealID from Meal where Day=@Day and PlanID=@PlanID";
+            SqlParameter param1 = cmd.CreateParameter();
+            SqlParameter param3 = cmd.CreateParameter();
+
+            param1.ParameterName = "@Day";
+            param1.Value = Day;
+            cmd.Parameters.Add(param1);
+
+            param3.ParameterName = "@PlanID";
+            param3.Value = PlanID;
+            cmd.Parameters.Add(param3);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    MealID = Convert.ToInt32(reader.GetInt32(0));
+                    MealIDs.Add(MealID);
+                }
+            }
+            conn.Close();
+            return MealIDs;
         }
 
         public static int getFoodID(String FoodName)
@@ -270,7 +335,7 @@ namespace WebApplication1.App_Code
         }
 
         //create new item in a meal with weight
-        public static int insert_Into_FoodDetail(int MealID, double Weight,int FoodID)
+        public static int insert_Into_FoodDetail(int MealID, double Weight, int FoodID)
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection conn = GetConnection(builder);
@@ -289,5 +354,43 @@ namespace WebApplication1.App_Code
 
             return a;
         }
+
+        /*public static double getMealCalorie(String day, int PlanID, String MealType)
+        {
+            DataTable MealDetail = new DataTable("MealDetail");
+            MealDetail = getMealDetail(PlanID, day, MealType);
+
+            double totalCalorie = 0;
+            decimal foodCalorie = 0;
+            decimal quantity = 0;
+            double weight=0 ;
+            double unit = 0;
+			
+
+            for (int i = 0; i < MealDetail.Rows.Count; i++)
+            {
+                foodCalorie = (decimal)MealDetail.Rows[i]["FoodCalorie"];
+                unit = CatalogAccess.getFoodUnit((String)MealDetail.Rows[i]["FoodName"]);
+
+               // decimal.TryParse((String)MealDetail.Rows[i]["Quantity"], out quantity);
+                if (MealDetail.Rows[i]["Quantity"].ToString()  != null)
+                {
+                    quantity = (System.Decimal)MealDetail.Rows[i]["Quantity"];
+                }
+
+                //weight = (double)MealDetail.Rows[i]["FoodDetail.Weight"];
+                weight = 1;
+
+                if (quantity != 0)
+                {
+                    totalCalorie += Convert.ToDouble((decimal)foodCalorie * quantity);
+                }
+                else if (weight != 0)
+                {
+                    totalCalorie += ((double)foodCalorie * weight) / unit;
+                }
+            }
+            return totalCalorie;
+        }*/
     }
 }
