@@ -16,7 +16,7 @@ namespace WebApplication1
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            bmr = Convert.ToInt32(TextBox1.Text);
+            bmr = 0;
             BtnGain.Text = "To gian weight you need " + (bmr + 500);
             BtnMaintain.Text = "To maintain weight you need " + bmr;
             BtnLoose.Text = "To loose weight you need " + (bmr - 500);
@@ -26,21 +26,21 @@ namespace WebApplication1
         {
             calorie = bmr - 500;
             PlanID = Plan.choosePlanID(calorie);
-            Label1.Text = Convert.ToString(PlanID);
+            
         }
 
         protected void BtnMaintain_Click(object sender, EventArgs e)
         {
             calorie = bmr;
             PlanID = Plan.choosePlanID(calorie);
-            Label1.Text = Convert.ToString(PlanID);
+            
         }
 
         protected void BtnGain_Click(object sender, EventArgs e)
         {
             calorie = bmr + 500;
             PlanID = Plan.choosePlanID(calorie);        
-            Label1.Text = Convert.ToString(PlanID);
+           
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
