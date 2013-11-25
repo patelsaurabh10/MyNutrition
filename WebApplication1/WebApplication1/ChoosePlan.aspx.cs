@@ -13,6 +13,7 @@ namespace WebApplication1
         int bmr = 0;
         double calorie = 0;
         int PlanID = 0;
+        Plan plan = new Plan();
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,21 +26,21 @@ namespace WebApplication1
         protected void BtnLoose_Click(object sender, EventArgs e)
         {
             calorie = bmr - 500;
-            PlanID = Plan.choosePlanID(calorie);
+            PlanID = plan.choosePlanID(calorie);
             
         }
 
         protected void BtnMaintain_Click(object sender, EventArgs e)
         {
             calorie = bmr;
-            PlanID = Plan.choosePlanID(calorie);
+            PlanID = plan.choosePlanID(calorie);
             
         }
 
         protected void BtnGain_Click(object sender, EventArgs e)
         {
             calorie = bmr + 500;
-            PlanID = Plan.choosePlanID(calorie);        
+            PlanID = plan.choosePlanID(calorie);        
            
         }
 

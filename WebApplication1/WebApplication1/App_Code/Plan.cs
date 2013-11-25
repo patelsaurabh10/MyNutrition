@@ -12,7 +12,7 @@ namespace WebApplication1.App_Code
 
         }
 
-        public static int choosePlanID(double calorie)
+        public int choosePlanID(double calorie)
         {
             int PlanID = 0;
             if (calorie < 1300)
