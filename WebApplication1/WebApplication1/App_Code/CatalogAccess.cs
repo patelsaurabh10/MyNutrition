@@ -14,8 +14,7 @@ namespace WebApplication1.App_Code
     public class CatalogAccess
     {
         public CatalogAccess()
-        {
-            
+        {          
 
         }
 
@@ -27,6 +26,71 @@ namespace WebApplication1.App_Code
             SqlConnection conn = new SqlConnection(builder.ConnectionString);
             return conn;
         }
+
+        public static List<ListItem> GetCustomers()
+        {
+            List<ListItem> lstCustomers = new List<ListItem>();
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection oCon = GetConnection(builder);
+            SqlCommand cmd = new SqlCommand("select CustID,FirstName from Customer", oCon);
+            oCon.Open();
+            //cmd.Parameters.Add(ddlCustomer.se);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                ListItem oItem = new ListItem();
+                oItem.Text = dr["FirstName"].ToString();
+                oItem.Value = dr["CustID"].ToString();
+                lstCustomers.Add(oItem);
+                
+            }
+            return lstCustomers;
+        }
+
+        public static List<Plans> GetPlans(string planID)
+        {
+            List<Plans> lstPlans = new List<Plans>();
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection oCon = GetConnection(builder);
+            SqlCommand cmd = new SqlCommand("Select Meal.MealType,Meal.Day,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID", oCon);
+            cmd.Parameters.AddWithValue("@PlanID", planID);
+            oCon.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                Plans oPlans = new Plans();
+                oPlans.MealType = dr["MealType"].ToString();
+                oPlans.Day = dr["Day"].ToString();
+                oPlans.Quantity = dr["Quantity"].ToString();
+                oPlans.Weight=dr["Weight"].ToString();
+                oPlans.FoodName=dr["FoodName"].ToString();
+                oPlans.FoodCalorie = dr["FoodCalorie"].ToString();
+                oPlans.FoodCategory = dr["FoodCategory"].ToString();
+                lstPlans.Add(oPlans);
+            }
+
+            return lstPlans;
+            
+        }
+
+        public static int GetCustomerPlanID(string customerID)
+        {
+            int planID = 0;
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection oCon = GetConnection(builder);
+            SqlCommand cmd = new SqlCommand("Select PlanID from CustomerPlan where CustID=@CustID", oCon);
+            cmd.Parameters.AddWithValue("@CustID", customerID);
+            oCon.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                planID = Int32.Parse(dr["PlanID"].ToString());
+            }
+            return planID;
+        }
+
+       
+
         public static string getPlanDesc(int PlanID)
         {
             string planDesc = null;
