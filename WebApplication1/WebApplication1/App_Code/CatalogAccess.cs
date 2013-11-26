@@ -52,15 +52,15 @@ namespace WebApplication1.App_Code
             List<Plans> lstPlans = new List<Plans>();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection oCon = GetConnection(builder);
-            SqlCommand cmd = new SqlCommand("Select Meal.MealType,Meal.Day,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID", oCon);
+            SqlCommand cmd = new SqlCommand("Select Meal.Day,Meal.MealType,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID AND Meal.Day = 'Monday' GROUP BY Meal.Day", oCon);
             cmd.Parameters.AddWithValue("@PlanID", planID);
             oCon.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 Plans oPlans = new Plans();
-                oPlans.MealType = dr["MealType"].ToString();
                 oPlans.Day = dr["Day"].ToString();
+                oPlans.MealType = dr["MealType"].ToString();               
                 oPlans.Quantity = dr["Quantity"].ToString();
                 oPlans.Weight=dr["Weight"].ToString();
                 oPlans.FoodName=dr["FoodName"].ToString();

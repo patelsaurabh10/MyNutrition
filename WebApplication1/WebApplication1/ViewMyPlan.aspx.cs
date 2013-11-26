@@ -12,8 +12,7 @@ namespace WebApplication1
 {
     public partial class ViewMyPlan : System.Web.UI.Page
     {
-        //CatalogAccess oCatalog = new CatalogAccess();
-        //string strCon = ConfigurationManager.ConnectionStrings["MyNutritionConnectionString"].ConnectionString;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -30,13 +29,14 @@ namespace WebApplication1
             int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
             GridView1.DataSource = CatalogAccess.GetPlans(planID.ToString());
             GridView1.DataBind();
+            
         }
     }
 
     public class Plans
     {
-        public string MealType { get; set; }
         public string Day { get; set; }
+        public string MealType { get; set; }        
         public string Quantity { get; set; }
         public string Weight { get; set; }
         public string FoodName { get; set; }
