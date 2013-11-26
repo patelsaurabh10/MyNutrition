@@ -47,12 +47,12 @@ namespace WebApplication1.App_Code
             return lstCustomers;
         }
 
-        public static List<Plans> GetPlans(string planID)
+        public static List<Plans> GetCastomerPlans(string planID)
         {
             List<Plans> lstPlans = new List<Plans>();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection oCon = GetConnection(builder);
-            SqlCommand cmd = new SqlCommand("Select Meal.Day,Meal.MealType,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID AND Meal.Day = 'Monday' GROUP BY Meal.Day", oCon);
+            SqlCommand cmd = new SqlCommand("Select Meal.Day,Meal.MealType,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID", oCon);
             cmd.Parameters.AddWithValue("@PlanID", planID);
             oCon.Open();
             SqlDataReader dr = cmd.ExecuteReader();
@@ -69,8 +69,34 @@ namespace WebApplication1.App_Code
                 lstPlans.Add(oPlans);
             }
 
+            return lstPlans;            
+        }
+
+        public static List<Plans> GetCastomerDailyLog(string planID, string day)
+        {
+            List<Plans> lstPlans = new List<Plans>();
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection oCon = GetConnection(builder);
+            SqlCommand cmd = new SqlCommand("Select Meal.Day,Meal.MealType,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID AND Meal.Day = @Day", oCon);
+            cmd.Parameters.AddWithValue("@PlanID", planID);
+            cmd.Parameters.AddWithValue("@Day", day);
+            oCon.Open();
+            oCon.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                Plans oPlans = new Plans();
+                oPlans.Day = dr["Day"].ToString();
+                oPlans.MealType = dr["MealType"].ToString();
+                oPlans.Quantity = dr["Quantity"].ToString();
+                oPlans.Weight = dr["Weight"].ToString();
+                oPlans.FoodName = dr["FoodName"].ToString();
+                oPlans.FoodCalorie = dr["FoodCalorie"].ToString();
+                oPlans.FoodCategory = dr["FoodCategory"].ToString();
+                lstPlans.Add(oPlans);
+            }
+
             return lstPlans;
-            
         }
 
         public static int GetCustomerPlanID(string customerID)

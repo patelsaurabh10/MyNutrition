@@ -27,9 +27,8 @@ namespace WebApplication1
         protected void ddlCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
-            GridView1.DataSource = CatalogAccess.GetPlans(planID.ToString());
-            GridView1.DataBind();
-            
+            GridView1.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
+            GridView1.DataBind();            
         }
     }
 
