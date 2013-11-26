@@ -419,7 +419,7 @@ namespace WebApplication1.App_Code
             return a;
         }
 
-        /*public static double getMealCalorie(String day, int PlanID, String MealType)
+        public static double getMealCalorie(String day, int PlanID, String MealType)
         {
             DataTable MealDetail = new DataTable("MealDetail");
             MealDetail = getMealDetail(PlanID, day, MealType);
@@ -455,6 +455,6 @@ namespace WebApplication1.App_Code
                 }
             }
             return totalCalorie;
-        }*/
+        }
     }
 }

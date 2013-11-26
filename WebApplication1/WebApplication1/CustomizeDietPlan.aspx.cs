@@ -199,21 +199,24 @@ namespace WebApplication1
         protected void btnCheckCalorie_Click(object sender, EventArgs e)
         {
             List<String> MealTypes = new List<String>();
-            MealTypes = (List<String>)DropDownList2.DataSource;
+            foreach (ListItem li in DropDownList2.Items)
+            {
+                MealTypes.Add(li.Text);
+            }
+
             Day = DropDownList1.Text;
 
             PlanID = (int)Session["PlanID"];
 
             mealCalorie = CatalogAccess.getGridViewSumCalorieWithSelection(GridView1);
-        //    for (int i = 0; i < MealTypes.Count; i++)
-          //  {
-                //dailyCalorie += CatalogAccess.getMealCalorie(Day, PlanID, MealTypes[0]) ;
-          //  }
+            for (int i = 0; i < MealTypes.Count; i++)
+            {
+                dailyCalorie += CatalogAccess.getMealCalorie(Day, PlanID, MealTypes[i]) ;
+            }
 
-           // dailyCalorie += CatalogAccess.getMealCalorie(Day, PlanID, "Lunch");
             lblMealCalorie.Text = "This meal's total calorie is:" + mealCalorie;
 
-            //lblTotalCalorie.Text = "Today's total calorie is:" + dailyCalorie;
+            lblTotalCalorie.Text = "Today's total calorie is:" + dailyCalorie;
         }
 
 
