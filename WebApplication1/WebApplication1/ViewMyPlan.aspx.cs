@@ -6,61 +6,41 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.App_Code;
 
 namespace WebApplication1
 {
     public partial class ViewMyPlan : System.Web.UI.Page
     {
-        string strCon = ConfigurationManager.ConnectionStrings["MyNutritionConnectionString"].ConnectionString;
+        //CatalogAccess oCatalog = new CatalogAccess();
+        //string strCon = ConfigurationManager.ConnectionStrings["MyNutritionConnectionString"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlConnection oCon = new SqlConnection(strCon);
-            SqlCommand cmd = new SqlCommand("select CustID,FirstName from Customer",oCon);
-            oCon.Open();
-            //cmd.Parameters.Add(ddlCustomer.se);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while(dr.Read())
+            if (!IsPostBack)
             {
-                ListItem oItem = new ListItem();
-                oItem.Text = dr["FirstName"].ToString();
-                oItem.Value=dr["CustID"].ToString();
-                ddlCustomer.Items.Add(oItem);
-                //ddlCustomer.s
+                ddlCustomer.DataTextField = "Text";
+                ddlCustomer.DataValueField = "Value";
+                ddlCustomer.DataSource = CatalogAccess.GetCustomers();
+                ddlCustomer.DataBind();
             }
         }
 
         protected void ddlCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plans> lstPlans = new List<Plans>();
-            SqlConnection oCon = new SqlConnection(strCon);
-            SqlCommand cmd = new SqlCommand("Select PlanID,CreatedDate,LastModifiedDate,Categories,PlanDesc,Tracked from [Plan] where CustID=@CustID", oCon);
-            cmd.Parameters.AddWithValue("@CustID", ddlCustomer.SelectedValue);
-            oCon.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                Plans oPlans = new Plans();
-                oPlans.PlanID =Convert.ToInt32(dr["PlanID"].ToString());
-                oPlans.CreatedDate = dr["CreatedDate"].ToString();
-                oPlans.LastModifiedDate = dr["LastModifiedDate"].ToString();
-                oPlans.Categories = dr["Categories"].ToString();
-                oPlans.PlanDesc = dr["PlanDesc"].ToString();
-                oPlans.Tracked = dr["Tracked"].ToString();
-                lstPlans.Add(oPlans);
-            }
-            GridView1.DataSource = lstPlans;
+            int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
+            GridView1.DataSource = CatalogAccess.GetPlans(planID.ToString());
             GridView1.DataBind();
-
         }
     }
 
     public class Plans
     {
-        public int PlanID { get; set; }
-        public string CreatedDate { get; set; }
-        public string LastModifiedDate { get; set; }
-        public string Categories { get; set; }
-        public string PlanDesc { get; set; }
-        public string Tracked { get; set; }
+        public string MealType { get; set; }
+        public string Day { get; set; }
+        public string Quantity { get; set; }
+        public string Weight { get; set; }
+        public string FoodName { get; set; }
+        public string FoodCalorie { get; set; }
+        public string FoodCategory { get; set; }
     }
 }
