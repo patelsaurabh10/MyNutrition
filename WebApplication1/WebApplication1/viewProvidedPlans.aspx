@@ -6,10 +6,11 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-    This is Plan
-    <asp:TextBox ID="txbPlanID" runat="server" Width="16px"></asp:TextBox>
-    &nbsp;:
-    <asp:Label ID="lblPlanDesc" runat="server" Text="Please select a plan"></asp:Label>
+
+    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="View Plan" style="height: 26px" />
+    <br />
+    Plan Description:
+    <asp:Label ID="lblPlanDesc" runat="server" Text="Plan Description Here"></asp:Label>
     <br />
     Monday:
     <asp:Table ID="TableMonday" runat="server">
@@ -687,5 +688,7 @@
          </asp:TableRow>
      </asp:Table>
 
-    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="View Plan" style="height: 26px" />
-</asp:Content>
+    <asp:Button ID="btnCopy" runat="server" OnClick="btnCopy_Click" Text="Copy this plan to your own" />
+&nbsp;<asp:Label ID="lblCopyResult" runat="server" Text="Label"></asp:Label>
+
+    </asp:Content>

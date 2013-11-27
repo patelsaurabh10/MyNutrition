@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.App_Code;
 
 namespace WebApplication1.App_Code
 {
@@ -349,6 +350,73 @@ namespace WebApplication1.App_Code
             return MealIDs;
         }
 
+        //get MealID in FoodDetail table by PlanID
+     /*   public static List<int> getMealIDsInFoodDetail(int newPlanID)
+        {
+            List<int> MealIDs = new List<int>();
+            List<int> newMealIDs = new List<int>();
+            MealIDs = getMealIDsInMeal(newPlanID);
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            foreach (int MealID in MealIDs)
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "select FoodDetail.MealID from FoodDetail where (FoodDetail.MealID = @MealID)";
+
+                SqlParameter param1 = cmd.CreateParameter();
+                param1.ParameterName = "@MealID";
+                param1.Value = MealID;
+                cmd.Parameters.Add(param1);    
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        newMealIDs.Add(Convert.ToInt32(reader.GetInt32(0)));
+                    }
+                }
+                cmd.Dispose();
+                cmd = null;
+            }
+            conn.Close();
+            return newMealIDs;
+        }*/
+
+        //get MealID in Meal table by PlanID
+        public static List<int> getMealIDsInMeal(int PlanID)
+        {
+            List<int> MealIDs = new List<int>();
+            int MealID = 0;
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select MealID from Meal where PlanID=@PlanID";
+            SqlParameter param3 = cmd.CreateParameter();
+
+            param3.ParameterName = "@PlanID";
+            param3.Value = PlanID;
+            cmd.Parameters.Add(param3);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    MealID = Convert.ToInt32(reader.GetInt32(0));
+                    MealIDs.Add(MealID);
+                }
+            }
+            conn.Close();
+            return MealIDs;
+        }
+
         public static int getFoodID(String FoodName)
         {
             int FoodID = 0;
@@ -456,5 +524,119 @@ namespace WebApplication1.App_Code
             }
             return totalCalorie;
         }
+
+        //copy system provided plan into a new plan owned by user
+        public static int convertSystemPlanToUserPlan(int PlanID,int CustID)
+        {
+            int rowsAffected= 0 ;
+            dlPlan dlP = new dlPlan();
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+
+            //Create a SqlDataAdapter for the Suppliers table.
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            conn.Open();
+
+            DataTable FoodDetail = dlP.getFoodDetailTable(PlanID);
+            DataTable Meal = dlP.getMealTable(PlanID);
+            DataTable Plan = dlP.getPlanTable(PlanID);
+
+            //the planID user is gonig to generate
+            int newPlanID = dlP.getMaxPlanID()+1;
+            DateTime now = DateTime.Now;
+
+            for (int i = 0; i < Plan.Rows.Count; i++)
+            {
+                Plan.Rows[i]["PlanID"] = newPlanID;
+                Plan.Rows[i]["CreatedDate"] = now;
+                Plan.Rows[i]["LastModifiedDate"] = now;
+                Plan.Rows[i]["Customed"] = true;
+            }
+
+            for (int i = 0; i < Meal.Rows.Count; i++)
+            {
+                Meal.Rows[i]["PlanID"] = newPlanID;
+                if (Meal.Columns.Contains("MealID"))
+                {
+                    Meal.Columns.Remove("MealID");
+                }
+            }
+
+            string sql1 = "INSERT INTO [Plan] (PlanID, CreatedDate, LastModifiedDate, Customed, Categories, PlanDesc, Tracked ) VALUES (@PlanID, @CreatedDate, @LastModifiedDate, @Customed, @Categories, @PlanDesc, @Tracked)";
+
+
+            foreach (DataRow r in Plan.Rows)
+                {
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = sql1;
+                    cmd.Parameters.AddWithValue("@PlanID", r["PlanID"]);
+                    cmd.Parameters.AddWithValue("@CreatedDate", r["CreatedDate"]);
+                    cmd.Parameters.AddWithValue("@LastModifiedDate", r["LastModifiedDate"]);
+                    cmd.Parameters.AddWithValue("@Customed", r["Customed"]);
+                    cmd.Parameters.AddWithValue("@Categories", r["Categories"]);
+                    cmd.Parameters.AddWithValue("@PlanDesc", r["PlanDesc"]);
+                    cmd.Parameters.AddWithValue("@Tracked", r["Tracked"]);
+                    rowsAffected += cmd.ExecuteNonQuery();
+                }
+
+
+            string sql2 = "INSERT INTO Meal (MealType, Day, PlanID) VALUES (@MealType, @Day, @PlanID)";
+
+
+            foreach (DataRow r in Meal.Rows)
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sql2;
+                cmd.Parameters.AddWithValue("@MealType", r["MealType"]);
+                cmd.Parameters.AddWithValue("@Day", r["Day"]);
+                cmd.Parameters.AddWithValue("@PlanID", r["PlanID"]);
+
+                rowsAffected += cmd.ExecuteNonQuery();
+            }
+            conn.Close();
+
+
+            int j = 0;
+            //after insert meal table
+            List<int> MealIDs = getMealIDsInMeal(newPlanID);
+            for (int i = 0; i < FoodDetail.Rows.Count ; i++)
+            {
+                int nextMealID = 0;
+                int currentMealID = (int)FoodDetail.Rows[i]["MealID"];
+                if (i < FoodDetail.Rows.Count-1 )
+                {
+                     nextMealID = (int)FoodDetail.Rows[i + 1]["MealID"];
+                }
+                if (currentMealID != nextMealID)
+                    {
+                        FoodDetail.Rows[i]["MealID"] = MealIDs[j];
+                        j++;
+                    }
+                    else
+                    {
+                        FoodDetail.Rows[i]["MealID"] = MealIDs[j];      
+                    }
+            }
+
+            string sql3 = "INSERT INTO FoodDetail (MealID, FoodID, Quantity, Weight) VALUES (@MealID, @FoodID, @Quantity,@Weight)";
+
+            conn.Open();
+            foreach (DataRow r in FoodDetail.Rows)
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sql3;
+                cmd.Parameters.AddWithValue("@MealID", r["MealID"]);
+                cmd.Parameters.AddWithValue("@FoodID", r["FoodID"]);
+                cmd.Parameters.AddWithValue("@Quantity", r["Quantity"]);
+                cmd.Parameters.AddWithValue("@Weight", r["Weight"]);
+
+                rowsAffected += cmd.ExecuteNonQuery();
+            }
+            conn.Close();
+                return rowsAffected;
+        }
+
+       
     }
 }

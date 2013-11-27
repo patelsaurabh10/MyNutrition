@@ -13,13 +13,13 @@ namespace WebApplication1 {
     public partial class WebForm2 {
         
         /// <summary>
-        /// txbPlanID control.
+        /// btnView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbPlanID;
+        protected global::System.Web.UI.WebControls.Button btnView;
         
         /// <summary>
         /// lblPlanDesc control.
@@ -1750,12 +1750,21 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TableCell TableCell60;
         
         /// <summary>
-        /// btnView control.
+        /// btnCopy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnView;
+        protected global::System.Web.UI.WebControls.Button btnCopy;
+        
+        /// <summary>
+        /// lblCopyResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCopyResult;
     }
 }

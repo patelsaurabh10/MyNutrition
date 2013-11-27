@@ -18,8 +18,13 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["PlanID"] = 1;
+            //delete the below line when deploy
+            Session["PlanID"] = 2;
 
+            if (Session["PlanID"] != null)
+            {
+                PlanID = (int)Session["PlanID"];
+            }   
             lblMonSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewMonBreak) + CatalogAccess.getGridViewSumCalorie(GridViewMonLunch) + CatalogAccess.getGridViewSumCalorie(GridViewMonDinner));
             lblTueSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewTueBreak) + CatalogAccess.getGridViewSumCalorie(GridViewTueLunch) + CatalogAccess.getGridViewSumCalorie(GridViewTueDinner));
             lblWesSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewWedBreak) + CatalogAccess.getGridViewSumCalorie(GridViewWedLunch) + CatalogAccess.getGridViewSumCalorie(GridViewWedDinner));
@@ -31,8 +36,6 @@ namespace WebApplication1
         //for button btnView clicked
         protected void Button1_Click(object sender, EventArgs e)
         {
-            // Session["PlanID"] = txbPlanID.Text;
-            PlanID = Convert.ToInt32(txbPlanID.Text);
             /*if (Session["PlanID"] != null)
             {
                 PlanID = (int)Session["PlanID"];
@@ -44,6 +47,16 @@ namespace WebApplication1
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnCopy_Click(object sender, EventArgs e)
+        {
+            int rowEffected = CatalogAccess.convertSystemPlanToUserPlan(PlanID, 1);
+
+            if (rowEffected > 0)
+            {
+                lblCopyResult.Text = rowEffected + " effected";
+            }
         }
 
     }
