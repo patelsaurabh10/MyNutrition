@@ -209,6 +209,71 @@ namespace WebApplication1
             return PlanNum;
         }
 
+        public int deletePlan(int planID)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
 
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "delete from [Plan] where PlanID=@PlanID)";
+            cmd.Parameters.AddWithValue("@PlanID", planID);
+
+            int a = cmd.ExecuteNonQuery();
+            conn.Close();
+            return a;
+        }
+
+        public int deleteMeal(int planID)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "delete from Meal where PlanID=@PlanID)";
+            cmd.Parameters.AddWithValue("@PlanID", planID);
+
+            int a = cmd.ExecuteNonQuery();
+            conn.Close();
+            return a;
+        }
+
+        public int deleteFoodDetail(int planID)
+        {
+            int a = 0;
+            List<int> mealIDs = CatalogAccess.getMealIDsInMeal(planID);
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "delete from FoodDetail where MealID=@MealID)";
+            foreach (int mealID in mealIDs)
+            {
+                cmd.Parameters.AddWithValue("@MealID", mealID);
+                a =+ cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+            }
+  
+            conn.Close();
+            return a;
+        }
+//has error
+        public int deleteCustomerPlan(int planID,int custID)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "delete from CustomerPlan where PlanID=@PlanID and CustID=@CustID)";
+            cmd.Parameters.AddWithValue("@PlanID", planID);
+            cmd.Parameters.AddWithValue("@CustID", custID);
+
+            int a = cmd.ExecuteNonQuery();
+            conn.Close();
+            return a;
+        }
     }
 }

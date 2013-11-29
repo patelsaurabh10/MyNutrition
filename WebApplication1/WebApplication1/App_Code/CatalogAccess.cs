@@ -667,6 +667,18 @@ namespace WebApplication1.App_Code
                 return rowsAffected;
         }
 
+        public static int deleteCustomerPlan(int planID, int custID)
+        {
+            int effectedRows = 0;
+            dlPlan dlPlan = new dlPlan();
+            effectedRows =+ dlPlan.deleteCustomerPlan(planID, custID);
+            effectedRows =+ dlPlan.deletePlan(planID);
+            effectedRows =+ dlPlan.deleteMeal(planID);
+            effectedRows =+ dlPlan.deleteFoodDetail(planID);
+
+
+            return effectedRows;
+        }
        
     }
 }
