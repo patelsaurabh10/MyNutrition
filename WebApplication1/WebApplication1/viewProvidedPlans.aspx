@@ -688,7 +688,14 @@
          </asp:TableRow>
      </asp:Table>
 
-    <asp:Button ID="btnCopy" runat="server" OnClick="btnCopy_Click" Text="Copy this plan to your own" />
+    <br />
+    <asp:Button ID="btnConvertPlan" runat="server" OnClick="btnConvertPlan_Click" Text="Save Plan" />
+    <br />
+    <asp:Label ID="lblPlanName" runat="server" Text="Enter your plan name: " Visible="False"></asp:Label>
+    <asp:TextBox ID="txbPlanName" runat="server" Visible="False"></asp:TextBox>
+    <br />
+
+    <asp:Button ID="btnCopy" runat="server" OnClick="btnCopy_Click" Text="Copy this plan to your own" Visible="False" />
 &nbsp;<asp:Label ID="lblCopyResult" runat="server" Text="Label"></asp:Label>
 
     </asp:Content>
