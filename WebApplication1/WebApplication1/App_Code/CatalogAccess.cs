@@ -552,10 +552,11 @@ namespace WebApplication1.App_Code
         }
 
         //copy system provided plan into a new plan owned by user
-        public static int convertSystemPlanToUserPlan(int PlanID,int CustID)
+        public static int convertSystemPlanToUserPlan(int PlanID,int CustID, String planDesc) 
         {
-            int rowsAffected= 0 ;
+            int rowsAffected= 0;
             dlPlan dlP = new dlPlan();
+
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection conn = GetConnection(builder);
 
@@ -578,6 +579,7 @@ namespace WebApplication1.App_Code
                 Plan.Rows[i]["CreatedDate"] = now;
                 Plan.Rows[i]["LastModifiedDate"] = now;
                 Plan.Rows[i]["Customed"] = true;
+                Plan.Rows[i]["PlanDesc"] = planDesc;
             }
 
             for (int i = 0; i < Meal.Rows.Count; i++)
@@ -588,7 +590,7 @@ namespace WebApplication1.App_Code
                     Meal.Columns.Remove("MealID");
                 }
             }
-
+            //populate Plan table
             string sql1 = "INSERT INTO [Plan] (PlanID, CreatedDate, LastModifiedDate, Customed, Categories, PlanDesc, Tracked ) VALUES (@PlanID, @CreatedDate, @LastModifiedDate, @Customed, @Categories, @PlanDesc, @Tracked)";
 
 
@@ -606,7 +608,7 @@ namespace WebApplication1.App_Code
                     rowsAffected += cmd.ExecuteNonQuery();
                 }
 
-
+            //populate Meal table
             string sql2 = "INSERT INTO Meal (MealType, Day, PlanID) VALUES (@MealType, @Day, @PlanID)";
 
 
@@ -644,7 +646,7 @@ namespace WebApplication1.App_Code
                         FoodDetail.Rows[i]["MealID"] = MealIDs[j];      
                     }
             }
-
+            //populate FoodDetail table
             string sql3 = "INSERT INTO FoodDetail (MealID, FoodID, Quantity, Weight) VALUES (@MealID, @FoodID, @Quantity,@Weight)";
 
             conn.Open();
@@ -660,6 +662,8 @@ namespace WebApplication1.App_Code
                 rowsAffected += cmd.ExecuteNonQuery();
             }
             conn.Close();
+            rowsAffected += dlP.insert_Into_CustomerPlan(newPlanID, CustID);
+  
                 return rowsAffected;
         }
 
