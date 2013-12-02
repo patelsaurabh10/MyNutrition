@@ -275,5 +275,33 @@ namespace WebApplication1
             conn.Close();
             return a;
         }
+
+        public bool trackDietPlan(int planID)
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            bool flag = true;
+            SqlCommand cmd = conn.CreateCommand();
+            SqlCommand cmd1 = conn.CreateCommand();
+            cmd.CommandText = "select * from [Plan] WHERE Tracked = '1'";
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                flag = false;
+                conn.Close();
+            }
+            else
+            {
+                cmd1.CommandText = "UPDATE [Plan] SET Tracked = '1' WHERE PlanID= @PLANID";
+                cmd1.Parameters.AddWithValue("@PLANID", planID);
+                cmd1.ExecuteNonQuery();
+            }
+           
+           
+            conn.Close();
+            return flag;
+
+        }
     }
 }

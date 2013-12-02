@@ -26,6 +26,7 @@ namespace WebApplication1
                 ddlCustomer.DataTextField = "Text";
                 ddlCustomer.DataValueField = "Value";
                 ddlCustomer.DataSource = CatalogAccess.GetCustomers();
+                
                 ddlCustomer.DataBind();
             }
         }
@@ -56,6 +57,31 @@ namespace WebApplication1
        "alert('Plan ID must be more than 10!)');",
        true);
             }
+
+        }
+
+        protected void btnTrack_Click(object sender, EventArgs e)
+        {
+            int planID = Convert.ToInt32(txbPlanID.Text);
+            dlPlan opln = new dlPlan();
+           bool flag = opln.trackDietPlan(planID);
+           if (flag == true)
+           {
+               ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                   "err_msg",
+                   "alert('your plan has been tracked!');",
+                   true);
+               lbltest.Text = "your plan has been tracked!";
+           }
+           else
+           {
+               ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                  "err_msg",
+                  "alert('You can't track more plan, becuase it has already tracked before');",
+                  true);
+               lbltest.Text = "You can't track more plan, becuase it has already tracked before";
+           }
+
 
         }
     }
