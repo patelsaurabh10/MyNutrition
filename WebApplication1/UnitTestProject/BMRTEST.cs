@@ -8,7 +8,7 @@ namespace UnitTestProject
     [TestClass]
     class BMRTEST
     {
-        [TestMethod]
+       /* [TestMethod]
         public void getPlanDescTEST()
         {
             double BMR = 0;
@@ -22,6 +22,6 @@ namespace UnitTestProject
             Assert.AreEqual(valueexpected, BMR);
             
            
-        }
+        }*/
     }
 }

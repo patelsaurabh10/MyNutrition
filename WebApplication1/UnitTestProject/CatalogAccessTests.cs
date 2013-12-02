@@ -11,18 +11,18 @@ namespace UnitTestProject
     public class CatalogAccessTests
     {
 
-        
+
         [TestMethod]
         public void getPlanDescTEST()
         {
             int PlanID = 1;
             string planDescExpected = "for 1200 calorie";
-            
-            
+
+
             string planDescActual = CatalogAccess.getPlanDesc(PlanID);
             Assert.AreEqual(planDescExpected, planDescActual);
-            
-            
+
+
         }
         [TestMethod]
         public void getPlanDescTEST2()
@@ -118,21 +118,21 @@ namespace UnitTestProject
             double unitActual = CatalogAccess.getFoodUnit(foodName);
             Assert.AreEqual(unitExpected, unitActual);
         }
-      
 
 
-       
+
+
         [TestMethod]
         public void getMealIDTEST()
         {
             String Day = "Monday";
             int PlanID = 1;
-            List<int> MealIDsExpected = new List<int>(){1, 3, 4, 5, 6};
+            List<int> MealIDsExpected = new List<int>() { 1, 3, 4, 5, 6 };
 
             List<int> MealdIDsActual = CatalogAccess.getMealID(Day, PlanID);
 
             CollectionAssert.AreEqual(MealIDsExpected, MealdIDsActual);
-            
+
 
         }
         [TestMethod]
@@ -170,7 +170,14 @@ namespace UnitTestProject
             int PlanIDExpected = 10;
             int PlanIDActual = CatalogAccess.GetCustomerPlanID(customerID);
             Assert.AreEqual(PlanIDExpected, PlanIDActual);
+<<<<<<< HEAD
+        }
+
+
+
+=======
         }      
+>>>>>>> 4cf66965e0d45f2eb6f46fec20709313f8e3b9b7
 
         [TestMethod]
         public void getFoodIDIDTEST()
@@ -204,36 +211,36 @@ namespace UnitTestProject
             Assert.AreEqual(calorieExpected, calorieActual);
         }
 
-       /* [TestMethod]
-        public void deleteFoodInMealTEST()
-        {
-            string FoodName = "Cereal-oats";
-            int MealID = 33;
-            int aExpected = 1;
-            int aActual = CatalogAccess.deleteFoodInMeal(FoodName, MealID);
-            Assert.AreEqual(aExpected, aActual);
-        }
-        [TestMethod]
-        public void insert_Into_FoodDetailTEST()
-        {
-            int MealID = 56;
-            int FoodID = 15;
-            double Quantity = 1;
+        /* [TestMethod]
+         public void deleteFoodInMealTEST()
+         {
+             string FoodName = "Cereal-oats";
+             int MealID = 33;
+             int aExpected = 1;
+             int aActual = CatalogAccess.deleteFoodInMeal(FoodName, MealID);
+             Assert.AreEqual(aExpected, aActual);
+         }
+         [TestMethod]
+         public void insert_Into_FoodDetailTEST()
+         {
+             int MealID = 56;
+             int FoodID = 15;
+             double Quantity = 1;
 
-            int aEpected = 1;
-            int aActual = CatalogAccess.insert_Into_FoodDetail(MealID, FoodID, Quantity);
-            Assert.AreEqual(aEpected, aActual);
-        }
-        [TestMethod]
-        public void insert_Into_FoodDetailWithWeightTEST()
-        {
-            int MealID = 56;
-            int FoodID = 14;
-            double Weight = 240;
-            int aEpected = 1;
-            int aActual = CatalogAccess.insert_Into_FoodDetail(MealID, Weight, FoodID);
-            Assert.AreEqual(aEpected, aActual);
-        }*/
+             int aEpected = 1;
+             int aActual = CatalogAccess.insert_Into_FoodDetail(MealID, FoodID, Quantity);
+             Assert.AreEqual(aEpected, aActual);
+         }
+         [TestMethod]
+         public void insert_Into_FoodDetailWithWeightTEST()
+         {
+             int MealID = 56;
+             int FoodID = 14;
+             double Weight = 240;
+             int aEpected = 1;
+             int aActual = CatalogAccess.insert_Into_FoodDetail(MealID, Weight, FoodID);
+             Assert.AreEqual(aEpected, aActual);
+         }*/
         [TestMethod]
         public void convertSystemPlanToUserPlanTEST()
         {
@@ -244,8 +251,16 @@ namespace UnitTestProject
             int rowsAffectedActual = CatalogAccess.convertSystemPlanToUserPlan(PlanID, CustID, planDesc);
             Assert.AreEqual(rowsAffectedExpected, rowsAffectedActual);
         }
+        [TestMethod]
+        public void deleteCustomerPlanTEST()
+        {
+            int planID = 18;
+            int custID = 2;
 
-        
-        
+           CatalogAccess.deleteCustomerPlan(planID, custID);
+
+
+
+        }
     }
 }
