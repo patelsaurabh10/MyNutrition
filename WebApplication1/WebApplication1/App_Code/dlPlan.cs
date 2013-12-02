@@ -305,5 +305,18 @@ namespace WebApplication1
             return flag;
 
         }
+
+        public int getTrackedDietPlan()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select PlanID from [Plan] WHERE Tracked = '1'";
+           // SqlDataReader reader = cmd.ExecuteReader();
+            Int32 planID = (Int32)cmd.ExecuteScalar();
+            conn.Close();
+            return planID;
+        }
     }
 }

@@ -69,19 +69,20 @@ namespace WebApplication1.App_Code
                 oPlans.FoodCategory = dr["FoodCategory"].ToString();
                 lstPlans.Add(oPlans);
             }
-
+            oCon.Close();
             return lstPlans;
         }
 
-        public static List<Plans> GetCastomerDailyLog(string planID, string day)
+        public static List<Plans> GetCustomerDailyLog(string planID)
         {
+            string day = System.DateTime.Now.DayOfWeek.ToString();
             List<Plans> lstPlans = new List<Plans>();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection oCon = GetConnection(builder);
+            
             SqlCommand cmd = new SqlCommand("Select Meal.Day,Meal.MealType,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID AND Meal.Day = @Day", oCon);
             cmd.Parameters.AddWithValue("@PlanID", planID);
             cmd.Parameters.AddWithValue("@Day", day);
-            oCon.Open();
             oCon.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
@@ -96,7 +97,7 @@ namespace WebApplication1.App_Code
                 oPlans.FoodCategory = dr["FoodCategory"].ToString();
                 lstPlans.Add(oPlans);
             }
-
+            oCon.Close();
             return lstPlans;
         }
 
