@@ -9,5 +9,15 @@
     <br />
     <br />
     <asp:GridView ID="gvDailyLog" runat="server">
+        <Columns>
+        <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="chkStatus" runat="server" />
+                           
+                    </ItemTemplate>                    
+                </asp:TemplateField>
+
+        </Columns>
     </asp:GridView>
+    
 </asp:Content>

@@ -5,7 +5,9 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
  <!--AMIR -->
-    <br />
+    <link href="Content/ChckFoodCalorie.css" rel="stylesheet" />
+    <div id="center">
+    <fieldset><legend>Calculate Food Calorie</legend>
         <asp:Label ID="Label1" runat="server" Text="Food Category"></asp:Label>
         &nbsp;<asp:DropDownList ID="ddlFoodCategory" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="FoodCategory" DataValueField="FoodCategory" OnSelectedIndexChanged="ddlFoodCategory_SelectedIndexChanged">
         </asp:DropDownList>
@@ -21,7 +23,7 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-&nb&nbsp;<asp:RadioButton ID="rbtnWeight" runat="server" GroupName="Unit" Text="Weight" Width="70px" Enabled="False" />
+&nbsp;<asp:RadioButton ID="rbtnWeight" runat="server" GroupName="Unit" Text="Weight" Width="70px" Enabled="False" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:RadioButton ID="rbtnQuantity" runat="server" GroupName="Unit" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Quantity" Width="71px" Enabled="False" />
 &nbsp;&nbsp;&nbsp;
@@ -34,7 +36,7 @@
         <br />
         <asp:Button ID="btnCheck" runat="server" OnClick="btnCheck_Click" Text="Check" />
         <br />
-        Result />
+        <p>The Result is:</p>
         Food Name:
         <asp:Label ID="lblFoodName" runat="server"></asp:Label>
         <br />
@@ -46,7 +48,7 @@
                 <asp:ControlParameter ControlID="ddlFoodName" Name="FoodName" PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <br />
-
+        </fieldset>
+    </div>
       
 </asp:Content>
