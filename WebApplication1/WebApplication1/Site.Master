@@ -16,24 +16,24 @@
             <a href="#"><img alt="Logo" id="logo" src="NutritionLogo.png" /></a>
         </div>
         <div id="login">
-            <h6><a href="#">Login|Register</a></h6>
+            <h6><a href="#">Logout</a></h6>
         </div>
         
     </div>
         <div id="centermenu"> 
         <nav>
 		<ul class="menu">
-			<li><a href="#">Home</a></li>
-			<li><a href="#"><span>Product</span></a>
-				<ul class="menu-hover">
+			<li><a href="#">BMI</a></li>
+			<li><a href="#"><span>Plan</span></a>
+				<!--<ul class="menu-hover">
 					<li><a href="#"> About-hover</a></li>
 					<li><a href="#"> About-hover</a></li>
 					<li><a href="#"> About-hover</a></li>
 					<li><a href="#"> About-hover</a></li>
-				</ul>
+				</ul>-->
 			</li>
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
+			<li><a href="#">Daily Log</a></li>
+			<li><a href="#">Report</a></li>
             
             
 		</ul>
@@ -57,10 +57,10 @@
         
             
             <ul id="horizontal-list">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">BMI</a></li>
+                <li><a href="#">Plan</a></li>
+                <li><a href="#">Daily Log</a></li>
+                <li><a href="#">Report</a></li>
                 
             </ul>
             

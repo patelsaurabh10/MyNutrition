@@ -21,17 +21,20 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             //delete the below line when deploy
-            Session["PlanID"] = 2;
             Session["CustID"] = 2;
 
-            if (Session["PlanID"] != null)
+            if (Request.QueryString["PlanID"] != "0")
             {
-                PlanID = (int)Session["PlanID"];
+                PlanID = Convert.ToInt32(Request.QueryString["PlanID"]);
             }
             if (Session["CustID"] != null)
             {
                 CustID = (int)Session["CustID"];
             }
+
+            planDesc = CatalogAccess.getPlanDesc(PlanID);
+            lblPlanDesc.Text = planDesc;
+
             lblMonSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewMonBreak) + CatalogAccess.getGridViewSumCalorie(GridViewMonLunch) + CatalogAccess.getGridViewSumCalorie(GridViewMonDinner));
             lblTueSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewTueBreak) + CatalogAccess.getGridViewSumCalorie(GridViewTueLunch) + CatalogAccess.getGridViewSumCalorie(GridViewTueDinner));
             lblWesSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewWedBreak) + CatalogAccess.getGridViewSumCalorie(GridViewWedLunch) + CatalogAccess.getGridViewSumCalorie(GridViewWedDinner));
@@ -43,12 +46,7 @@ namespace WebApplication1
         //for button btnView clicked
         protected void Button1_Click(object sender, EventArgs e)
         {
-            /*if (Session["PlanID"] != null)
-            {
-                PlanID = (int)Session["PlanID"];
-            }*/
-            planDesc = CatalogAccess.getPlanDesc(PlanID);
-            lblPlanDesc.Text = planDesc;
+        
 
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
