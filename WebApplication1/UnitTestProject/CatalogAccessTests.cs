@@ -200,14 +200,14 @@ namespace UnitTestProject
         public void getMealCalorieTEST()
         {
             string day = "Monday";
-            int PlanID = 1;
+            int PlanID = 2;
             string MealType = "Breakfast";
-            double calorieExpected = 200;
+            double calorieExpected = 400;
             double calorieActual = CatalogAccess.getMealCalorie(day, PlanID, MealType);
             Assert.AreEqual(calorieExpected, calorieActual);
         }
 
-        [TestMethod]
+       /* [TestMethod]
         public void deleteFoodInMealTEST()
         {
             string FoodName = "Cereal-oats";
@@ -236,7 +236,19 @@ namespace UnitTestProject
             int aEpected = 1;
             int aActual = CatalogAccess.insert_Into_FoodDetail(MealID, Weight, FoodID);
             Assert.AreEqual(aEpected, aActual);
+        }*/
+        [TestMethod]
+        public void convertSystemPlanToUserPlanTEST()
+        {
+            int PlanID = 9;
+            int CustID = 1;
+            String planDesc = "for 3000 calories";
+            int rowsAffectedExpected = 131;
+            int rowsAffectedActual = CatalogAccess.convertSystemPlanToUserPlan(PlanID, CustID, planDesc);
+            Assert.AreEqual(rowsAffectedExpected, rowsAffectedActual);
         }
+
+        
         
     }
 }

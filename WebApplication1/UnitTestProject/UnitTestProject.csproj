@@ -53,6 +53,7 @@
     <Compile Include="PlanTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CatalogAccessTests.cs" />
+    <Compile Include="CustomerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebApplication1\WebApplication1.csproj">
