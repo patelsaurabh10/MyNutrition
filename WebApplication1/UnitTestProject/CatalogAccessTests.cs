@@ -170,10 +170,7 @@ namespace UnitTestProject
             int PlanIDExpected = 10;
             int PlanIDActual = CatalogAccess.GetCustomerPlanID(customerID);
             Assert.AreEqual(PlanIDExpected, PlanIDActual);
-        }
-
-       
-       
+        }      
 
         [TestMethod]
         public void getFoodIDIDTEST()
