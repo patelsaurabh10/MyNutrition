@@ -132,6 +132,8 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="AnualReport.aspx" />
+    <Content Include="Content\ChckFoodCalorie.css" />
+    <Content Include="Content\BMICalculation.css" />
     <Content Include="BMR.aspx" />
     <Content Include="CheckFoodCalories.aspx" />
     <Content Include="ChoosePlan.aspx" />
