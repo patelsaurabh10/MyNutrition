@@ -285,7 +285,7 @@ namespace WebApplication1
             conn.Open();
             bool flag = true;
             SqlCommand cmd = conn.CreateCommand();
-            SqlCommand cmd1 = conn.CreateCommand();
+            
             cmd.CommandText = "select * from [Plan] WHERE Tracked = '1'";
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -295,6 +295,11 @@ namespace WebApplication1
             }
             else
             {
+                conn.Close();
+                SqlConnectionStringBuilder builder1 = new SqlConnectionStringBuilder();
+                SqlConnection conn1 = GetConnection(builder1);
+                conn1.Open();
+                SqlCommand cmd1 = conn1.CreateCommand();
                 cmd1.CommandText = "UPDATE [Plan] SET Tracked = '1' WHERE PlanID= @PLANID";
                 cmd1.Parameters.AddWithValue("@PLANID", planID);
                 cmd1.ExecuteNonQuery();
@@ -303,7 +308,18 @@ namespace WebApplication1
            
             conn.Close();
             return flag;
-
+        }
+        public int getTrackedDietPlan()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT PlanID FROM [Plan] WHERE Tracked = '1'";
+            Int32 planID = (Int32)cmd.ExecuteScalar();
+            conn.Close();
+            return planID;
+ 
         }
     }
 }
