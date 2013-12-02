@@ -208,37 +208,39 @@ namespace WebApplication1
 
             return PlanNum;
         }
-
+        //not used yet
         public int deletePlan(int planID)
         {
+            int a = 0;
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection conn = GetConnection(builder);
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "delete from [Plan] where PlanID=@PlanID)";
+            cmd.CommandText = "delete from [Plan] where PlanID=@PlanID";
             cmd.Parameters.AddWithValue("@PlanID", planID);
 
-            int a = cmd.ExecuteNonQuery();
+            a += cmd.ExecuteNonQuery();
             conn.Close();
             return a;
         }
-
+        //not used yet
         public int deleteMeal(int planID)
         {
+            int a = 0;
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection conn = GetConnection(builder);
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "delete from Meal where PlanID=@PlanID)";
+            cmd.CommandText = "delete from Meal where PlanID=@PlanID";
             cmd.Parameters.AddWithValue("@PlanID", planID);
 
-            int a = cmd.ExecuteNonQuery();
+            a += cmd.ExecuteNonQuery();
             conn.Close();
             return a;
         }
-
+        //not used yet
         public int deleteFoodDetail(int planID)
         {
             int a = 0;
@@ -248,18 +250,18 @@ namespace WebApplication1
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "delete from FoodDetail where MealID=@MealID)";
+            cmd.CommandText = "delete from FoodDetail where MealID=@MealID";
             foreach (int mealID in mealIDs)
             {
                 cmd.Parameters.AddWithValue("@MealID", mealID);
-                a =+ cmd.ExecuteNonQuery();
+                a += cmd.ExecuteNonQuery();
                 cmd.Parameters.Clear();
             }
   
             conn.Close();
             return a;
         }
-//has error
+        //not used yet
         public int deleteCustomerPlan(int planID,int custID)
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -267,7 +269,7 @@ namespace WebApplication1
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "delete from CustomerPlan where PlanID=@PlanID and CustID=@CustID)";
+            cmd.CommandText = "delete from CustomerPlan where PlanID=@PlanID and CustID=@CustID";
             cmd.Parameters.AddWithValue("@PlanID", planID);
             cmd.Parameters.AddWithValue("@CustID", custID);
 

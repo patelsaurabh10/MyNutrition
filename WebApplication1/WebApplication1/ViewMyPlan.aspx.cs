@@ -13,16 +13,18 @@ namespace WebApplication1
     public partial class ViewMyPlan : System.Web.UI.Page
     {
         int custID = 0;
+        String message = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["CustID"] = 2; // be replaced after deploy
+            if (Session["CustID"] != null)
+            {
+                custID = (int)Session["CustID"];
+            }
+
             if (!IsPostBack)
             {
-                Session["CustID"] = 2; // be replaced after deploy
-                if (Session["CustID"] != null)
-                {
-                    custID = (int)Session["CustID"];
-                }
-               
+
                 ddlCustomer.DataTextField = "Text";
                 ddlCustomer.DataValueField = "Value";
                 ddlCustomer.DataSource = CatalogAccess.GetCustomers();
@@ -35,26 +37,37 @@ namespace WebApplication1
         {
             int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
             GridView1.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
-            GridView1.DataBind();            
+            GridView1.DataBind();
         }
 
         protected void btnDeletePlan_Click(object sender, EventArgs e)
         {
-            
+
             int planID = Convert.ToInt32(txbPlanID.Text);//be replaced after deploy
             //never delete system plan
             if (planID > 10)
             {
-                CatalogAccess.deleteCustomerPlan(planID, custID);
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-       "err_msg",
-       "alert('your plan has been deleted!)');",
-       true);
+                message = CatalogAccess.deleteCustomerPlan(planID, custID);
+                if (message.StartsWith("Effeced"))
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+           "err_msg",
+           "alert('your plan" + planID + " has been deleted!');",
+           true);
+                else
+                {
+                    Response.Write("<script>alert('" + message+ "');</script>");
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                             "err_msg",
+                             message,
+                             true);
+                }
             }
-            else {
+            else
+            {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
        "err_msg",
-       "alert('Plan ID must be more than 10!)');",
+       "alert('Plan ID must be more than 10!');",
        true);
             }
 
@@ -89,7 +102,7 @@ namespace WebApplication1
     public class Plans
     {
         public string Day { get; set; }
-        public string MealType { get; set; }        
+        public string MealType { get; set; }
         public string Quantity { get; set; }
         public string Weight { get; set; }
         public string FoodName { get; set; }
