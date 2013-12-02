@@ -69,7 +69,7 @@ namespace WebApplication1
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
          "err_msg",
-         "alert('Sorry, you can only have at most 3 plans!)');",
+         "alert('Sorry, you can only have at most 3 plans!');",
          true);
             }
             else
@@ -80,7 +80,7 @@ namespace WebApplication1
                 {
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
         "err_msg",
-        "alert('Congratulations! your plan has been successfully generated!)');",
+        "alert('Congratulations! your plan has been successfully generated!');",
         true);
                     lblCopyResult.Text = "Congratulations!" + custFirstName+" " + custLastName + ", " + planName+ " has been successfully generated!";
                 }

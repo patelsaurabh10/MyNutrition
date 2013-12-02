@@ -15,7 +15,7 @@ namespace WebApplication1.App_Code
     public class CatalogAccess
     {
         public CatalogAccess()
-        {          
+        {
 
         }
 
@@ -43,7 +43,7 @@ namespace WebApplication1.App_Code
                 oItem.Text = dr["FirstName"].ToString();
                 oItem.Value = dr["CustID"].ToString();
                 lstCustomers.Add(oItem);
-                
+
             }
             return lstCustomers;
         }
@@ -61,16 +61,16 @@ namespace WebApplication1.App_Code
             {
                 Plans oPlans = new Plans();
                 oPlans.Day = dr["Day"].ToString();
-                oPlans.MealType = dr["MealType"].ToString();               
+                oPlans.MealType = dr["MealType"].ToString();
                 oPlans.Quantity = dr["Quantity"].ToString();
-                oPlans.Weight=dr["Weight"].ToString();
-                oPlans.FoodName=dr["FoodName"].ToString();
+                oPlans.Weight = dr["Weight"].ToString();
+                oPlans.FoodName = dr["FoodName"].ToString();
                 oPlans.FoodCalorie = dr["FoodCalorie"].ToString();
                 oPlans.FoodCategory = dr["FoodCategory"].ToString();
                 lstPlans.Add(oPlans);
             }
 
-            return lstPlans;            
+            return lstPlans;
         }
 
         public static List<Plans> GetCastomerDailyLog(string planID, string day)
@@ -116,7 +116,7 @@ namespace WebApplication1.App_Code
             return planID;
         }
 
-       
+
 
         public static string getPlanDesc(int PlanID)
         {
@@ -377,41 +377,41 @@ namespace WebApplication1.App_Code
         }
 
         //get MealID in FoodDetail table by PlanID
-     /*   public static List<int> getMealIDsInFoodDetail(int newPlanID)
-        {
-            List<int> MealIDs = new List<int>();
-            List<int> newMealIDs = new List<int>();
-            MealIDs = getMealIDsInMeal(newPlanID);
+        /*   public static List<int> getMealIDsInFoodDetail(int newPlanID)
+           {
+               List<int> MealIDs = new List<int>();
+               List<int> newMealIDs = new List<int>();
+               MealIDs = getMealIDsInMeal(newPlanID);
 
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            SqlConnection conn = GetConnection(builder);
-            conn.Open();
+               SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+               SqlConnection conn = GetConnection(builder);
+               conn.Open();
 
-            foreach (int MealID in MealIDs)
-            {
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select FoodDetail.MealID from FoodDetail where (FoodDetail.MealID = @MealID)";
+               foreach (int MealID in MealIDs)
+               {
+                   SqlCommand cmd = conn.CreateCommand();
+                   cmd.CommandText = "select FoodDetail.MealID from FoodDetail where (FoodDetail.MealID = @MealID)";
 
-                SqlParameter param1 = cmd.CreateParameter();
-                param1.ParameterName = "@MealID";
-                param1.Value = MealID;
-                cmd.Parameters.Add(param1);    
+                   SqlParameter param1 = cmd.CreateParameter();
+                   param1.ParameterName = "@MealID";
+                   param1.Value = MealID;
+                   cmd.Parameters.Add(param1);    
 
-                SqlDataReader reader = cmd.ExecuteReader();
+                   SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        newMealIDs.Add(Convert.ToInt32(reader.GetInt32(0)));
-                    }
-                }
-                cmd.Dispose();
-                cmd = null;
-            }
-            conn.Close();
-            return newMealIDs;
-        }*/
+                   if (reader.HasRows)
+                   {
+                       while (reader.Read())
+                       {
+                           newMealIDs.Add(Convert.ToInt32(reader.GetInt32(0)));
+                       }
+                   }
+                   cmd.Dispose();
+                   cmd = null;
+               }
+               conn.Close();
+               return newMealIDs;
+           }*/
 
         //get MealID in Meal table by PlanID
         public static List<int> getMealIDsInMeal(int PlanID)
@@ -521,17 +521,17 @@ namespace WebApplication1.App_Code
             double totalCalorie = 0;
             decimal foodCalorie = 0;
             decimal quantity = 0;
-            double weight=0 ;
+            double weight = 0;
             double unit = 0;
-			
+
 
             for (int i = 0; i < MealDetail.Rows.Count; i++)
             {
                 foodCalorie = (decimal)MealDetail.Rows[i]["FoodCalorie"];
                 unit = CatalogAccess.getFoodUnit((String)MealDetail.Rows[i]["FoodName"]);
 
-               // decimal.TryParse((String)MealDetail.Rows[i]["Quantity"], out quantity);
-                if (MealDetail.Rows[i]["Quantity"].ToString()  != null)
+                // decimal.TryParse((String)MealDetail.Rows[i]["Quantity"], out quantity);
+                if (MealDetail.Rows[i]["Quantity"].ToString() != null)
                 {
                     quantity = (System.Decimal)MealDetail.Rows[i]["Quantity"];
                 }
@@ -552,9 +552,9 @@ namespace WebApplication1.App_Code
         }
 
         //copy system provided plan into a new plan owned by user
-        public static int convertSystemPlanToUserPlan(int PlanID,int CustID, String planDesc) 
+        public static int convertSystemPlanToUserPlan(int PlanID, int CustID, String planDesc)
         {
-            int rowsAffected= 0;
+            int rowsAffected = 0;
             dlPlan dlP = new dlPlan();
 
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -570,7 +570,7 @@ namespace WebApplication1.App_Code
             DataTable Plan = dlP.getPlanTable(PlanID);
 
             //the planID user is gonig to generate
-            int newPlanID = dlP.getMaxPlanID()+1;
+            int newPlanID = dlP.getMaxPlanID() + 1;
             DateTime now = DateTime.Now;
 
             for (int i = 0; i < Plan.Rows.Count; i++)
@@ -595,18 +595,18 @@ namespace WebApplication1.App_Code
 
 
             foreach (DataRow r in Plan.Rows)
-                {
-                    SqlCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = sql1;
-                    cmd.Parameters.AddWithValue("@PlanID", r["PlanID"]);
-                    cmd.Parameters.AddWithValue("@CreatedDate", r["CreatedDate"]);
-                    cmd.Parameters.AddWithValue("@LastModifiedDate", r["LastModifiedDate"]);
-                    cmd.Parameters.AddWithValue("@Customed", r["Customed"]);
-                    cmd.Parameters.AddWithValue("@Categories", r["Categories"]);
-                    cmd.Parameters.AddWithValue("@PlanDesc", r["PlanDesc"]);
-                    cmd.Parameters.AddWithValue("@Tracked", r["Tracked"]);
-                    rowsAffected += cmd.ExecuteNonQuery();
-                }
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = sql1;
+                cmd.Parameters.AddWithValue("@PlanID", r["PlanID"]);
+                cmd.Parameters.AddWithValue("@CreatedDate", r["CreatedDate"]);
+                cmd.Parameters.AddWithValue("@LastModifiedDate", r["LastModifiedDate"]);
+                cmd.Parameters.AddWithValue("@Customed", r["Customed"]);
+                cmd.Parameters.AddWithValue("@Categories", r["Categories"]);
+                cmd.Parameters.AddWithValue("@PlanDesc", r["PlanDesc"]);
+                cmd.Parameters.AddWithValue("@Tracked", r["Tracked"]);
+                rowsAffected += cmd.ExecuteNonQuery();
+            }
 
             //populate Meal table
             string sql2 = "INSERT INTO Meal (MealType, Day, PlanID) VALUES (@MealType, @Day, @PlanID)";
@@ -628,23 +628,23 @@ namespace WebApplication1.App_Code
             int j = 0;
             //after insert meal table
             List<int> MealIDs = getMealIDsInMeal(newPlanID);
-            for (int i = 0; i < FoodDetail.Rows.Count ; i++)
+            for (int i = 0; i < FoodDetail.Rows.Count; i++)
             {
                 int nextMealID = 0;
                 int currentMealID = (int)FoodDetail.Rows[i]["MealID"];
-                if (i < FoodDetail.Rows.Count-1 )
+                if (i < FoodDetail.Rows.Count - 1)
                 {
-                     nextMealID = (int)FoodDetail.Rows[i + 1]["MealID"];
+                    nextMealID = (int)FoodDetail.Rows[i + 1]["MealID"];
                 }
                 if (currentMealID != nextMealID)
-                    {
-                        FoodDetail.Rows[i]["MealID"] = MealIDs[j];
-                        j++;
-                    }
-                    else
-                    {
-                        FoodDetail.Rows[i]["MealID"] = MealIDs[j];      
-                    }
+                {
+                    FoodDetail.Rows[i]["MealID"] = MealIDs[j];
+                    j++;
+                }
+                else
+                {
+                    FoodDetail.Rows[i]["MealID"] = MealIDs[j];
+                }
             }
             //populate FoodDetail table
             string sql3 = "INSERT INTO FoodDetail (MealID, FoodID, Quantity, Weight) VALUES (@MealID, @FoodID, @Quantity,@Weight)";
@@ -663,22 +663,103 @@ namespace WebApplication1.App_Code
             }
             conn.Close();
             rowsAffected += dlP.insert_Into_CustomerPlan(newPlanID, CustID);
-  
-                return rowsAffected;
+
+            return rowsAffected;
         }
 
-        public static int deleteCustomerPlan(int planID, int custID)
+        public static String deleteCustomerPlan(int planID, int custID)
         {
+            String message = "";
             int effectedRows = 0;
             dlPlan dlPlan = new dlPlan();
-            effectedRows =+ dlPlan.deleteCustomerPlan(planID, custID);
-            effectedRows =+ dlPlan.deletePlan(planID);
-            effectedRows =+ dlPlan.deleteMeal(planID);
-            effectedRows =+ dlPlan.deleteFoodDetail(planID);
+            List<int> mealIDs = CatalogAccess.getMealIDsInMeal(planID);
 
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
 
-            return effectedRows;
+            SqlCommand cmd = conn.CreateCommand();
+            SqlTransaction transaction;
+
+            // Start a local transaction.
+            transaction = conn.BeginTransaction("DeleteCustomerPlan");
+
+            // Must assign both transaction object and connection 
+            // to Command object for a pending local transaction
+            cmd.Connection = conn;
+            cmd.Transaction = transaction;
+
+            try
+            {
+                //CustomerPlan
+                cmd.CommandText = "delete from CustomerPlan where PlanID=@PlanID and CustID=@CustID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@PlanID", planID);
+                cmd.Parameters.AddWithValue("@CustID", custID);
+                effectedRows += cmd.ExecuteNonQuery();
+
+                //FoodDetail
+                cmd.CommandText = "delete from FoodDetail where MealID=@MealID";
+                foreach (int mealID in mealIDs)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@MealID", mealID);
+                    effectedRows += cmd.ExecuteNonQuery();
+
+                }
+
+                //Meal
+                cmd.CommandText = "delete from Meal where PlanID=@PlanID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@PlanID", planID);
+
+                effectedRows += cmd.ExecuteNonQuery();
+
+                //Plan
+                cmd.CommandText = "delete from [Plan] where PlanID=@PlanID";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@PlanID", planID);
+
+                effectedRows += cmd.ExecuteNonQuery();
+                if (effectedRows > 0)
+                {
+                    message += "Effeced Rows: " + effectedRows;
+                }
+                else
+                {
+                    message += "Plan " + planID + " does not exist";
+                }
+                // Attempt to commit the transaction.
+                transaction.Commit();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                Console.WriteLine("  Message: {0}", ex.Message);
+                message += "Commit Exception Type: " + ex.GetType() + "\tMessage: " + ex.Message;
+                // Attempt to roll back the transaction. 
+                try
+                {
+                    transaction.Rollback();
+                }
+                catch (Exception ex2)
+                {
+                    // This catch block will handle any errors that may have occurred 
+                    // on the server that would cause the rollback to fail, such as 
+                    // a closed connection.
+                    Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                    Console.WriteLine("  Message: {0}", ex2.Message);
+                    message += "Rollback Exception Type: {0}" + ex2.GetType() + "  Message: {0}" + ex2.Message;
+                }
+            }
+            finally 
+            {
+                conn.Close();
+                
+            }
+            return message;
         }
-       
+
     }
 }
