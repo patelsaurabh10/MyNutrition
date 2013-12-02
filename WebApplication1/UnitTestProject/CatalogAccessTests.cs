@@ -17,8 +17,6 @@ namespace UnitTestProject
         {
             int PlanID = 1;
             string planDescExpected = "for 1200 calorie";
-
-
             string planDescActual = CatalogAccess.getPlanDesc(PlanID);
             Assert.AreEqual(planDescExpected, planDescActual);
 
@@ -29,8 +27,6 @@ namespace UnitTestProject
         {
             int PlanID = 3;
             string planDescExpected = "for 1600 calories";
-
-
             string planDescActual = CatalogAccess.getPlanDesc(PlanID);
             Assert.AreEqual(planDescExpected, planDescActual);
 
@@ -42,8 +38,6 @@ namespace UnitTestProject
         {
             int PlanID = 6;
             string planDescExpected = "for 2200 calories";
-
-
             string planDescActual = CatalogAccess.getPlanDesc(PlanID);
             Assert.AreEqual(planDescExpected, planDescActual);
 
@@ -54,8 +48,6 @@ namespace UnitTestProject
         {
             int PlanID = 9;
             string planDescExpected = "for 2800 calories";
-
-
             string planDescActual = CatalogAccess.getPlanDesc(PlanID);
             Assert.AreEqual(planDescExpected, planDescActual);
 
@@ -119,9 +111,6 @@ namespace UnitTestProject
             Assert.AreEqual(unitExpected, unitActual);
         }
 
-
-
-
         [TestMethod]
         public void getMealIDTEST()
         {
@@ -170,21 +159,12 @@ namespace UnitTestProject
             int PlanIDExpected = 10;
             int PlanIDActual = CatalogAccess.GetCustomerPlanID(customerID);
             Assert.AreEqual(PlanIDExpected, PlanIDActual);
-<<<<<<< HEAD
         }
-
-
-
-=======
-        }      
->>>>>>> 4cf66965e0d45f2eb6f46fec20709313f8e3b9b7
-
         [TestMethod]
         public void getFoodIDIDTEST()
         {
             string FoodName = "Rice while cooked";
             int FoodIDExpected = 1;
-
             int FoodIDActual = CatalogAccess.getFoodID(FoodName);
             Assert.AreEqual(FoodIDExpected, FoodIDActual);
         }
@@ -258,9 +238,6 @@ namespace UnitTestProject
             int custID = 2;
 
            CatalogAccess.deleteCustomerPlan(planID, custID);
-
-
-
         }
     }
 }
