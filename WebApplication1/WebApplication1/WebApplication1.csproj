@@ -131,6 +131,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="AnualReport.aspx" />
     <Content Include="BMR.aspx" />
     <Content Include="CheckFoodCalories.aspx" />
     <Content Include="ChoosePlan.aspx" />
@@ -210,7 +211,6 @@
     <Content Include="ViewActualPlans.aspx" />
     <Content Include="ViewMyPlan.aspx" />
     <Content Include="viewProvidedPlans.aspx" />
-    <Content Include="ViewDailyLog.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="reserved by neo.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -248,6 +248,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnualReport.aspx.cs">
+      <DependentUpon>AnualReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnualReport.aspx.designer.cs">
+      <DependentUpon>AnualReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\CatalogAccess.cs" />
     <Compile Include="App_Code\Plan.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -383,13 +390,6 @@
     </Compile>
     <Compile Include="viewProvidedPlans.aspx.designer.cs">
       <DependentUpon>viewProvidedPlans.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewDailyLog.aspx.cs">
-      <DependentUpon>ViewDailyLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewDailyLog.aspx.designer.cs">
-      <DependentUpon>ViewDailyLog.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
