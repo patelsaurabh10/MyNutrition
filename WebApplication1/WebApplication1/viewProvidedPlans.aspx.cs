@@ -46,8 +46,11 @@ namespace WebApplication1
         //for button btnView clicked
         protected void Button1_Click(object sender, EventArgs e)
         {
-        
 
+            //if (PlanID != 0)
+            //{
+            //    Response.Redirect("~/ChoosePlan.aspx?PlanID=" + PlanID);
+            //}
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {

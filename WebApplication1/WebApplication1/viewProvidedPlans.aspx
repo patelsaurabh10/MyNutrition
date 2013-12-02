@@ -7,7 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <br />
 
-    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="View Plan" style="height: 26px" />
+    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="Go back to choose another plan" style="height: 26px" />
     <br />
     Plan Description:
     <asp:Label ID="lblPlanDesc" runat="server" Text="Plan Description Here"></asp:Label>
@@ -697,13 +697,5 @@
 
     <asp:Button ID="btnCopy" runat="server" OnClick="btnCopy_Click" Text="Copy this plan to your own" Visible="False" />
 &nbsp;<asp:Label ID="lblCopyResult" runat="server" Text="Label"></asp:Label>
-
-    <asp:GridView ID="GridView1" runat="server">
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource36" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT * FROM [1200calories] WHERE ([Day] = @Day)">
-        <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="0" Name="Day" QueryStringField="PlanID" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
 
     </asp:Content>
