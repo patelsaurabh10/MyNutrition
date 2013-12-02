@@ -14,7 +14,7 @@ namespace UnitTestProject
             double calorie = 2000;
             int planIDExpected = 5;
             var plan = new Plan();
-            
+
             int planID = plan.choosePlanID(calorie);
             Assert.AreEqual(planIDExpected, planID);
         }
@@ -39,4 +39,5 @@ namespace UnitTestProject
             Assert.AreEqual(planIDExpected, planID);
         }
     }
+      
 }
