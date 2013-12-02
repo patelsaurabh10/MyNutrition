@@ -18,10 +18,13 @@
     <hr />
 
     <br />
-    Delete Plan:<br />
+    Edit Plan:<br />
     <asp:Label ID="lblPlanID" runat="server" Text="Enter your planID"></asp:Label>
     <asp:TextBox ID="txbPlanID" runat="server"></asp:TextBox>
     (will be replace by passed value(PlanID) after deploy)<br />
     <asp:Button ID="btnDeletePlan" runat="server" OnClick="btnDeletePlan_Click" Text="Delete Plan" />
+
+    <asp:Button ID="btnTrack" runat="server" OnClick="btnTrack_Click" Text="Track Plan" />
+    <asp:Label ID="lbltest" runat="server" Text="Label"></asp:Label>
 
 </asp:Content>
