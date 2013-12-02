@@ -13,13 +13,13 @@ namespace WebApplication1 {
     public partial class WebForm2 {
         
         /// <summary>
-        /// txbPlanID control.
+        /// btnView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbPlanID;
+        protected global::System.Web.UI.WebControls.Button btnView;
         
         /// <summary>
         /// lblPlanDesc control.
@@ -38,6 +38,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table TableMonday;
+        
+        /// <summary>
+        /// TableCell61 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell61;
+        
+        /// <summary>
+        /// TableCell62 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell62;
         
         /// <summary>
         /// TableCell1 control.
@@ -67,6 +85,33 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
+        /// TableCell63 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell63;
+        
+        /// <summary>
+        /// GridViewMonSnack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewMonSnack1;
+        
+        /// <summary>
+        /// SqlDataSource22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource22;
+        
+        /// <summary>
         /// TableCell2 control.
         /// </summary>
         /// <remarks>
@@ -92,6 +137,33 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        
+        /// <summary>
+        /// TableCell64 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell64;
+        
+        /// <summary>
+        /// GridViewMonSnack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewMonSnack2;
+        
+        /// <summary>
+        /// SqlDataSource23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource23;
         
         /// <summary>
         /// TableCell3 control.
@@ -175,13 +247,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Table TableTuesday;
         
         /// <summary>
-        /// TableRow1 control.
+        /// TableHeaderRow1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow TableRow1;
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow1;
         
         /// <summary>
         /// TableCell4 control.
@@ -209,6 +281,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell TableCell6;
+        
+        /// <summary>
+        /// TableCell77 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell77;
+        
+        /// <summary>
+        /// TableCell78 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell78;
         
         /// <summary>
         /// TableRow2 control.
@@ -247,6 +337,33 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
         
         /// <summary>
+        /// TableCell65 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell65;
+        
+        /// <summary>
+        /// GridViewTueSnack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewTueSnack1;
+        
+        /// <summary>
+        /// SqlDataSource24 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource24;
+        
+        /// <summary>
         /// TableCell8 control.
         /// </summary>
         /// <remarks>
@@ -272,6 +389,33 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
+        
+        /// <summary>
+        /// TableCell71 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell71;
+        
+        /// <summary>
+        /// GridViewTueSnack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewTueSnack2;
+        
+        /// <summary>
+        /// SqlDataSource30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource30;
         
         /// <summary>
         /// TableCell9 control.
@@ -355,13 +499,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Table TableWendesday;
         
         /// <summary>
-        /// TableRow3 control.
+        /// TableHeaderRow2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow TableRow3;
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow2;
         
         /// <summary>
         /// TableCell10 control.
@@ -389,6 +533,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell TableCell12;
+        
+        /// <summary>
+        /// TableCell79 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell79;
+        
+        /// <summary>
+        /// TableCell80 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell80;
         
         /// <summary>
         /// TableRow4 control.
@@ -427,6 +589,33 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource7;
         
         /// <summary>
+        /// TableCell66 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell66;
+        
+        /// <summary>
+        /// GridViewWedSnack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewWedSnack1;
+        
+        /// <summary>
+        /// SqlDataSource25 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource25;
+        
+        /// <summary>
         /// TableCell14 control.
         /// </summary>
         /// <remarks>
@@ -452,6 +641,33 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource8;
+        
+        /// <summary>
+        /// TableCell72 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell72;
+        
+        /// <summary>
+        /// GridViewWedSnack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewWedSnack2;
+        
+        /// <summary>
+        /// SqlDataSource31 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource31;
         
         /// <summary>
         /// TableCell15 control.
@@ -535,13 +751,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Table TableThursday;
         
         /// <summary>
-        /// TableRow5 control.
+        /// TableHeaderRow3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow TableRow5;
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow3;
         
         /// <summary>
         /// TableCell16 control.
@@ -569,6 +785,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell TableCell18;
+        
+        /// <summary>
+        /// TableCell81 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell81;
+        
+        /// <summary>
+        /// TableCell82 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell82;
         
         /// <summary>
         /// TableRow6 control.
@@ -607,6 +841,33 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource10;
         
         /// <summary>
+        /// TableCell67 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell67;
+        
+        /// <summary>
+        /// GridViewThurSnack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewThurSnack1;
+        
+        /// <summary>
+        /// SqlDataSource26 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource26;
+        
+        /// <summary>
         /// TableCell20 control.
         /// </summary>
         /// <remarks>
@@ -632,6 +893,33 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource11;
+        
+        /// <summary>
+        /// TableCell73 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell73;
+        
+        /// <summary>
+        /// GridViewThurSnack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewThurSnack2;
+        
+        /// <summary>
+        /// SqlDataSource32 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource32;
         
         /// <summary>
         /// TableCell21 control.
@@ -715,13 +1003,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Table TableFriday;
         
         /// <summary>
-        /// TableRow7 control.
+        /// TableHeaderRow4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow TableRow7;
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow4;
         
         /// <summary>
         /// TableCell22 control.
@@ -749,6 +1037,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell TableCell24;
+        
+        /// <summary>
+        /// TableCell83 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell83;
+        
+        /// <summary>
+        /// TableCell84 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell84;
         
         /// <summary>
         /// TableRow8 control.
@@ -787,6 +1093,33 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource13;
         
         /// <summary>
+        /// TableCell68 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell68;
+        
+        /// <summary>
+        /// GridViewFriSnack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewFriSnack1;
+        
+        /// <summary>
+        /// SqlDataSource27 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource27;
+        
+        /// <summary>
         /// TableCell26 control.
         /// </summary>
         /// <remarks>
@@ -812,6 +1145,33 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource14;
+        
+        /// <summary>
+        /// TableCell74 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell74;
+        
+        /// <summary>
+        /// GridViewFriSnack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewFriSnack2;
+        
+        /// <summary>
+        /// SqlDataSource33 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource33;
         
         /// <summary>
         /// TableCell27 control.
@@ -895,13 +1255,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Table TableSaturday;
         
         /// <summary>
-        /// TableRow9 control.
+        /// TableHeaderRow5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow TableRow9;
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow5;
         
         /// <summary>
         /// TableCell28 control.
@@ -929,6 +1289,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell TableCell30;
+        
+        /// <summary>
+        /// TableCell85 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell85;
+        
+        /// <summary>
+        /// TableCell86 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell86;
         
         /// <summary>
         /// TableRow10 control.
@@ -967,6 +1345,33 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource16;
         
         /// <summary>
+        /// TableCell69 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell69;
+        
+        /// <summary>
+        /// GridViewSatSnack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewSatSnack1;
+        
+        /// <summary>
+        /// SqlDataSource28 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource28;
+        
+        /// <summary>
         /// TableCell32 control.
         /// </summary>
         /// <remarks>
@@ -992,6 +1397,33 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource17;
+        
+        /// <summary>
+        /// TableCell75 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell75;
+        
+        /// <summary>
+        /// GridViewSatSnack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewSatSnack2;
+        
+        /// <summary>
+        /// SqlDataSource34 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource34;
         
         /// <summary>
         /// TableCell33 control.
@@ -1075,13 +1507,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
-        /// TableRow11 control.
+        /// TableHeaderRow6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow TableRow11;
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow6;
         
         /// <summary>
         /// TableCell34 control.
@@ -1109,6 +1541,24 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell TableCell36;
+        
+        /// <summary>
+        /// TableCell87 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell87;
+        
+        /// <summary>
+        /// TableCell88 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell88;
         
         /// <summary>
         /// TableRow12 control.
@@ -1147,6 +1597,33 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource19;
         
         /// <summary>
+        /// TableCell70 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell70;
+        
+        /// <summary>
+        /// GridViewSunSnack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewSunSnack1;
+        
+        /// <summary>
+        /// SqlDataSource29 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource29;
+        
+        /// <summary>
         /// TableCell38 control.
         /// </summary>
         /// <remarks>
@@ -1172,6 +1649,33 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource20;
+        
+        /// <summary>
+        /// TableCell76 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell76;
+        
+        /// <summary>
+        /// GridViewSunSnack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewSunSnack2;
+        
+        /// <summary>
+        /// SqlDataSource35 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource35;
         
         /// <summary>
         /// TableCell39 control.
@@ -1246,12 +1750,48 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TableCell TableCell60;
         
         /// <summary>
-        /// btnView control.
+        /// btnConvertPlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnView;
+        protected global::System.Web.UI.WebControls.Button btnConvertPlan;
+        
+        /// <summary>
+        /// lblPlanName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPlanName;
+        
+        /// <summary>
+        /// txbPlanName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbPlanName;
+        
+        /// <summary>
+        /// btnCopy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCopy;
+        
+        /// <summary>
+        /// lblCopyResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCopyResult;
     }
 }

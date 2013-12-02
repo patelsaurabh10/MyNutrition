@@ -13,4 +13,15 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true">
         
     </asp:GridView>
-    </asp:Content>
+    <br />
+    <br />
+    <hr />
+
+    <br />
+    Delete Plan:<br />
+    <asp:Label ID="lblPlanID" runat="server" Text="Enter your planID"></asp:Label>
+    <asp:TextBox ID="txbPlanID" runat="server"></asp:TextBox>
+    (will be replace by passed value(PlanID) after deploy)<br />
+    <asp:Button ID="btnDeletePlan" runat="server" OnClick="btnDeletePlan_Click" Text="Delete Plan" />
+
+</asp:Content>

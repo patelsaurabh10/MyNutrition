@@ -12,12 +12,17 @@ namespace WebApplication1
 {
     public partial class ViewMyPlan : System.Web.UI.Page
     {
-        //CatalogAccess oCatalog = new CatalogAccess();
-        //string strCon = ConfigurationManager.ConnectionStrings["MyNutritionConnectionString"].ConnectionString;
+        int custID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                Session["CustID"] = 2; // be replaced after deploy
+                if (Session["CustID"] != null)
+                {
+                    custID = (int)Session["CustID"];
+                }
+               
                 ddlCustomer.DataTextField = "Text";
                 ddlCustomer.DataValueField = "Value";
                 ddlCustomer.DataSource = CatalogAccess.GetCustomers();
@@ -28,15 +33,37 @@ namespace WebApplication1
         protected void ddlCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
-            GridView1.DataSource = CatalogAccess.GetPlans(planID.ToString());
-            GridView1.DataBind();
+            GridView1.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
+            GridView1.DataBind();            
+        }
+
+        protected void btnDeletePlan_Click(object sender, EventArgs e)
+        {
+            
+            int planID = Convert.ToInt32(txbPlanID.Text);//be replaced after deploy
+            //never delete system plan
+            if (planID > 10)
+            {
+                CatalogAccess.deleteCustomerPlan(planID, custID);
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+       "err_msg",
+       "alert('your plan has been deleted!)');",
+       true);
+            }
+            else {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+       "err_msg",
+       "alert('Plan ID must be more than 10!)');",
+       true);
+            }
+
         }
     }
 
     public class Plans
     {
-        public string MealType { get; set; }
         public string Day { get; set; }
+        public string MealType { get; set; }        
         public string Quantity { get; set; }
         public string Weight { get; set; }
         public string FoodName { get; set; }
