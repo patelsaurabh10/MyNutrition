@@ -33,7 +33,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Monday') AND (Meal.MealType = 'Breakfast')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -48,7 +48,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource22" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Monday') AND (Meal.MealType = 'Snack1')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                        <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -63,7 +63,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Monday') AND (Meal.MealType = 'Lunch')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -78,7 +78,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource23" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Monday') AND (Meal.MealType = 'Snack2')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -93,7 +93,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Monday') AND (Meal.MealType = 'Dinner')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -130,7 +130,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Tuesday') AND (Meal.MealType = 'Breakfast')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -145,7 +145,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource24" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Tuesday') AND (Meal.MealType = 'Snack1')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -160,7 +160,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Tuesday') AND (Meal.MealType = 'Lunch')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -175,7 +175,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource30" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Tuesday') AND (Meal.MealType = 'Snack2')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -190,7 +190,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Tuesday') AND (Meal.MealType = 'Dinner')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -224,9 +224,9 @@
                          <asp:BoundField DataField="FoodCalorie" HeaderText="FoodCalorie" SortExpression="FoodCalorie" />
                      </Columns>
                  </asp:GridView>
-                 <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wendesday') AND (Meal.MealType = 'Breakfast')">
+                <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wednesday') AND (Meal.MealType = 'Breakfast')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -241,7 +241,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource25" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wednesday') AND (Meal.MealType = 'Snack1')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -254,9 +254,9 @@
                          <asp:BoundField DataField="FoodCalorie" HeaderText="FoodCalorie" SortExpression="FoodCalorie" />
                      </Columns>
                  </asp:GridView>
-                 <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wendesday') AND (Meal.MealType = 'Lunch')">
+                 <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wednesday') AND (Meal.MealType = 'Lunch')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -269,9 +269,9 @@
                         <asp:BoundField DataField="FoodCalorie" HeaderText="FoodCalorie" SortExpression="FoodCalorie" />
                     </Columns>
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource31" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wendesday') AND (Meal.MealType = 'Snack2')">
+                <asp:SqlDataSource ID="SqlDataSource31" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wednesday') AND (Meal.MealType = 'Snack2')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -284,9 +284,9 @@
                          <asp:BoundField DataField="FoodCalorie" HeaderText="FoodCalorie" SortExpression="FoodCalorie" />
                      </Columns>
                  </asp:GridView>
-                 <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wendesday') AND (Meal.MealType = 'Dinner')">
+                 <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Wednesday') AND (Meal.MealType = 'Dinner')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -323,7 +323,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Thursday') AND (Meal.MealType = 'Breakfast')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -338,7 +338,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource26" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Thursday') AND (Meal.MealType = 'Snack1')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -353,7 +353,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Thursday') AND (Meal.MealType = 'Lunch')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -368,7 +368,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource32" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Thursday') AND (Meal.MealType = 'Snack2')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -383,7 +383,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource12" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Thursday') AND (Meal.MealType = 'Dinner')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -420,7 +420,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource13" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Friday') AND (Meal.MealType = 'Breakfast')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -435,7 +435,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource27" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Friday') AND (Meal.MealType = 'Snack1')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -450,7 +450,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource14" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Friday') AND (Meal.MealType = 'Lunch')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -465,7 +465,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource33" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Friday') AND (Meal.MealType = 'Snack2')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -480,7 +480,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource15" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Friday') AND (Meal.MealType = 'Dinner')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -517,7 +517,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource16" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Saturday') AND (Meal.MealType = 'Breakfast')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -532,7 +532,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource28" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Saturday') AND (Meal.MealType = 'Snack1')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -547,7 +547,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource17" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Saturday') AND (Meal.MealType = 'Lunch')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -562,7 +562,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource34" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Saturday') AND (Meal.MealType = 'Snack2')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -577,7 +577,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource18" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Saturday') AND (Meal.MealType = 'Dinner')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -614,7 +614,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource19" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Sunday') AND (Meal.MealType = 'Breakfast')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -629,7 +629,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource29" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Sunday') AND (Meal.MealType = 'Snack1')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -644,7 +644,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource20" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Sunday') AND (Meal.MealType = 'Lunch')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -659,7 +659,7 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource35" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Sunday') AND (Meal.MealType = 'Snack2')">
                     <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                         <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
@@ -674,7 +674,7 @@
                  </asp:GridView>
                  <asp:SqlDataSource ID="SqlDataSource21" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = 'Sunday') AND (Meal.MealType = 'Dinner')">
                      <SelectParameters>
-                         <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+                          <asp:QueryStringParameter DefaultValue="0" Name="PlanID" QueryStringField="PlanID" Type="String" />
                      </SelectParameters>
                  </asp:SqlDataSource>
              </asp:TableCell>
@@ -697,5 +697,13 @@
 
     <asp:Button ID="btnCopy" runat="server" OnClick="btnCopy_Click" Text="Copy this plan to your own" Visible="False" />
 &nbsp;<asp:Label ID="lblCopyResult" runat="server" Text="Label"></asp:Label>
+
+    <asp:GridView ID="GridView1" runat="server">
+    </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSource36" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT * FROM [1200calories] WHERE ([Day] = @Day)">
+        <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="0" Name="Day" QueryStringField="PlanID" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 
     </asp:Content>

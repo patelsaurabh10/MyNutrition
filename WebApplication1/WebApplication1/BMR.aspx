@@ -29,5 +29,8 @@
         Your BMR will be:<asp:TextBox ID="txtResult" runat="server"></asp:TextBox>
   
       <br />
-      </form>
+     </form>
+    <br />
+    <asp:Label ID="Label1" runat="server" Text="Choose a plan now"></asp:Label>
+&nbsp;<asp:Button ID="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Confirm" />
 </asp:Content>
