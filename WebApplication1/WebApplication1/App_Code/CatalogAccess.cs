@@ -79,6 +79,7 @@ namespace WebApplication1.App_Code
             List<Plans> lstPlans = new List<Plans>();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             SqlConnection oCon = GetConnection(builder);
+            
             SqlCommand cmd = new SqlCommand("Select Meal.Day,Meal.MealType,FoodDetail.Quantity,FoodDetail.Weight,Food.FoodName,Food.FoodCalorie,Food.FoodCategory from Meal inner join FoodDetail ON Meal.MealID = FoodDetail.MealID inner join Food ON Food.FoodID = FoodDetail.FoodID where Meal.PlanID = @PlanID AND Meal.Day = @Day", oCon);
             cmd.Parameters.AddWithValue("@PlanID", planID);
             cmd.Parameters.AddWithValue("@Day", day);

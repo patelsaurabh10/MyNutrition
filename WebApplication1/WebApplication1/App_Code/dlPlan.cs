@@ -320,6 +320,63 @@ namespace WebApplication1
             conn.Close();
             return planID;
  
+<<<<<<< HEAD
         }
+
+        public int getTotalFollowed()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT PlanFollowed from DailyLog where PlanFollowed='1'";
+            SqlDataReader reader = cmd.ExecuteReader();
+            int total=0;
+            while (reader.Read())
+            {
+                total++;
+            }
+            conn.Close();
+            return total;
+
+=======
+>>>>>>> 461122c62a0e8920cebf62798ed028ff4f011344
+        }
+
+        public string getstartDays()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select CreatedDate from CustomerPlan";
+            DateTime dt1 = (DateTime)cmd.ExecuteScalar();
+        
+
+            string datstart = dt1.ToShortDateString();
+            conn.Close();
+            return datstart;
+            
+           
+
+        }
+        public int gettotaldays()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT DATEDIFF(day,@startdate,@currentdate) AS DiffDate";
+            string startdate = getstartDays();
+            string currentdate = DateTime.Now.ToString();
+            cmd.Parameters.AddWithValue("@startdate", startdate);
+            cmd.Parameters.AddWithValue("@currentdate", currentdate);
+            int days = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+            return days;
+        }
+      
+
+     
     }
 }

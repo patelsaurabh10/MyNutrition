@@ -6,8 +6,13 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server" >
     <br />
+<<<<<<< HEAD
      <div style="width:1200px">
     <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="View Plan" style="height: 26px" />
+=======
+
+    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="Go back to choose another plan" style="height: 26px" />
+>>>>>>> 4d2e2baf59070d9b676e19a8c95b44d882afff1d
     <br />
     Plan Description:
     <asp:Label ID="lblPlanDesc" runat="server" Text="Plan Description Here"></asp:Label>
