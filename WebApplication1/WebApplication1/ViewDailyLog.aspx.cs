@@ -24,7 +24,8 @@ namespace WebApplication1
 
         protected void ddlCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
+            dlPlan dlpl = new dlPlan();
+            int planID = dlpl.getTrackedDietPlan();
             gvDailyLog.DataSource = CatalogAccess.GetCustomerDailyLog(planID.ToString());
             gvDailyLog.DataBind();
         }
