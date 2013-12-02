@@ -22,6 +22,10 @@
             <div class="glare">
             </div>
     <asp:Button ID="BtnGain" class="button" runat="server" Text="Gain" OnClick="BtnGain_Click" />
+               <br />
                </div>
+
+    View the plan now: 
+    <asp:Button ID="btnView" runat="server" OnClick="btnView_Click" Text="View" />
 </asp:Content>
 
