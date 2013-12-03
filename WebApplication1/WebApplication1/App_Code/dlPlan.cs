@@ -320,7 +320,6 @@ namespace WebApplication1
             conn.Close();
             return planID;
  
-<<<<<<< HEAD
         }
 
         public int getTotalFollowed()
@@ -339,8 +338,6 @@ namespace WebApplication1
             conn.Close();
             return total;
 
-=======
->>>>>>> 461122c62a0e8920cebf62798ed028ff4f011344
         }
 
         public string getstartDays()
