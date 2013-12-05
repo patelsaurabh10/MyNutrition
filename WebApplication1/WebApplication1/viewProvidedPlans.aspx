@@ -8,7 +8,7 @@
     <br />
 
      <div style="width:1200px">
-    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="View Plan" style="height: 26px" />
+  
 
 
     <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="Go back to choose another plan" style="height: 26px" />
