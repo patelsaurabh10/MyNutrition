@@ -19,5 +19,7 @@
 
         </Columns>
     </asp:GridView>
+    <asp:TextBox ID="txtFoodName" runat="server"></asp:TextBox>
     
+    <asp:TextBox ID="txtCalorie" runat="server"></asp:TextBox>
 </asp:Content>

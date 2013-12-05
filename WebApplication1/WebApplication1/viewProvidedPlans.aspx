@@ -7,6 +7,13 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server" >
     <br />
 
+<<<<<<< HEAD
+     <div style="width:1200px">
+  
+
+
+=======
+>>>>>>> de561b36bde2d164c8ca4bd36c412c6a8c0f83a2
     <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="Go back to choose another plan" style="height: 26px" />
 
     <br />
