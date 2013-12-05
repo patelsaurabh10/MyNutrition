@@ -4,6 +4,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+    Select a plan you want to view:
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="planDesc1" Visible="False" />
+    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="planDesc2" Visible="False" />
+    <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="planDesc3" Visible="False" />
+    <br />
+    <br />
 
     <asp:DropDownList ID="ddlCustomer" runat="server" OnSelectedIndexChanged="ddlCustomer_SelectedIndexChanged" AutoPostBack="true" EnableViewState="true">
     </asp:DropDownList>
@@ -19,9 +26,8 @@
 
     <br />
     Edit Plan:<br />
-    <asp:Label ID="lblPlanID" runat="server" Text="Enter your planID"></asp:Label>
-    <asp:TextBox ID="txbPlanID" runat="server"></asp:TextBox>
-    (will be replace by passed value(PlanID) after deploy)<br />
+    
+<br />
     <asp:Button ID="btnDeletePlan" runat="server" OnClick="btnDeletePlan_Click" Text="Delete Plan" />
 
     <asp:Button ID="btnTrack" runat="server" OnClick="btnTrack_Click" Text="Track Plan" />

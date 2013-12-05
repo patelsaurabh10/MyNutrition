@@ -46,8 +46,6 @@ namespace WebApplication1
             return customer;
         }
 
-       
-
     }
     public class Customer
     {

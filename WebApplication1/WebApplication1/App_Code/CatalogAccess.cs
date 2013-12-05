@@ -762,5 +762,30 @@ namespace WebApplication1.App_Code
             return message;
         }
 
+        public static String getRondomDailyTip()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(0, 11);
+           String tip =  dlDailyTips.getTipOfTheDay(randomNumber);
+
+           return tip;
+        }
+
+        public static int getTrackedPlanByCustID(int custID)
+        {
+            dlPlan dlP = new dlPlan();
+            int trackedPlanID = 0;
+
+           List<int> customerPlanIDs = dlP.getCustomerPlanIDs(custID);
+           List<int> trackedPlanIDs =  dlP.getTrackedPlanIDs();
+
+           List<int> trackedCustomerPlanIDs = customerPlanIDs.Intersect(trackedPlanIDs).ToList();
+           if (trackedCustomerPlanIDs.Count() == 1)
+           {
+               trackedPlanID = trackedCustomerPlanIDs[0];
+           }
+          
+           return trackedPlanID;
+        }
     }
 }

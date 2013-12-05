@@ -44,8 +44,9 @@ namespace WebApplication1
             lblSunSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSunBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSunLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSunDinner));
         }
         //for button btnView clicked
-       protected void Button1_Click(object sender, EventArgs e)
-       {
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
 
             //if (PlanID != 0)
             //{

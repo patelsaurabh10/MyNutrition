@@ -319,7 +319,51 @@ namespace WebApplication1
             Int32 planID = (Int32)cmd.ExecuteScalar();
             conn.Close();
             return planID;
+ 
+        }
 
+        public List<int> getTrackedPlanIDs()
+        {
+            List<int> planIDs = new List<int>();
+            int planID = 0;
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT PlanID FROM [Plan] WHERE Tracked = '1' ";
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                planID = Convert.ToInt32(dr["PlanID"]);
+                planIDs.Add(planID);
+            } 
+            conn.Close();
+            return planIDs;
+
+        }
+
+        public List<int> getCustomerPlanIDs(int custID)
+        {
+            List<int> planIDs = new List<int>();
+            int planID = 0;
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT PlanID FROM CustomerPlan WHERE CustID = @CustID ";
+            cmd.Parameters.AddWithValue("@CustID", custID);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                planID = Convert.ToInt32(dr["PlanID"]);
+                planIDs.Add(planID);
+            } 
+              
+            conn.Close();
+            return planIDs;
         }
 
         public int getTotalFollowed()
@@ -330,7 +374,7 @@ namespace WebApplication1
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT PlanFollowed from DailyLog where PlanFollowed='1'";
             SqlDataReader reader = cmd.ExecuteReader();
-            int total=0;
+            int total = 0;
             while (reader.Read())
             {
                 total++;
@@ -346,7 +390,7 @@ namespace WebApplication1
             SqlConnection conn = GetConnection(builder);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select MIN(CreatedDate) from CustomerPlan";
+            cmd.CommandText = "select CreatedDate from CustomerPlan";
             DateTime dt1 = (DateTime)cmd.ExecuteScalar();
         
 
@@ -372,8 +416,5 @@ namespace WebApplication1
             conn.Close();
             return days;
         }
-      
-
-     
     }
 }
