@@ -12,38 +12,80 @@ namespace WebApplication1
 {
     public partial class ViewMyPlan : System.Web.UI.Page
     {
-        int custID = 0;
+        int custID, planID = 0;
+        List<String> planDescs = new List<String>();
+        List<int> planIDs = new List<int>();
         String message = null;
+        dlPlan dlP = new dlPlan();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["CustID"] = 2; // be replaced after deploy
-            if (Session["CustID"] != null)
+
+
+            if (Session["CustomerID"] != null)
             {
-                custID = (int)Session["CustID"];
+                custID = (int)Session["CustomerID"];
             }
 
+            planIDs = dlP.getCustomerPlanIDs(custID);
+
+            foreach (int planIDa in planIDs)
+            {
+                String planDesc = CatalogAccess.getPlanDesc(planIDa);
+                planDescs.Add(planDesc);
+            }
+            if (planDescs.Count >= 1)
+            {
+                if (!String.IsNullOrEmpty(planDescs[0]))
+                {
+                    Button1.Visible = true;
+                    Button1.Text = "Plan: " + planDescs[0];
+                }
+            }
+            if (planDescs.Count >= 2)
+            {
+                if (!String.IsNullOrEmpty(planDescs[1]))
+                {
+                    Button2.Visible = true;
+                    Button2.Text = "Plan: " + planDescs[1];
+                }
+
+            } if (planDescs.Count >= 3)
+            {
+                if (!String.IsNullOrEmpty(planDescs[2]))
+                {
+                    Button3.Visible = true;
+                    Button3.Text = "Plan: " + planDescs[2];
+                }
+
+            }
             if (!IsPostBack)
             {
-
+                //  planID = 0 means no plan is tracked for this Customer
+                planID = CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]);
                 ddlCustomer.DataTextField = "Text";
                 ddlCustomer.DataValueField = "Value";
                 ddlCustomer.DataSource = CatalogAccess.GetCustomers();
-                
+
                 ddlCustomer.DataBind();
             }
+            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
+            {
+                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
+            }
+
+            GridView1.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
+            GridView1.DataBind();
+
         }
 
         protected void ddlCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
-            GridView1.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
-            GridView1.DataBind();
+            // int planID = CatalogAccess.GetCustomerPlanID(ddlCustomer.SelectedValue);
+
         }
 
         protected void btnDeletePlan_Click(object sender, EventArgs e)
         {
-
-            int planID = Convert.ToInt32(txbPlanID.Text);//be replaced after deploy
             //never delete system plan
             if (planID > 10)
             {
@@ -55,7 +97,7 @@ namespace WebApplication1
            true);
                 else
                 {
-                    Response.Write("<script>alert('" + message+ "');</script>");
+                    Response.Write("<script>alert('" + message + "');</script>");
 
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
                              "err_msg",
@@ -75,27 +117,43 @@ namespace WebApplication1
 
         protected void btnTrack_Click(object sender, EventArgs e)
         {
-            int planID = Convert.ToInt32(txbPlanID.Text);
+
             dlPlan opln = new dlPlan();
-           bool flag = opln.trackDietPlan(planID);
-           if (flag == true)
-           {
-               ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+            bool flag = opln.trackDietPlan(planID);
+            if (flag == true)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                    "err_msg",
+                    "alert('your plan has been tracked!');",
+                    true);
+                lbltest.Text = "your plan has been tracked!";
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
                    "err_msg",
-                   "alert('your plan has been tracked!');",
+                   "alert('You can't track more plan, becuase it has already tracked before');",
                    true);
-               lbltest.Text = "your plan has been tracked!";
-           }
-           else
-           {
-               ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-                  "err_msg",
-                  "alert('You can't track more plan, becuase it has already tracked before');",
-                  true);
-               lbltest.Text = "You can't track more plan, becuase it has already tracked before";
-           }
+                lbltest.Text = "You can't track more plan, becuase it has already tracked before";
+            }
 
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("~/viewMyPlan.aspx?PlanID=" + planIDs[0]);
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/viewMyPlan.aspx?PlanID=" + planIDs[1]);
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/viewMyPlan.aspx?PlanID=" + planIDs[2]);
         }
     }
 

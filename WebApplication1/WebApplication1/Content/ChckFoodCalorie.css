@@ -1,0 +1,17 @@
+﻿fieldset {
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 5px 5px 5px #828282;
+    -moz-box-shadow: 5px 5px 5px #828282;
+    box-shadow: 5px 5px 5px #828282;
+    background-color:#B3F46D;
+    text-align:center;
+   
+       
+    
+
+}
+#center {
+    width:350px; margin:0 auto 0 auto;
+}

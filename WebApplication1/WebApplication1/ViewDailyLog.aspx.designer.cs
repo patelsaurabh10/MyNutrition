@@ -22,15 +22,6 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
         
         /// <summary>
-        /// SqlDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-        
-        /// <summary>
         /// gvDailyLog control.
         /// </summary>
         /// <remarks>
@@ -40,12 +31,21 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.GridView gvDailyLog;
         
         /// <summary>
-        /// SqlDataSource2 control.
+        /// txtFoodName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.WebControls.TextBox txtFoodName;
+        
+        /// <summary>
+        /// txtCalorie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCalorie;
     }
 }
