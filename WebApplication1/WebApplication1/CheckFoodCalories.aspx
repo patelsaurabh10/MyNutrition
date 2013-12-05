@@ -36,18 +36,21 @@
         <br />
         <asp:Button ID="btnCheck" runat="server" OnClick="btnCheck_Click" Text="Check" />
         <br />
-        <p>The Result is:</p>
-        Food Name:
-        <asp:Label ID="lblFoodName" runat="server"></asp:Label>
-        <br />
-        Quantity/Weight:<asp:Label ID="lblQuantityResult" runat="server"></asp:Label>
-        <br />
-        Calories:<asp:Label ID="lblCalories" runat="server"></asp:Label>
+        <asp:Table runat="server" BorderStyle="Dashed" style="border:inset; margin: 0 auto 0 auto">
+          <asp:TableRow ><asp:TableHeaderCell ColumnSpan="2" BorderStyle="Dotted">
+        The Result is:</asp:TableHeaderCell></asp:TableRow>
+       <asp:TableRow><asp:TableCell style="text-align:left; border-right:thin"> Food Name:</asp:TableCell><asp:TableCell>
+        <asp:Label ID="lblFoodName" runat="server"></asp:Label></asp:TableCell></asp:TableRow>
+        <asp:TableRow><asp:TableCell style="text-align:left">
+        Quantity/Weight:</asp:TableCell><asp:TableCell><asp:Label ID="lblQuantityResult" runat="server"></asp:Label></asp:TableCell></asp:TableRow>
+        <asp:TableRow><asp:TableCell style="text-align:left">
+        Calories:</asp:TableCell><asp:TableCell><asp:Label ID="lblCalories" runat="server"></asp:Label></asp:TableCell></asp:TableRow></asp:Table>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT [FoodCalorie] FROM [Food] WHERE ([FoodName] = @FoodName)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlFoodName" Name="FoodName" PropertyName="SelectedValue" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
+            
         </fieldset>
     </div>
       
