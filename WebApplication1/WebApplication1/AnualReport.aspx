@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Chart ID="chrtAnual" runat="server" OnLoad="Chart1_Load" Width="581px">
+    <asp:Chart ID="chrtAnual" runat="server" OnLoad="Chart1_Load" Width="581px" Palette="Pastel">
     <series>
         <asp:Series Name="Followed">
         </asp:Series>
