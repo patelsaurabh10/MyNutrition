@@ -320,6 +320,8 @@ namespace WebApplication1
             conn.Close();
             return planID;
  
+<<<<<<< HEAD
+=======
         }
 
         public List<int> getTrackedPlanIDs()
@@ -364,6 +366,7 @@ namespace WebApplication1
               
             conn.Close();
             return planIDs;
+>>>>>>> 34ba777b727f54825cc59564c25b292e6a739bf7
         }
 
         public int getTotalFollowed()
