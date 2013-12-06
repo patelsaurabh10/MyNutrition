@@ -43,15 +43,10 @@ namespace WebApplication1
             lblSatSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSatBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSatLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSatDinner));
             lblSunSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSunBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSunLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSunDinner));
         }
-        //for button btnView clicked
+       
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-
-            //if (PlanID != 0)
-            //{
-            //    Response.Redirect("~/ChoosePlan.aspx?PlanID=" + PlanID);
-            //}
+              Response.Redirect("~/BMR.aspx");    
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
