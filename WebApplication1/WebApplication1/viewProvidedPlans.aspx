@@ -11,20 +11,18 @@
     
     <br />
 
-<<<<<<< HEAD
-=======
 
-     <div style="width:1200px">
+
+     
   
->>>>>>> 2ce168cdbe748a75453aae8a7963214e654866e7
+
 
      <div id="center">
 
-<<<<<<< HEAD
-=======
 
-    <asp:Button ID="btnView" runat="server" OnClick="Button1_Click" Text="Go back to choose another plan" style="height: 26px" />
->>>>>>> 2ce168cdbe748a75453aae8a7963214e654866e7
+
+    
+
 
     
 
