@@ -83,7 +83,7 @@
         </asp:TableRow>
     </asp:Table>
     <br />
-    Do you want to <asp:Button ID="btnShowAdd" runat="server" Text="Add" OnClick="btnShowAdd_Click" /> or <asp:Button ID="btnShowDelete" runat="server" Text="Delete" OnClick="btnShowDelete_Click" /> an item from this meal?
+    Do you want to <asp:Button ID="btnShowAdd" runat="server" Text="Add" OnClick="btnShowAdd_Click" /> or <asp:Button ID="btnShowDelete" runat="server" Text="Delete" OnClick="btnShowDelete_Click" /> an item from this meal?&nbsp;&nbsp;
     <br /><br />
     <asp:Table ID="Table3" runat="server" Visible="False">
          <asp:TableRow ID="TableRow24" runat="server">

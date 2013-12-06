@@ -172,6 +172,7 @@ namespace WebApplication1
             cmd.Parameters.AddWithValue("@PlanID", PlanID);
             cmd.Parameters.AddWithValue("@CreatedDate", now);
 
+
             rowsAffected = cmd.ExecuteNonQuery();
 
             cmd.Dispose();
@@ -320,8 +321,7 @@ namespace WebApplication1
             conn.Close();
             return planID;
  
-<<<<<<< HEAD
-=======
+
         }
 
         public List<int> getTrackedPlanIDs()
@@ -366,7 +366,7 @@ namespace WebApplication1
               
             conn.Close();
             return planIDs;
->>>>>>> 34ba777b727f54825cc59564c25b292e6a739bf7
+
         }
 
         public int getTotalFollowed()
@@ -418,6 +418,17 @@ namespace WebApplication1
             int days = Convert.ToInt32(cmd.ExecuteScalar());
             conn.Close();
             return days;
+        }
+
+        public void updateDailyLog()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO [MyNutrition].[dbo].[DailyLog] ([LogDay],[PlanFollowed],[PlanID],[LogDesc])VALUES('6','1',1,'none')";
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }
