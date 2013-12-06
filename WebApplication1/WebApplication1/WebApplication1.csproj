@@ -138,7 +138,8 @@
     <Content Include="BMR.aspx" />
     <Content Include="CheckFoodCalories.aspx" />
     <Content Include="ChoosePlan.aspx" />
-    <Content Include="ChoosePlan.css" />
+    <Content Include="Content\ChoosePlan.css" />
+    <Content Include="Content\MainPage.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -199,6 +200,10 @@
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\MainPageButtons\BMR.png" />
+    <Content Include="Images\MainPageButtons\DailyLog.png" />
+    <Content Include="Images\MainPageButtons\Plan.png" />
+    <Content Include="Images\MainPageButtons\report.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -211,7 +216,7 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="NutritionLogo.png" />
     <Content Include="packages.config" />
-    <Content Include="Template.css" />
+    <Content Include="Content\Template.css" />
     <Content Include="ViewActualPlans.aspx" />
     <Content Include="ViewMyPlan.aspx" />
     <Content Include="viewProvidedPlans.aspx" />

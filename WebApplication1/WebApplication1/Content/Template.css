@@ -5,14 +5,14 @@
     margin-right: 0;
     margin-top: 0;
 }
-        /*#mainBody {
+        #mainBody {
             width:850px;
             height:auto;
             margin:0 auto 0 auto;
             
           
 
-        }*/
+        }
         #header {
             width:850px;
             height:80px;
@@ -203,6 +203,7 @@ ul#horizontal-list {
 
 	}
         #footer {
+            text-align: center;
             width:850px;
             height:20px;
             margin-top:25px;
