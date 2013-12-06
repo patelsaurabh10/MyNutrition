@@ -7,6 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <link href="Content/BMICalculation.css" rel="stylesheet" />
+    <link href="Content/ChoosePlan.css" rel="stylesheet" />
     <br />
    
     <p id="paragraph">If you've noticed that every year, it becomes harder to eat whatever you want and stay slim, you've also learnt that your BMR decreases as you age. Likewise, depriving yourself of food in hopes of losing weight also decreases your BMR, a foil to your intentions. However, a regular routine of cardiovascular exercise can increase your BMR, improving your health and fitness when your body's ability to burn energy gradually slows down.</p>
@@ -48,6 +49,35 @@
     <br />
     <asp:Label ID="Label1" runat="server" Text="Choose a plan now"></asp:Label>
 &nbsp;<asp:Button ID="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Confirm" />
+
+            <asp:Panel ID="choosePlanPanel" runat="server" visible="false" >
+                <div style="width:280px;margin:0 auto 0 auto">
+   <div class="button aqua">
+            <div class="glare">
+               
+            </div>
+    <asp:Button class="button" ID="BtnLoose" runat="server" Text="Loose" OnClick="BtnLoose_Click" />
+       </div><div class="button aqua">
+            <div class="glare">
+               
+            </div>
+            
+    <asp:Button ID="BtnMaintain" class="button" runat="server" Text="Maintain" OnClick="BtnMaintain_Click" />
+           </div><div class="button aqua">
+            <div class="glare">
+            </div>
+    <asp:Button ID="BtnGain" class="button" runat="server" Text="Gain" OnClick="BtnGain_Click" />
+               <br />
+               </div></div>
+        </asp:Panel>
             </fieldset>
         </div>
+
+    
+
+    <br />
+    <link href="ChoosePlan.css" rel="stylesheet" />
+    <br />
+    
+    &nbsp;
 </asp:Content>

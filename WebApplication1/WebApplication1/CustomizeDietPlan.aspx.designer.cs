@@ -76,13 +76,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMealType;
         
         /// <summary>
-        /// TableRow23 control.
+        /// btnCheckCalorie control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow TableRow23;
+        protected global::System.Web.UI.WebControls.Button btnCheckCalorie;
         
         /// <summary>
         /// TableRow25 control.
@@ -110,15 +110,6 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceMeal;
-        
-        /// <summary>
-        /// btnCheckCalorie control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckCalorie;
         
         /// <summary>
         /// lblMealCalorie control.

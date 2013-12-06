@@ -23,7 +23,9 @@
             text-overflow: ellipsis;
             overflow: hidden;
             box-shadow:rgba(0,0,0,0.5) 0px 0px 24px;
-        }
+    top: 0px;
+    left: 0px;
+}
         .button:hover
         {
             background-color:blue;

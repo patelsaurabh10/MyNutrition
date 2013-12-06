@@ -13,5 +13,12 @@ namespace WebApplication1
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Session["CustomerID"] = 2;
+            Response.Redirect("~/MainPage.aspx");
+
+        }
     }
 }

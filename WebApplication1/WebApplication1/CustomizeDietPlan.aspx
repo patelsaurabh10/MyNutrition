@@ -4,12 +4,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="Content/CustomizeDietPlan.css" rel="stylesheet" />
 
    <br />
-    <asp:Table ID="Table1" runat="server">
+        <div id="center">
+            <fieldset><legend>Customize Diet Plan</legend>
+        <asp:Table ID="Table1" runat="server" Width="339px" >
                 <asp:TableRow ID="TableRow21" runat="server">
-            <asp:TableCell>Choose Day:</asp:TableCell>
-            <asp:TableCell>
+            <asp:TableCell style="text-align:right">Choose Day:</asp:TableCell>
+            <asp:TableCell style="text-align:left">
                 <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem>Monday</asp:ListItem>
         <asp:ListItem>Tuesday</asp:ListItem>
@@ -27,8 +30,8 @@
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow ID="TableRow22" runat="server">
-            <asp:TableCell>Choose Meal Type:</asp:TableCell>
-            <asp:TableCell>
+            <asp:TableCell style="text-align:right">Choose Meal Type:</asp:TableCell>
+            <asp:TableCell style="text-align:left">
                 <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataSourceID="SqlDataSourceMealType" DataTextField="MealType" DataValueField="MealType" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged"></asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSourceMealType" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT DISTINCT [MealType] FROM [Meal] WHERE ([PlanID] = @PlanID)">
         <SelectParameters>
@@ -37,12 +40,11 @@
     </asp:SqlDataSource>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow ID="TableRow23" runat="server"><asp:TableCell><br />
-           
-            </asp:TableCell></asp:TableRow>
-       
+        <asp:TableRow>
+                <asp:TableCell ColumnSpan="2" runat="server"><asp:Button ID="btnCheckCalorie" runat="server" Text="Check Calorie" OnClick="btnCheckCalorie_Click" /></asp:TableCell>
+                </asp:TableRow>
         <asp:TableRow ID="TableRow25" runat="server">
-            <asp:TableCell>
+            <asp:TableCell ColumnSpan="2" style ="text-align:right">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceMeal" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="FoodName" Visible="True">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
@@ -72,15 +74,16 @@
                         <asp:ControlParameter ControlID="DropDownList2" Name="MealType" PropertyName="SelectedValue" />
                     </SelectParameters>
                 </asp:SqlDataSource>
-            </asp:TableCell>
-            <asp:TableCell>
-                 <asp:Button ID="btnCheckCalorie" runat="server" Text="Check Calorie" OnClick="btnCheckCalorie_Click" />
                 <br />
-                <asp:Label ID="lblMealCalorie" runat="server" Text="This meal's total calorie is:"></asp:Label>
-                <br /><br />
-                <asp:Label ID="lblTotalCalorie" runat="server" Text="Today's total calorie is:"></asp:Label>
             </asp:TableCell>
+            
         </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell ColumnSpan="2" runat="server"><asp:Label ID="lblMealCalorie" runat="server" Text="This meal's total calorie is:  "></asp:Label>
+                <br />
+                <asp:Label ID="lblTotalCalorie" runat="server" Text="Today's total calorie is:___"></asp:Label>
+                </asp:TableCell>
+                </asp:TableRow>
     </asp:Table>
     <br />
     Do you want to <asp:Button ID="btnShowAdd" runat="server" Text="Add" OnClick="btnShowAdd_Click" /> or <asp:Button ID="btnShowDelete" runat="server" Text="Delete" OnClick="btnShowDelete_Click" /> an item from this meal?&nbsp;&nbsp;
@@ -158,13 +161,9 @@
             <asp:TableCell></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-        
-        
-        
-    
-        
-        
-        
+            </fieldset>
+            </div>
     <br />
     <br />
+            
     </asp:Content>

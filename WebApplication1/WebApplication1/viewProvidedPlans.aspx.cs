@@ -35,23 +35,18 @@ namespace WebApplication1
             planDesc = CatalogAccess.getPlanDesc(PlanID);
             lblPlanDesc.Text = planDesc;
 
-            lblMonSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewMonBreak) + CatalogAccess.getGridViewSumCalorie(GridViewMonLunch) + CatalogAccess.getGridViewSumCalorie(GridViewMonDinner));
-            lblTueSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewTueBreak) + CatalogAccess.getGridViewSumCalorie(GridViewTueLunch) + CatalogAccess.getGridViewSumCalorie(GridViewTueDinner));
-            lblWesSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewWedBreak) + CatalogAccess.getGridViewSumCalorie(GridViewWedLunch) + CatalogAccess.getGridViewSumCalorie(GridViewWedDinner));
-            lblThurSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewThurBreak) + CatalogAccess.getGridViewSumCalorie(GridViewThurLunch) + CatalogAccess.getGridViewSumCalorie(GridViewThurDinner));
-            lblFriSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewFriBreak) + CatalogAccess.getGridViewSumCalorie(GridViewFriLunch) + CatalogAccess.getGridViewSumCalorie(GridViewFriDinner));
-            lblSatSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSatBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSatLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSatDinner));
-            lblSunSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSunBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSunLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSunDinner));
+            lblMonSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewMonBreak) + CatalogAccess.getGridViewSumCalorie(GridViewMonLunch) + CatalogAccess.getGridViewSumCalorie(GridViewMonDinner) + CatalogAccess.getGridViewSumCalorie(GridViewMonSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewMonSnack2));
+            lblTueSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewTueBreak) + CatalogAccess.getGridViewSumCalorie(GridViewTueLunch) + CatalogAccess.getGridViewSumCalorie(GridViewTueDinner) + CatalogAccess.getGridViewSumCalorie(GridViewTueSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewTueSnack2));
+            lblWesSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewWedBreak) + CatalogAccess.getGridViewSumCalorie(GridViewWedLunch) + CatalogAccess.getGridViewSumCalorie(GridViewWedDinner) + CatalogAccess.getGridViewSumCalorie(GridViewWedSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewWedSnack2));
+            lblThurSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewThurBreak) + CatalogAccess.getGridViewSumCalorie(GridViewThurLunch) + CatalogAccess.getGridViewSumCalorie(GridViewThurDinner) + CatalogAccess.getGridViewSumCalorie(GridViewThurSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewThurSnack2));
+            lblFriSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewFriBreak) + CatalogAccess.getGridViewSumCalorie(GridViewFriLunch) + CatalogAccess.getGridViewSumCalorie(GridViewFriDinner) + CatalogAccess.getGridViewSumCalorie(GridViewFriSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewFriSnack2));
+            lblSatSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSatBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSatLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSatDinner) + CatalogAccess.getGridViewSumCalorie(GridViewSatSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewSatSnack2));
+            lblSunSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSunBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSunLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSunDinner) + CatalogAccess.getGridViewSumCalorie(GridViewSunSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewSunSnack2));
         }
-        //for button btnView clicked
+       
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-
-            //if (PlanID != 0)
-            //{
-            //    Response.Redirect("~/ChoosePlan.aspx?PlanID=" + PlanID);
-            //}
+              Response.Redirect("~/BMR.aspx");    
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -65,26 +60,36 @@ namespace WebApplication1
             String custFirstName = customer.FirstName;
             String custLastName = customer.LastName;
             String planName = txbPlanName.Text;
-
-            //The maximun Plan number per customer is 3
-            if (planNumber >= 3)
+            if (String.IsNullOrEmpty(planName))
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-         "err_msg",
-         "alert('Sorry, you can only have at most 3 plans!');",
-         true);
+                        "err_msg",
+                        "alert('Please give a name to your plan!');",
+                        true);
             }
             else
             {
-                int rowEffected = CatalogAccess.convertSystemPlanToUserPlan(PlanID, CustID,planName);
 
-                if (rowEffected > 0)
+                //The maximun Plan number per customer is 3
+                if (planNumber >= 3)
                 {
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-        "err_msg",
-        "alert('Congratulations! your plan has been successfully generated!');",
-        true);
-                    lblCopyResult.Text = "Congratulations!" + custFirstName+" " + custLastName + ", " + planName+ " has been successfully generated!";
+             "err_msg",
+             "alert('Sorry, you can only have at most 3 plans!');",
+             true);
+                }
+                else
+                {
+                    int rowEffected = CatalogAccess.convertSystemPlanToUserPlan(PlanID, CustID, planName);
+
+                    if (rowEffected > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+            "err_msg",
+            "alert('Congratulations! your plan has been successfully generated!');",
+            true);
+                        lblCopyResult.Text = "Congratulations!" + custFirstName + " " + custLastName + ", " + planName + " has been successfully generated!";
+                    }
                 }
             }
 
@@ -95,6 +100,11 @@ namespace WebApplication1
             lblPlanName.Visible = true;
             txbPlanName.Visible = true;
             btnCopy.Visible = true;
+        }
+
+        protected void btnManagePlan_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewMyPlan.aspx"); 
         }
 
     }
