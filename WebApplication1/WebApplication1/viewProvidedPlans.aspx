@@ -1090,23 +1090,7 @@
     <asp:Button ID="btnCopy" runat="server" OnClick="btnCopy_Click" Text="Copy this plan to your own" Visible="False" />
 &nbsp;<asp:Label ID="lblCopyResult" runat="server" Text="Label"></asp:Label>
 
-    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
-        <AlternatingRowStyle BackColor="White" />
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource36" runat="server" ConnectionString="<%$ ConnectionStrings:MyNutritionConnectionString %>" SelectCommand="SELECT * FROM [1200calories] WHERE ([Day] = @Day)">
-        <SelectParameters>
-            <asp:QueryStringParameter DefaultValue="0" Name="Day" QueryStringField="PlanID" Type="String" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-        </div>
+    &nbsp;You can
+         <asp:Button ID="btnManagePlan" runat="server" OnClick="btnManagePlan_Click" Text="Manage your plan" />
+&nbsp;now!</div>
     </asp:Content>

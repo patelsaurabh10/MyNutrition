@@ -61,7 +61,6 @@ C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\Do
 C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\DotNetOpenAuth.AspNet.xml
 C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Membership.OpenAuth.xml
 C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
-C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\Users\ARS\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\WebApplication1.dll
@@ -163,3 +162,4 @@ C:\Users\3P0\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\Do
 C:\Users\3P0\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\DotNetOpenAuth.AspNet.xml
 C:\Users\3P0\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Membership.OpenAuth.xml
 C:\Users\3P0\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Neo\Documents\GitHub\MyNutrition\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
