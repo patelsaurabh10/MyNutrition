@@ -54,10 +54,7 @@ namespace WebApplication1
                   true);
                 Response.Redirect("~/Default.aspx");
             }
-            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
-            {
-                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
-            }
+
             if (CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]) != 0)
             {
             planID = CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]);
@@ -132,10 +129,13 @@ namespace WebApplication1
             {
                 message = CatalogAccess.deleteCustomerPlan(planID, custID);
                 if (message.StartsWith("Effeced"))
+                {
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
            "err_msg",
            "alert('your plan" + planID + " has been deleted!');",
            true);
+                    Response.Redirect("~/ViewMyPlan.aspx");
+                }
                 else
                 {
                     Response.Write("<script>alert('" + message + "');</script>");
@@ -150,7 +150,7 @@ namespace WebApplication1
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
        "err_msg",
-       "alert('Plan ID must be more than 10!');",
+       "alert('You cannot delete system plan!');",
        true);
             }
 
@@ -184,18 +184,20 @@ namespace WebApplication1
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-            Response.Redirect("~/viewMyPlan.aspx?PlanID=" + planIDs[0]);
+            Session["PlanID"] = planIDs[0];
+            Response.Redirect("~/viewMyPlan.aspx");
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/viewMyPlan.aspx?PlanID=" + planIDs[1]);
+            Session["PlanID"] = planIDs[1];
+            Response.Redirect("~/viewMyPlan.aspx");
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/viewMyPlan.aspx?PlanID=" + planIDs[2]);
+            Session["PlanID"] = planIDs[2];
+            Response.Redirect("~/viewMyPlan.aspx");
         }
 
         protected void btnUpdatePlan_Click(object sender, EventArgs e)
@@ -203,10 +205,6 @@ namespace WebApplication1
             if (Convert.ToInt32(Session["PlanID"]) != 0)
             {
                 PlanID = Convert.ToInt32(Session["PlanID"]);
-            }
-            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
-            {
-                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
             }
             PlaceHolder1.Visible = true;
         }
@@ -219,10 +217,6 @@ namespace WebApplication1
             if(Convert.ToInt32(Session["PlanID"]) !=0)
             {
             PlanID = Convert.ToInt32(Session["PlanID"]);
-            }
-            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
-            {
-                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
             }
 
             if (FoodName == null)
@@ -359,10 +353,6 @@ namespace WebApplication1
             if (Convert.ToInt32(Session["PlanID"]) != 0)
             {
                 PlanID = Convert.ToInt32(Session["PlanID"]);
-            }
-            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
-            {
-                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
             }
 
             mealCalorie = CatalogAccess.getGridViewSumCalorieWithSelection(GridView1);

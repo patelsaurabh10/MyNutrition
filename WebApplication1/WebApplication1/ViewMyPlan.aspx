@@ -103,7 +103,7 @@
          SelectCommand="SELECT Food.FoodName, FoodDetail.Quantity, FoodDetail.Weight, Food.FoodCalorie FROM FoodDetail INNER JOIN Food ON FoodDetail.FoodID = Food.FoodID INNER JOIN Meal ON FoodDetail.MealID = Meal.MealID WHERE (Meal.PlanID = @PlanID) AND (Meal.Day = @Day) AND (Meal.MealType = @MealType)">
 
           <SelectParameters>
-                        <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
+              <asp:SessionParameter Name="PlanID" SessionField="PlanID" DefaultValue="0" Type="Int32" />
                         <asp:ControlParameter ControlID="DropDownList1" Name="Day" PropertyName="SelectedValue" />
                         <asp:ControlParameter ControlID="DropDownList2" Name="MealType" PropertyName="SelectedValue" />
                     </SelectParameters>
@@ -200,5 +200,4 @@
             </div>
     <br />
     <br />
-            
     </asp:Content>
