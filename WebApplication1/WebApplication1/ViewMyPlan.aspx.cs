@@ -25,6 +25,14 @@ namespace WebApplication1
             {
                 custID = (int)Session["CustomerID"];
             }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                  "err_msg",
+                  "alert('Please log in to manage your plans!');",
+                  true);
+                Response.Redirect("~/Default.aspx");
+            }
 
             planIDs = dlP.getCustomerPlanIDs(custID);
 
@@ -62,11 +70,11 @@ namespace WebApplication1
             {
                 //  planID = 0 means no plan is tracked for this Customer
                 planID = CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]);
-                ddlCustomer.DataTextField = "Text";
-                ddlCustomer.DataValueField = "Value";
-                ddlCustomer.DataSource = CatalogAccess.GetCustomers();
+                //ddlCustomer.DataTextField = "Text";
+                //ddlCustomer.DataValueField = "Value";
+              //  ddlCustomer.DataSource = CatalogAccess.GetCustomers();
 
-                ddlCustomer.DataBind();
+             //   ddlCustomer.DataBind();
             }
             if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
             {

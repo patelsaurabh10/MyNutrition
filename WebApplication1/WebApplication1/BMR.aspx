@@ -48,6 +48,34 @@
     <br />
     <asp:Label ID="Label1" runat="server" Text="Choose a plan now"></asp:Label>
 &nbsp;<asp:Button ID="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Confirm" />
+
+            <asp:Panel ID="choosePlanPanel" runat="server" visible="false" >
+   <div class="button aqua">
+            <div class="glare">
+               
+            </div>
+    <asp:Button class="button" ID="BtnLoose" runat="server" Text="Loose" OnClick="BtnLoose_Click" />
+       </div><div class="button aqua">
+            <div class="glare">
+               
+            </div>
+            
+    <asp:Button ID="BtnMaintain" class="button" runat="server" Text="Maintain" OnClick="BtnMaintain_Click" />
+           </div><div class="button aqua">
+            <div class="glare">
+            </div>
+    <asp:Button ID="BtnGain" class="button" runat="server" Text="Gain" OnClick="BtnGain_Click" />
+               <br />
+               </div>
+        </asp:Panel>
             </fieldset>
         </div>
+
+    
+
+    <br />
+    <link href="ChoosePlan.css" rel="stylesheet" />
+    <br />
+    
+    &nbsp;
 </asp:Content>

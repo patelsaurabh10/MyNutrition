@@ -15,7 +15,7 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["CustomerID"] = 2; 
+            //Session["CustomerID"] = 2; 
             Customer customer = dlCustomer.getCustomerByCustID((Int32)Session["CustomerID"]);
             String custFirstName = customer.FirstName;
             String custLastName = customer.LastName;

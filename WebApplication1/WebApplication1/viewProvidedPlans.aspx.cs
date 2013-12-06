@@ -43,15 +43,10 @@ namespace WebApplication1
             lblSatSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSatBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSatLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSatDinner));
             lblSunSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSunBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSunLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSunDinner));
         }
-        //for button btnView clicked
+       
         protected void Button1_Click(object sender, EventArgs e)
         {
-
-
-            //if (PlanID != 0)
-            //{
-            //    Response.Redirect("~/ChoosePlan.aspx?PlanID=" + PlanID);
-            //}
+              Response.Redirect("~/BMR.aspx");    
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -65,26 +60,36 @@ namespace WebApplication1
             String custFirstName = customer.FirstName;
             String custLastName = customer.LastName;
             String planName = txbPlanName.Text;
-
-            //The maximun Plan number per customer is 3
-            if (planNumber >= 3)
+            if (String.IsNullOrEmpty(planName))
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-         "err_msg",
-         "alert('Sorry, you can only have at most 3 plans!');",
-         true);
+                        "err_msg",
+                        "alert('Please give a name to your plan!');",
+                        true);
             }
             else
             {
-                int rowEffected = CatalogAccess.convertSystemPlanToUserPlan(PlanID, CustID,planName);
 
-                if (rowEffected > 0)
+                //The maximun Plan number per customer is 3
+                if (planNumber >= 3)
                 {
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-        "err_msg",
-        "alert('Congratulations! your plan has been successfully generated!');",
-        true);
-                    lblCopyResult.Text = "Congratulations!" + custFirstName+" " + custLastName + ", " + planName+ " has been successfully generated!";
+             "err_msg",
+             "alert('Sorry, you can only have at most 3 plans!');",
+             true);
+                }
+                else
+                {
+                    int rowEffected = CatalogAccess.convertSystemPlanToUserPlan(PlanID, CustID, planName);
+
+                    if (rowEffected > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+            "err_msg",
+            "alert('Congratulations! your plan has been successfully generated!');",
+            true);
+                        lblCopyResult.Text = "Congratulations!" + custFirstName + " " + custLastName + ", " + planName + " has been successfully generated!";
+                    }
                 }
             }
 
@@ -95,6 +100,11 @@ namespace WebApplication1
             lblPlanName.Visible = true;
             txbPlanName.Visible = true;
             btnCopy.Visible = true;
+        }
+
+        protected void btnManagePlan_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewMyPlan.aspx"); 
         }
 
     }

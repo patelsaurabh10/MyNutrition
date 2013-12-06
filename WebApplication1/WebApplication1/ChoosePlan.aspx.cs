@@ -26,7 +26,12 @@ namespace WebApplication1
                 PlanID = 0;
                
             }
-            bmr = 2000;
+
+            if (Request.QueryString["BMR"] != "0")
+            {
+                bmr = Convert.ToDouble(Request.QueryString["BMR"]);
+            }
+           
             BtnGain.Text = "To gian weight you need " + (bmr + 500);
             BtnMaintain.Text = "To maintain weight you need " + bmr;
             BtnLoose.Text = "To loose weight you need " + (bmr - 500);

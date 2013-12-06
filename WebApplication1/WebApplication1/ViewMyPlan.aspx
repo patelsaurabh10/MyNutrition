@@ -12,8 +12,6 @@
     <br />
     <br />
 
-    <asp:DropDownList ID="ddlCustomer" runat="server" OnSelectedIndexChanged="ddlCustomer_SelectedIndexChanged" AutoPostBack="true" EnableViewState="true">
-    </asp:DropDownList>
     <br />
     <br />
     <br />
@@ -28,7 +26,7 @@
     Edit Plan:<br />
     
 <br />
-    <asp:Button ID="btnDeletePlan" runat="server" OnClick="btnDeletePlan_Click" Text="Delete Plan" />
+    <asp:Button ID="btnDeletePlan" runat="server" OnClick="btnDeletePlan_Click" Text="Delete Plan" OnClientClick = "return confirm('Are you sure you want to delete?');"/>
 
     <asp:Button ID="btnTrack" runat="server" OnClick="btnTrack_Click" Text="Track Plan" />
     <asp:Label ID="lbltest" runat="server" Text="Label"></asp:Label>
