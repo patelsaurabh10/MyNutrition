@@ -17,9 +17,30 @@ namespace WebApplication1
         List<int> planIDs = new List<int>();
         String message = null;
         dlPlan dlP = new dlPlan();
+
+
+        String FoodName = null;
+        int MealID = 0;
+        String Day = null;
+        String MealType = null;
+        int FoodID = 0;
+        int PlanID = 0;
+
+        double unit = 0;
+        decimal calorie = 0;
+        double quantity = 0;
+        double weight = 0;
+
+        double mealCalorie = 0;
+        double dailyCalorie = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Convert.ToInt32(Session["PlanID"]) != 0)
+            {
+                PlanID = Convert.ToInt32(Session["PlanID"]); // from customize
+            }
 
             if (Session["CustomerID"] != null)
             {
@@ -33,6 +54,17 @@ namespace WebApplication1
                   true);
                 Response.Redirect("~/Default.aspx");
             }
+            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
+            {
+                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
+            }
+            if (CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]) != 0)
+            {
+            planID = CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]);
+            Session["PlanID"] = planID;
+            }
+            GridView2.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
+            GridView2.DataBind();
 
             planIDs = dlP.getCustomerPlanIDs(custID);
 
@@ -69,20 +101,21 @@ namespace WebApplication1
             if (!IsPostBack)
             {
                 //  planID = 0 means no plan is tracked for this Customer
-                planID = CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]);
+
                 //ddlCustomer.DataTextField = "Text";
                 //ddlCustomer.DataValueField = "Value";
-              //  ddlCustomer.DataSource = CatalogAccess.GetCustomers();
+                //  ddlCustomer.DataSource = CatalogAccess.GetCustomers();
 
-             //   ddlCustomer.DataBind();
-            }
-            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
-            {
-                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
+                //   ddlCustomer.DataBind();
+
+                DropDownList1.Text = Request.QueryString["Day"];
+                DropDownList2.Text = Request.QueryString["MealType"];
+                lblAddDisplay.Text = "";
+                lblDeleteResult.Text = "";
+                Table3.Visible = false;
+                Table4.Visible = false;
             }
 
-            GridView1.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
-            GridView1.DataBind();
 
         }
 
@@ -130,6 +163,7 @@ namespace WebApplication1
             bool flag = opln.trackDietPlan(planID);
             if (flag == true)
             {
+                Session["PlanID"] = planID;
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
                     "err_msg",
                     "alert('your plan has been tracked!');",
@@ -162,6 +196,194 @@ namespace WebApplication1
         protected void Button3_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/viewMyPlan.aspx?PlanID=" + planIDs[2]);
+        }
+
+        protected void btnUpdatePlan_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(Session["PlanID"]) != 0)
+            {
+                PlanID = Convert.ToInt32(Session["PlanID"]);
+            }
+            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
+            {
+                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
+            }
+            PlaceHolder1.Visible = true;
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            FoodName = DropDownList3.Text;
+            Day = DropDownList1.Text;
+            MealType = DropDownList2.Text;
+            if(Convert.ToInt32(Session["PlanID"]) !=0)
+            {
+            PlanID = Convert.ToInt32(Session["PlanID"]);
+            }
+            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
+            {
+                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
+            }
+
+            if (FoodName == null)
+            {
+                lblDeleteResult.Text = "Please select an item to delete";
+            }
+            MealID = CatalogAccess.getMealID(Day, MealType, PlanID);
+
+
+            int a = CatalogAccess.deleteFoodInMeal(FoodName, MealID);
+            if (a != 0)
+            {
+                lblDeleteResult.Text = FoodName + " has been deleted from your meal";
+            }
+            else
+            {
+                lblDeleteResult.Text = "OOooppps!";
+            }
+            Response.Redirect("CustomizeDietPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
+             DropDownList2.Text);
+        }
+
+        protected void btnShowAdd_Click(object sender, EventArgs e)
+        {
+            Table4.Visible = true;
+            Table3.Visible = false;
+        }
+
+        protected void btnShowDelete_Click(object sender, EventArgs e)
+        {
+            Table3.Visible = true;
+            Table4.Visible = false;
+        }
+
+        protected void ddlFoodName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            calorie = CatalogAccess.getFoodCalorie(ddlFoodName.Text);
+            unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
+            if (unit == 1)
+            {
+                rbtnWeight.Checked = false;
+                rbtnQuantity.Checked = true;
+                ddlUnit.Visible = false;
+            }
+            else if (unit != 1)
+            {
+                rbtnQuantity.Checked = false;
+                rbtnWeight.Checked = true;
+                ddlUnit.Visible = true;
+            }
+        }
+
+
+        protected void ddlFoodCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void tbxQuantity_TextChanged(object sender, EventArgs e)
+        {
+            unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
+            if (unit == 1)
+            {
+                rbtnWeight.Checked = false;
+                rbtnQuantity.Checked = true;
+                ddlUnit.Visible = false;
+            }
+            else if (unit != 1)
+            {
+                rbtnQuantity.Checked = false;
+                rbtnWeight.Checked = true;
+                ddlUnit.Visible = true;
+            }
+        }
+
+        protected void btnAddConfirm_Click(object sender, EventArgs e)
+        {
+            int a = 0;
+            FoodName = ddlFoodName.Text;
+            FoodID = CatalogAccess.getFoodID(FoodName);
+
+            Day = DropDownList1.Text;
+            MealType = DropDownList2.Text;
+            MealID = CatalogAccess.getMealID(Day, MealType, PlanID);
+
+            if (rbtnQuantity.Checked)
+            {
+                if (!String.IsNullOrEmpty(tbxQuantity.Text) && double.TryParse(tbxQuantity.Text, out quantity))
+                {
+                    a = CatalogAccess.insert_Into_FoodDetail(MealID, FoodID, quantity);
+                }
+            }
+            //This is for food unit as 'g' or 'oz'
+            //The default unit in database is 'g'
+            else if (rbtnWeight.Checked)
+            {
+                if (!String.IsNullOrEmpty(tbxQuantity.Text) && double.TryParse(tbxQuantity.Text, out weight))
+                {
+                    if (ddlUnit.Text == "g")
+                    {
+
+                    }
+                    else if (ddlUnit.Text == "oz")
+                    {
+                        weight = weight * 28.3495;
+                    }
+                    a = CatalogAccess.insert_Into_FoodDetail(MealID, weight, FoodID);
+                }
+            }
+
+            if (a != 0)
+            {
+                lblAddDisplay.Text = FoodName + " has been added to your meal " + Day + " " + MealType;
+            }
+            else
+            {
+                lblAddDisplay.Text = " Woooooops";
+            }
+            Response.Redirect("CustomizeDietPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
+                DropDownList2.Text);
+        }
+        //dailyCalorie not finish yet
+        protected void btnCheckCalorie_Click(object sender, EventArgs e)
+        {
+            List<String> MealTypes = new List<String>();
+            foreach (ListItem li in DropDownList2.Items)
+            {
+                MealTypes.Add(li.Text);
+            }
+
+            Day = DropDownList1.Text;
+
+            if (Convert.ToInt32(Session["PlanID"]) != 0)
+            {
+                PlanID = Convert.ToInt32(Session["PlanID"]);
+            }
+            if (Request.QueryString["PlanID"] != null && Request.QueryString["PlanID"] != "0")
+            {
+                planID = Convert.ToInt32(Request.QueryString["PlanID"]);
+            }
+
+            mealCalorie = CatalogAccess.getGridViewSumCalorieWithSelection(GridView1);
+            for (int i = 0; i < MealTypes.Count; i++)
+            {
+                dailyCalorie += CatalogAccess.getMealCalorie(Day, PlanID, MealTypes[i]);
+            }
+
+            lblMealCalorie.Text = "This meal's total calorie is:" + mealCalorie;
+
+            lblTotalCalorie.Text = "Today's total calorie is:" + dailyCalorie;
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
