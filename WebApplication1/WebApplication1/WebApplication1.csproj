@@ -195,6 +195,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="CustomizeDietPlan.aspx" />
+    <Content Include="Content\CustomizeDietPlan.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -215,6 +216,7 @@
     <Content Include="ViewMyPlan.aspx" />
     <Content Include="viewProvidedPlans.aspx" />
     <Content Include="ViewDailyLog.aspx" />
+    <Content Include="weeklyreport.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="MainPage.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -261,6 +263,13 @@
     </Compile>
     <Compile Include="App_Code\CatalogAccess.cs" />
     <Compile Include="App_Code\Plan.cs" />
+    <Compile Include="weeklyreport.aspx.cs">
+      <DependentUpon>weeklyreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="weeklyreport.aspx.designer.cs">
+      <DependentUpon>weeklyreport.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\Report.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
