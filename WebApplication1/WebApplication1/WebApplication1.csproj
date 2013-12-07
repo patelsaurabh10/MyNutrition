@@ -195,6 +195,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\ViewDailyLog.css" />
     <Content Include="CustomizeDietPlan.aspx" />
     <Content Include="Content\CustomizeDietPlan.css" />
     <Content Include="Images\accent.png" />
