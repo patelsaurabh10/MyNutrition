@@ -57,11 +57,45 @@ namespace WebApplication1
             {
                 if (DropListGender.SelectedValue == "Female")
                 {
-                    txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString(); 
+                    if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "KG")
+                    {
+                        txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)/0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                    }
+                    else if (DropDownList1.SelectedValue == "Inches" && DropDownList2.SelectedValue == "Lb")
+                    {
+
+                        txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                    }
+                    else if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "Lb")
+                    {
+                        txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                    }
+                    else
+                    {
+                         txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)/0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                    }
                 }
                 if (DropListGender.SelectedValue == "Male")
                 {
-                    txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                    if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "KG")
+                    {
+                         txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)/045359) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                       
+                    }
+                    else if (DropDownList1.SelectedValue == "Inches" && DropDownList2.SelectedValue == "Lb")
+                    {
+                         txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                        
+                    }
+                    else if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "Lb")
+                    { txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                       
+                    }
+                    else
+                    { txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)/0.45359) + (12.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                         
+                    }
+                    
                 }
             }        
         }

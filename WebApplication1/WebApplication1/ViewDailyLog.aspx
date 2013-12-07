@@ -200,6 +200,6 @@
         }
     </script>
     &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-    , and your followed diet plan calories will be<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-    , Please keeping the diet plan every day.
+ , and your followed diet plan calories will be<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+, Please keeping the diet plan every day.
 </asp:Content>

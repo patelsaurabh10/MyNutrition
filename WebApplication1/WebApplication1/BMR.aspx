@@ -18,12 +18,14 @@
  <asp:table runat="server" style="margin: 0 auto 0 auto;">
      <asp:TableRow>
          <asp:TableCell style="text-align:right;">
-      Height:</asp:TableCell><asp:TableCell style="text-align:left"><asp:TextBox ID="txtHeightcm" runat="server"></asp:TextBox></asp:TableCell>
+      Height:</asp:TableCell><asp:TableCell style="text-align:left"><asp:TextBox ID="txtHeightcm" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList1" runat="server"><asp:ListItem>Inches</asp:ListItem>
+            <asp:ListItem>CM</asp:ListItem></asp:DropDownList></asp:TableCell>
  </asp:TableRow>
           <asp:TableRow>
          <asp:TableCell style="text-align:right;">
         Weight:</asp:TableCell><asp:TableCell style="text-align:left">
-      <asp:TextBox ID="txtWeight" runat="server"></asp:TextBox></asp:TableCell>
+      <asp:TextBox ID="txtWeight" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList2" runat="server"><asp:ListItem>Lb</asp:ListItem>
+            <asp:ListItem>KG</asp:ListItem></asp:DropDownList></asp:TableCell>
  </asp:TableRow>
      <asp:TableRow>
          <asp:TableCell style="text-align:right;">
