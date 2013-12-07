@@ -532,13 +532,15 @@ namespace WebApplication1.App_Code
                 unit = CatalogAccess.getFoodUnit((String)MealDetail.Rows[i]["FoodName"]);
 
                 // decimal.TryParse((String)MealDetail.Rows[i]["Quantity"], out quantity);
-                if (MealDetail.Rows[i]["Quantity"].ToString() != null)
+                if (!String.IsNullOrEmpty(MealDetail.Rows[i]["Quantity"].ToString()))
                 {
                     quantity = (System.Decimal)MealDetail.Rows[i]["Quantity"];
                 }
-
-                //weight = (double)MealDetail.Rows[i]["FoodDetail.Weight"];
-                weight = 1;
+                else if (!String.IsNullOrEmpty(MealDetail.Rows[i]["Weight"].ToString()))
+                {
+                    weight = Convert.ToDouble((System.Decimal)MealDetail.Rows[i]["Weight"]);
+                }
+               // weight = 1;
 
                 if (quantity != 0)
                 {
