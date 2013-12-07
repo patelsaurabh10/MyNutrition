@@ -195,12 +195,14 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\ViewDailyLog.css" />
     <Content Include="CustomizeDietPlan.aspx" />
     <Content Include="Content\CustomizeDietPlan.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\MainPageButtons\BMR.png" />
+    <Content Include="Images\MainPageButtons\CheckFoodCaloriesButton.jpg" />
     <Content Include="Images\MainPageButtons\DailyLog.png" />
     <Content Include="Images\MainPageButtons\Plan.png" />
     <Content Include="Images\MainPageButtons\report.png" />

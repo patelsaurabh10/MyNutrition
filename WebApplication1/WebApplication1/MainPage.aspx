@@ -44,6 +44,13 @@
                     <br />Everybody wants to be more productive, and you can find loads of tools and systems designed to help you do just that.
                  But how do you measure your productivity in any given day? That's where a daily log comes in handy.</asp:TableCell>
             </asp:TableRow>
+        <asp:TableRow ID="TableRow1" runat="server">
+                <asp:TableCell ID="TableCell1" runat="server"><asp:ImageButton ID="ImageButton5"  runat="server" ImageUrl="Images/MainPageButtons/CheckFoodCaloriesButton.jpg" class="auto-style1" OnClick="btnCalorieCounter_Click"/></asp:TableCell>
+                <asp:TableCell ID="TableCell2" runat="server"><em><strong>Food Calorie Calculator</strong></em>
+                    <br />A calorie counter is a way to count your daily caloric intake using our easy to use caloric counter.
+                     Calorie counting is an easy way for you to manage your weight. If you have a daily caloric requirement that you want to meet,
+                     or you need to monitor your caloric intake, our calorie counting technique is for you. You can easily count the calories in food that you eat.</asp:TableCell>
+            </asp:TableRow>
             <asp:TableRow runat="server">
                 <asp:TableCell runat="server"><asp:ImageButton ID="ImageButton4"  runat="server" ImageUrl="Images/MainPageButtons/report.png" class="auto-style1" OnClick="btnReport_Click"/></asp:TableCell>
                 <asp:TableCell runat="server"><em><strong>Reports</strong></em>

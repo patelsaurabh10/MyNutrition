@@ -63,6 +63,14 @@ namespace WebApplication1
             }
         }
 
+        protected void btnCalorieCounter_Click(object sender, EventArgs e)
+        {
+            if (Session["CustomerID"] != null)
+            {
+                Response.Redirect("~/CheckFoodCalories.aspx");
+            }
+        }
+
         protected void btnReport_Click(object sender, EventArgs e)
         {
             if (Session["CustomerID"] != null)
