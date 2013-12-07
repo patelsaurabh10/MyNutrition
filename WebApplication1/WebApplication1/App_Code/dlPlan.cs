@@ -393,7 +393,7 @@ namespace WebApplication1
             SqlConnection conn = GetConnection(builder);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select CreatedDate from CustomerPlan";
+            cmd.CommandText = "select MIN(CreatedDate) from CustomerPlan";
             DateTime dt1 = (DateTime)cmd.ExecuteScalar();
         
 

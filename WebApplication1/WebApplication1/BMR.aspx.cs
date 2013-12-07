@@ -37,7 +37,7 @@ namespace WebApplication1
         {
 
             Regex regex = new Regex("^[0-9]*$");
-
+            double BMR =0;
             if (txtAge.Text.Length == 0 || txtHeightcm.Text.Length == 0 || txtWeight.Text.Length == 0)
             {
 
@@ -59,44 +59,69 @@ namespace WebApplication1
                 {
                     if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "KG")
                     {
-                        txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)/0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text)));
+                       
                     }
                     else if (DropDownList1.SelectedValue == "Inches" && DropDownList2.SelectedValue == "Lb")
                     {
 
-                        txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (4.7 * Convert.ToDouble(txtAge.Text)));
                     }
                     else if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "Lb")
                     {
-                        txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text)));
                     }
                     else
                     {
-                         txtResult.Text = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)/0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (4.7 * Convert.ToDouble(txtAge.Text))).ToString();
+                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (4.7 * Convert.ToDouble(txtAge.Text)));
                     }
                 }
                 if (DropListGender.SelectedValue == "Male")
                 {
                     if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "KG")
                     {
-                         txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)/045359) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text)));
                        
                     }
                     else if (DropDownList1.SelectedValue == "Inches" && DropDownList2.SelectedValue == "Lb")
                     {
-                         txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (6.8 * Convert.ToDouble(txtAge.Text)));
                         
                     }
                     else if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "Lb")
-                    { txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                    {
+                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text)));
                        
                     }
                     else
-                    { txtResult.Text = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)/0.45359) + (12.7 * Convert.ToDouble(txtHeightcm.Text)/2.54) - (6.8 * Convert.ToDouble(txtAge.Text))).ToString();
+                    {
+                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (12.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (6.8 * Convert.ToDouble(txtAge.Text)));
                          
                     }
                     
                 }
+
+
+             if (DropDownList3.SelectedValue == "No exercise")
+                {
+                    BMR = BMR*1.2;
+                }
+                else if (DropDownList3.SelectedValue == "Light exercise (1–3 days per week)")
+                {
+                    BMR = BMR*1.375;
+                }else if (DropDownList3.SelectedValue =="Moderate exercise (3–5 days per week)")
+                {
+                    BMR = BMR*1.55;
+                }else if (DropDownList3.SelectedValue =="Heavy exercise (6–7 days per week)")
+                {
+                    BMR = BMR*1.725;
+                }
+                else if (DropDownList3.SelectedValue =="Very heavy exercise (twice per day, extra heavy workouts)")
+                {
+                    BMR = BMR*1.9;
+                }
+
+                txtResult.Text = BMR.ToString();
             }        
         }
 

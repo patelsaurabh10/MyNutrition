@@ -37,6 +37,18 @@
             <asp:ListItem>Male</asp:ListItem>
             <asp:ListItem>Female</asp:ListItem>
         </asp:DropDownList></asp:TableCell>
+           
+ </asp:TableRow>
+      <asp:TableRow>
+         <asp:TableCell style="text-align:right;">
+        Activity:</asp:TableCell><asp:TableCell style="text-align:left"><asp:DropDownList ID="DropDownList3" runat="server">
+            <asp:ListItem>No exercise</asp:ListItem>
+            <asp:ListItem>Light exsercise (1-3 days per week)</asp:ListItem>
+            <asp:ListItem>Moderate exercise (3–5 days per week)</asp:ListItem>
+            <asp:ListItem>Heavy exercise (6–7 days per week)</asp:ListItem>
+            <asp:ListItem>Very heavy exercise (twice per day, extra heavy workouts)</asp:ListItem>
+        </asp:DropDownList></asp:TableCell>
+           
  </asp:TableRow>
      </asp:table>
       <div style="margin-top:5px;">
