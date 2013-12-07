@@ -19,7 +19,7 @@ namespace WebApplication1
             Customer customer = dlCustomer.getCustomerByCustID((Int32)Session["CustomerID"]);
             String custFirstName = customer.FirstName;
             String custLastName = customer.LastName;
-            lblWelcome.Text = "Welcome back, dear " + custFirstName + " " + custLastName;
+            lblWelcome.Text = "Welcome back, Dear " + custFirstName + " " + custLastName + "!";
 
 
             if (!IsPostBack)

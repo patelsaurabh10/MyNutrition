@@ -1,0 +1,13 @@
+﻿#center {
+     width:780px; margin:0 auto 0 auto;
+     text-align:center;
+}
+
+#paragraph {
+    
+    width:760px;
+    margin:0 auto 0 auto;
+    text-align:center;
+    color: white;
+    background-color: grey;
+}
