@@ -55,10 +55,10 @@
     <div id="footer">
              <hr style="background-color:black; width:850px; " />
             <ul id="horizontal-lists">
-                <li><a href="#">BMI</a></li>
-                <li><a href="#">Plan</a></li>
+                <li><a href="#">BMR</a></li>
+                <li><a href="#">Diet Plan</a></li>
                 <li><a href="#">Daily Log</a></li>
-                <li><a href="#">Report</a></li>
+                <li><a href="#">Reports</a></li>
                 
             </ul>            
         </div>
