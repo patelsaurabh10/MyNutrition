@@ -13,19 +13,19 @@
     <p id="paragraph">If you've noticed that every year, it becomes harder to eat whatever you want and stay slim, you've also learnt that your BMR decreases as you age. Likewise, depriving yourself of food in hopes of losing weight also decreases your BMR, a foil to your intentions. However, a regular routine of cardiovascular exercise can increase your BMR, improving your health and fitness when your body's ability to burn energy gradually slows down.</p>
     <div id="centerBMR">
         <fieldset>
-            <legend>BMI Calculator</legend>
+            <legend>BMR Calculator</legend>
     <form action="BMR.aspx" method="post" id="frmBMR">
  <asp:table runat="server" style="margin: 0 auto 0 auto;">
      <asp:TableRow>
          <asp:TableCell style="text-align:right;">
-      Height:</asp:TableCell><asp:TableCell style="text-align:left"><asp:TextBox ID="txtHeightcm" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList1" runat="server"><asp:ListItem>Inches</asp:ListItem>
-            <asp:ListItem>CM</asp:ListItem></asp:DropDownList></asp:TableCell>
+      Height:</asp:TableCell><asp:TableCell style="text-align:left"><asp:TextBox ID="txtHeightcm" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList1" runat="server"><asp:ListItem>inches</asp:ListItem>
+            <asp:ListItem>cm</asp:ListItem></asp:DropDownList></asp:TableCell>
  </asp:TableRow>
           <asp:TableRow>
          <asp:TableCell style="text-align:right;">
         Weight:</asp:TableCell><asp:TableCell style="text-align:left">
-      <asp:TextBox ID="txtWeight" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList2" runat="server"><asp:ListItem>Lb</asp:ListItem>
-            <asp:ListItem>KG</asp:ListItem></asp:DropDownList></asp:TableCell>
+      <asp:TextBox ID="txtWeight" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList2" runat="server"><asp:ListItem>lb</asp:ListItem>
+            <asp:ListItem>kg</asp:ListItem></asp:DropDownList></asp:TableCell>
  </asp:TableRow>
      <asp:TableRow>
          <asp:TableCell style="text-align:right;">

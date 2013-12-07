@@ -160,7 +160,8 @@
     </td>
   </tr>
 </table>
-<asp:Button ID="btnevaluate" CssClass="buttons" runat="server" Text="Evaluate" OnClick="btnevaluate_Click" />&nbsp;<asp:Label ID="Label1" runat="server" Text="Label"> Your total calories of the food intake will be</asp:Label>
+        <div style="margin:0 auto 0 auto; width:90px">
+<asp:Button ID="btnevaluate" CssClass="buttons" runat="server" Text="Evaluate" OnClick="btnevaluate_Click" /></div>&nbsp;<asp:Label ID="Label1" runat="server" Text="Label"> Your total calories of the food intake will be</asp:Label>
     <script type="text/javascript">
         function total() {
             var double1;
