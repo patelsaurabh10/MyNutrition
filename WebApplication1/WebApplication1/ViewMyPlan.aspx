@@ -33,7 +33,9 @@
 
     <br />
     <asp:Button ID="btnUpdatePlan" runat="server" OnClick="btnUpdatePlan_Click" Text="Update Plan" />
-    (update tracked plan)<br />
+    (update selected plan)
+    <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Go Back" />
+    <br />
     <br />
     <link href="Content/CustomizeDietPlan.css" rel="stylesheet" />
 
@@ -79,7 +81,7 @@
                 </asp:TableRow>
         <asp:TableRow ID="TableRow25" runat="server">
             <asp:TableCell ColumnSpan="2" style ="text-align:right">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceMeal" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="FoodName" Visible="True">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceMeal" AllowPaging="True" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="FoodName" Visible="True" onselectedindexchanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowSelectButton="True" />

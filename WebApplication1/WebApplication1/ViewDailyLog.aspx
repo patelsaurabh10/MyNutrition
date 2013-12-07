@@ -160,8 +160,10 @@
     </td>
   </tr>
 </table>
-        <div style="margin:0 auto 0 auto; width:90px">
-<asp:Button ID="btnevaluate" CssClass="buttons" runat="server" Text="Evaluate" OnClick="btnevaluate_Click" /></div>&nbsp;<asp:Label ID="Label1" runat="server" Text="Label"> Your total calories of the food intake will be</asp:Label>
+        <div style="margin:0 auto 0 auto; width:52px">
+<asp:Button ID="btnevaluate" CssClass="buttons" runat="server" Text="Evaluate" OnClick="btnevaluate_Click" /></div>
+        <asp:Table runat="server"><asp:TableRow><asp:TableCell>
+        <asp:Label ID="Label1" runat="server" Text="Your total calories of food intake will be:"/> </asp:TableCell><asp:TableCell>
     <script type="text/javascript">
         function total() {
             var double1;
@@ -201,8 +203,8 @@
             document.getElementById("test").value =total.toString();
         }
     </script>
-    &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
- , and your followed diet plan calories will be<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-, Please keeping the diet plan every day.
+<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
+ Your followed diet plan calories will be:</asp:TableCell><asp:TableCell><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
+Please keep track of your diet plan every day.</asp:TableCell></asp:TableRow></asp:Table>
         </div>
 </asp:Content>
