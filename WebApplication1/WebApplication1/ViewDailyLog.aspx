@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewDailyLog.aspx.cs" Inherits="WebApplication1.WebForm3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    
     <style type="text/css">
         .auto-style1
         {
@@ -10,7 +11,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-   
+   <link href="Content/ViewDailyLog.css" rel="stylesheet" />
+    <br />
+    <div id="center">
     <asp:DropDownList ID="ddlCustomer" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCustomer_SelectedIndexChanged">
     </asp:DropDownList>
     <br />
@@ -26,15 +29,13 @@
 
         </Columns>
     </asp:GridView>
-    <asp:Button ID="btncomment" runat="server" Text="Add Comment" OnClick="btncomment_Click" />
+   <div style="margin:0 auto 0 auto; width:90px"> <asp:Button ID="btncomment" CssClass="buttons" runat="server" Text="Add Comment" OnClick="btncomment_Click" /></div>
  <br />
 
-  
+  <fieldset><legend>What Food Did You Eat?</legend>
     <asp:Table ID="Table4" runat="server" Visible="False">
         <asp:TableRow ID="TableRow3" runat="server">
-            <asp:TableCell>
-              What food did you eat?
-        </asp:TableCell>
+            <asp:TableCell>Food Category</asp:TableCell>
             <asp:TableCell>
                 <input type="text" id="txtfoodCatgories"/>
             </asp:TableCell>
@@ -56,8 +57,8 @@
             <input type="text" id="txtdescrp"/></asp:TableCell></asp:TableRow>
         <asp:TableRow ID="TableRow6" runat="server">
              <asp:TableCell>
-                 <input name="Submit5" type="button" onClick=add_row() class="button" value=" Add ">
-        <input name="Submit33" onclick=del_row() type="button" class="button" value=" Delete ">
+                 <input name="Submit5" type="button" onClick=add_row() class="buttons" value=" Add ">
+        <input name="Submit33" onclick=del_row() type="button" class="buttons" value=" Delete ">
                  
                  </asp:TableCell>
         </asp:TableRow>
@@ -67,7 +68,7 @@
             <asp:TableCell></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-        
+        </fieldset>
    
     <script>
        
@@ -138,7 +139,7 @@
             <div align="center">Food Catagorie</div></td>
           <td class="auto-style1">
             <div align="center">Food Name
-                <input name=Number type=hidden >
+                <input name=Number type=hidden />
           </div></td>
           
             <td class="auto-style1">
@@ -154,12 +155,15 @@
           
         </tr>
       </table>
-        <br>
+        <br />
         &nbsp;
     </td>
   </tr>
 </table>
-<asp:Button ID="btnevaluate" runat="server" Text="Evaluate" OnClick="btnevaluate_Click" />&nbsp;<asp:Label ID="Label1" runat="server" Text="Label"> Your total calories of the food intake will be</asp:Label>
+        <div style="margin:0 auto 0 auto; width:52px">
+<asp:Button ID="btnevaluate" CssClass="buttons" runat="server" Text="Evaluate" OnClick="btnevaluate_Click" /></div>
+        <asp:Table runat="server"><asp:TableRow><asp:TableCell>
+        <asp:Label ID="Label1" runat="server" Text="Your total calories of food intake will be:"/> </asp:TableCell><asp:TableCell>
     <script type="text/javascript">
         function total() {
             var double1;
@@ -199,7 +203,8 @@
             document.getElementById("test").value =total.toString();
         }
     </script>
-    &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
- , and your followed diet plan calories will be<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-, Please keeping the diet plan every day.
+<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
+ Your followed diet plan calories will be:</asp:TableCell><asp:TableCell><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
+Please keep track of your diet plan every day.</asp:TableCell></asp:TableRow></asp:Table>
+        </div>
 </asp:Content>

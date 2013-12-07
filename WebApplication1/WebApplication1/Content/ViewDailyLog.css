@@ -1,33 +1,13 @@
-﻿fieldset {
-	-webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    -webkit-box-shadow: 5px 5px 5px #828282;
-    -moz-box-shadow: 5px 5px 5px #828282;
-    box-shadow: 5px 5px 5px #828282;
-    background-color:#B3F46D;
-    text-align:center;
-    width: 392px;
+﻿#center {
+    width:900px; margin:0 auto 0 auto;
 }
-#paragraph {
-    text-indent:20px; 
-    border-style:dashed; 
-    border-color:blue;
-    padding:5px;
-    width:850px;
-    margin:0 auto 0 auto;
-}
-#centerBMR {
-    width:363px; 
-margin:0 auto 0 auto;
-}
-.buttons {
+ .buttons {
             font-size: 11px;
             font-weight: bold;
             font-family:  Arial;
             color: #ffffff;
             min-width: 54px;
-       height: 18px; 
+       height: 24px; 
        white-space: nowrap;   
        cursor: pointer;  
        outline: 0 none;
@@ -53,5 +33,15 @@ background: -webkit-gradient(linear, left top, left bottom, from(#5384BE), to(#4
     background: -moz-linear-gradient(top, #85B6F0, #579AEB); /* for firefox 3.6+ */
     background: -o-linear-gradient(top, #85B6F0, #579AEB); /* for Opera */
 }
-
-     
+ fieldset {
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 5px 5px 5px #828282;
+    -moz-box-shadow: 5px 5px 5px #828282;
+    box-shadow: 5px 5px 5px #828282;
+    background-color:#B3F46D;
+    text-align:center;
+    width: 392px;
+    margin: 0 auto 0 auto;
+}
