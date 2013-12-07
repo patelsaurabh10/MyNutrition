@@ -766,9 +766,8 @@ namespace WebApplication1.App_Code
         {
             Random random = new Random();
             int randomNumber = random.Next(0, 11);
-           String tip =  dlDailyTips.getTipOfTheDay(randomNumber);
-
-           return tip;
+            String tip =  "\"" + dlDailyTips.getTipOfTheDay(randomNumber) + "\"";
+            return tip;
         }
 
         public static int getTrackedPlanByCustID(int custID)
