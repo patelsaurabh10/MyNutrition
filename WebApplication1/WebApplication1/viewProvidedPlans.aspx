@@ -339,7 +339,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
-             <asp:TableCell ID="TableCell44" runat="server" style="text-align:center">
+             <asp:TableCell ID="TableCell44" runat="server" style="text-align:center; color:darkblue; font-weight:bold">
                  Summary Calories:
                  <asp:Label ID="lblTueSumCalorie" runat="server" Text=" "></asp:Label>
              </asp:TableCell>
@@ -494,7 +494,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
-             <asp:TableCell ID="TableCell47" runat="server" style="text-align:center">
+             <asp:TableCell ID="TableCell47" runat="server" style="text-align:center; color:darkblue; font-weight:bold">
                  Summary Calories:
                  <asp:Label ID="lblWesSumCalorie" runat="server" Text=" "></asp:Label>
              </asp:TableCell>
@@ -651,7 +651,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
-             <asp:TableCell ID="TableCell50" runat="server" style="text-align:center">
+             <asp:TableCell ID="TableCell50" runat="server" style="text-align:center; color:darkblue; font-weight:bold">
                  Summary Calories:
                  <asp:Label ID="lblThurSumCalorie" runat="server" Text=" "></asp:Label>
              </asp:TableCell>
@@ -807,7 +807,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
-             <asp:TableCell ID="TableCell53" runat="server" style="text-align:center">
+             <asp:TableCell ID="TableCell53" runat="server" style="text-align:center; color:darkblue; font-weight:bold">
                  Summary Calories:
                  <asp:Label ID="lblFriSumCalorie" runat="server" Text=" "></asp:Label>
              </asp:TableCell>
@@ -963,7 +963,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
-             <asp:TableCell ID="TableCell56" runat="server" style="text-align:center">
+             <asp:TableCell ID="TableCell56" runat="server" style="text-align:center; color:darkblue; font-weight:bold">
                  Summary Calories:
                  <asp:Label ID="lblSatSumCalorie" runat="server" Text=" "></asp:Label>
              </asp:TableCell>
@@ -1119,7 +1119,7 @@
                     </SelectParameters>
                 </asp:SqlDataSource>
             </asp:TableCell>
-             <asp:TableCell ID="TableCell59" runat="server" style="text-align:center">
+             <asp:TableCell ID="TableCell59" runat="server" style="text-align:center; color:darkblue; font-weight:bold">
                  Summary Calories:
                  <asp:Label ID="lblSunSumCalorie" runat="server" Text=" "></asp:Label>
              </asp:TableCell>
