@@ -12,7 +12,7 @@ namespace WebApplication1
 {
     public partial class ViewMyPlan : System.Web.UI.Page
     {
-        int custID, planID = 0;
+        int custID;
         List<String> planDescs = new List<String>();
         List<int> planIDs = new List<int>();
         String message = null;
@@ -36,7 +36,6 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (Convert.ToInt32(Session["PlanID"]) != 0)
             {
                 PlanID = Convert.ToInt32(Session["PlanID"]); // from customize
@@ -55,12 +54,12 @@ namespace WebApplication1
                 Response.Redirect("~/Default.aspx");
             }
 
-            if (CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]) != 0)
+            if (Request.QueryString["Day"]!=null)
             {
-            planID = CatalogAccess.getTrackedPlanByCustID((int)Session["CustomerID"]);
-            Session["PlanID"] = planID;
+                PlaceHolder1.Visible = true;
             }
-            GridView2.DataSource = CatalogAccess.GetCastomerPlans(planID.ToString());
+
+            GridView2.DataSource = CatalogAccess.GetCastomerPlans(PlanID.ToString());
             GridView2.DataBind();
 
             planIDs = dlP.getCustomerPlanIDs(custID);
@@ -95,6 +94,7 @@ namespace WebApplication1
                 }
 
             }
+
             if (!IsPostBack)
             {
                 //  planID = 0 means no plan is tracked for this Customer
@@ -125,14 +125,14 @@ namespace WebApplication1
         protected void btnDeletePlan_Click(object sender, EventArgs e)
         {
             //never delete system plan
-            if (planID > 10)
+            if (PlanID > 10)
             {
-                message = CatalogAccess.deleteCustomerPlan(planID, custID);
+                message = CatalogAccess.deleteCustomerPlan(PlanID, custID);
                 if (message.StartsWith("Effeced"))
                 {
                     ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
            "err_msg",
-           "alert('your plan" + planID + " has been deleted!');",
+           "alert('your plan" + PlanID + " has been deleted!');",
            true);
                     Response.Redirect("~/ViewMyPlan.aspx");
                 }
@@ -160,10 +160,10 @@ namespace WebApplication1
         {
 
             dlPlan opln = new dlPlan();
-            bool flag = opln.trackDietPlan(planID);
+            bool flag = opln.trackDietPlan(PlanID);
             if (flag == true)
             {
-                Session["PlanID"] = planID;
+                Session["PlanID"] = PlanID;
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
                     "err_msg",
                     "alert('your plan has been tracked!');",
@@ -223,20 +223,23 @@ namespace WebApplication1
             {
                 lblDeleteResult.Text = "Please select an item to delete";
             }
-            MealID = CatalogAccess.getMealID(Day, MealType, PlanID);
-
-
-            int a = CatalogAccess.deleteFoodInMeal(FoodName, MealID);
-            if (a != 0)
-            {
-                lblDeleteResult.Text = FoodName + " has been deleted from your meal";
-            }
             else
             {
-                lblDeleteResult.Text = "OOooppps!";
+                MealID = CatalogAccess.getMealID(Day, MealType, PlanID);
+
+
+                int a = CatalogAccess.deleteFoodInMeal(FoodName, MealID);
+                if (a != 0)
+                {
+                    lblDeleteResult.Text = FoodName + " has been deleted from your meal";
+                }
+                else
+                {
+                    lblDeleteResult.Text = "OOooppps!";
+                }
+                Response.Redirect("ViewMyPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
+                 DropDownList2.Text);
             }
-            Response.Redirect("CustomizeDietPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
-             DropDownList2.Text);
         }
 
         protected void btnShowAdd_Click(object sender, EventArgs e)
@@ -249,7 +252,14 @@ namespace WebApplication1
         {
             Table3.Visible = true;
             Table4.Visible = false;
+            btnDelete.Visible = false;
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDelete.Visible = true;
+        }
+        
 
         protected void ddlFoodName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -336,7 +346,7 @@ namespace WebApplication1
             {
                 lblAddDisplay.Text = " Woooooops";
             }
-            Response.Redirect("CustomizeDietPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
+            Response.Redirect("ViewMyPlan.aspx?Day=" + DropDownList1.Text + "&MealType=" +
                 DropDownList2.Text);
         }
         //dailyCalorie not finish yet
@@ -361,9 +371,9 @@ namespace WebApplication1
                 dailyCalorie += CatalogAccess.getMealCalorie(Day, PlanID, MealTypes[i]);
             }
 
-            lblMealCalorie.Text = "This meal's total calorie is:" + mealCalorie;
+            lblMealCalorie.Text = "This meal's total calorie is:" + Math.Round(mealCalorie, 2);
 
-            lblTotalCalorie.Text = "Today's total calorie is:" + dailyCalorie;
+            lblTotalCalorie.Text = "Today's total calorie is:" + Math.Round(dailyCalorie, 2);
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -374,6 +384,11 @@ namespace WebApplication1
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/MainPage.aspx");
         }
     }
 
