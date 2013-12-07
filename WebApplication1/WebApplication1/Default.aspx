@@ -22,11 +22,11 @@
     
        <asp:Label ID="lblLogin" runat="server" Text="Login Page:" /><br />
         <asp:Label ID="Label1" runat="server" Text="Username:"/>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+        <asp:TextBox ID="txbAccount" runat="server"></asp:TextBox><br />
     
   
         <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label>
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><br />
+        <asp:TextBox ID="txbPassword" runat="server"></asp:TextBox><br />
         <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Log in" />
         </div>
     

@@ -92,7 +92,7 @@ namespace WebApplication1
                 }
             }
 
-            lblCalories.Text = Convert.ToString(totalCalorie);
+            lblCalories.Text = Convert.ToString(Math.Round(totalCalorie,2));
             lblFoodName.Text = ddlFoodName.Text;
         }
         protected void ddlFoodCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,7 +116,5 @@ namespace WebApplication1
                 ddlUnit.Visible = true;
             }
         }
-
-
     }
 }

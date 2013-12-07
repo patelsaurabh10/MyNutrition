@@ -46,6 +46,31 @@ namespace WebApplication1
             return customer;
         }
 
+        public static Customer getCustomerByAccount(String account)
+        {
+            Customer customer = new Customer();
+            customer.Account = account;
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            SqlConnection conn = GetConnection(builder);
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select * from Customer WHERE Account = @Account";
+            cmd.Parameters.AddWithValue("@Account", account);
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                customer.FirstName = dr["FirstName"].ToString();
+                customer.LastName = dr["LastName"].ToString();
+                customer.Age = Convert.ToInt16(dr["Age"]);
+                customer.Gender = dr["Gender"].ToString();
+                customer.Email = dr["Email"].ToString();
+                customer.Account = dr["Account"].ToString();
+                customer.password = dr["password"].ToString();
+            }
+
+            return customer;
+        }
+
     }
     public class Customer
     {

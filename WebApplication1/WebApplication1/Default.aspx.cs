@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.App_Code;
 
 namespace WebApplication1
 {
@@ -16,9 +17,15 @@ namespace WebApplication1
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Session["CustomerID"] = 2;
-            Response.Redirect("~/MainPage.aspx");
+            String account = txbAccount.Text;
+            String inputPassword = txbPassword.Text;
 
+            if (CatalogAccess.authorizeCustomer(account, inputPassword))
+            {
+                Customer customer = dlCustomer.getCustomerByAccount(account);
+                Session["CustomerID"] = customer.CustID;
+                Response.Redirect("~/MainPage.aspx");
+            }
         }
     }
 }

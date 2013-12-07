@@ -788,5 +788,14 @@ namespace WebApplication1.App_Code
           
            return trackedPlanID;
         }
+
+        public static bool authorizeCustomer(String account, String inputPassword)
+        {
+            Customer customer = dlCustomer.getCustomerByAccount(account);
+            String password = customer.password;
+
+            bool result = password.Equals(inputPassword, StringComparison.Ordinal);
+            return result;
+        }
     }
 }
