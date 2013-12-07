@@ -5,7 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-
+    <link href="Content/AnnualContent.css" rel="stylesheet" />
+    <div id ="center">
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="View Annual Report" />
     <asp:Chart ID="chrtAnual" runat="server" OnLoad="Chart1_Load" Width="581px" Palette="Pastel">
     <series>
         <asp:Series Name="Followed" Font="Microsoft YaHei, 7.8pt, style=Bold" Label="#SERIESNAME" LegendText="FOLLOWED">
@@ -18,8 +20,7 @@
         </asp:ChartArea>
     </chartareas>
 </asp:Chart>
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="View Anual Report" />
     <br />
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    </div>
 </asp:Content>

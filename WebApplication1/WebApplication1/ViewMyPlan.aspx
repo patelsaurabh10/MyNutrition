@@ -4,6 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="Content/ViewMyPlan.css" rel="stylesheet" />
+    <div id ="center">
     <br />
     Select a plan you want to view:
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="planDesc1" Visible="False" />
@@ -40,7 +42,7 @@
     <link href="Content/CustomizeDietPlan.css" rel="stylesheet" />
 
    <br />
-        <div id="center">
+       
             <asp:PlaceHolder runat="server" ID="PlaceHolder1" Visible="false">
             <fieldset><legend>Customize Diet Plan</legend>
         <asp:Table ID="Table1" runat="server" Width="339px" >

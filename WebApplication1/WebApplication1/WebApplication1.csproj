@@ -133,12 +133,14 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="AnualReport.aspx" />
+    <Content Include="Content\AnnualContent.css" />
     <Content Include="Content\ChckFoodCalorie.css" />
     <Content Include="Content\BMICalculation.css" />
     <Content Include="BMR.aspx" />
     <Content Include="CheckFoodCalories.aspx" />
     <Content Include="ChoosePlan.aspx" />
     <Content Include="Content\ChoosePlan.css" />
+    <Content Include="Content\Default.css" />
     <Content Include="Content\MainPage.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -196,6 +198,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ViewDailyLog.css" />
+    <Content Include="Content\ViewMyPlan.css" />
     <Content Include="CustomizeDietPlan.aspx" />
     <Content Include="Content\CustomizeDietPlan.css" />
     <Content Include="Images\accent.png" />
