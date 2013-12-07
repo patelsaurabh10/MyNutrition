@@ -8,9 +8,9 @@
 
     <asp:Chart ID="chrtAnual" runat="server" OnLoad="Chart1_Load" Width="581px" Palette="Pastel">
     <series>
-        <asp:Series Name="Followed">
+        <asp:Series Name="Followed" Font="Microsoft YaHei, 7.8pt, style=Bold" Label="#SERIESNAME" LegendText="FOLLOWED">
         </asp:Series>
-        <asp:Series BorderColor="Yellow" ChartArea="ChartArea1" Name="Unfollowed">
+        <asp:Series BorderColor="Yellow" ChartArea="ChartArea1" Name="Unfollowed" Label="#SERIESNAME" LegendText="UNFOLLOWED">
         </asp:Series>
     </series>
     <chartareas>
