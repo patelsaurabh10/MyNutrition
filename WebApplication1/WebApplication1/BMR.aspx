@@ -52,8 +52,8 @@
  </asp:TableRow>
      </asp:table>
       <div style="margin-top:5px;">
-        <asp:Button ID="submit" runat="server" Text="Calculate" onclick="BMRCal_Click" /></div>
-      
+        <asp:Button ID="submit" CssClass="buttons" runat="server" Text="Calculate" onclick="BMRCal_Click" /></div>
+      <br />
       
         Your BMR will be:<asp:TextBox ID="txtResult" runat="server"></asp:TextBox>
   
@@ -62,8 +62,8 @@
 
     <br />
     <asp:Label ID="Label1" runat="server" Text="Choose a plan now"></asp:Label>
-&nbsp;<asp:Button ID="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Confirm" />
-
+&nbsp;<asp:Button ID="btnConfirm" CssClass="buttons" runat="server" OnClick="btnConfirm_Click" Text="Confirm" />
+<br />
             <asp:Panel ID="choosePlanPanel" runat="server" visible="false" >
                 <div style="width:280px;margin:0 auto 0 auto">
    <div class="button aqua">
