@@ -13,27 +13,19 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["CustomerID"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
             if (!IsPostBack)
             {
 
-                ddlCustomer.DataTextField = "Text";
-                ddlCustomer.DataValueField = "Value";
-                ddlCustomer.DataSource = CatalogAccess.GetCustomers();
-                ddlCustomer.DataBind();
             }
 
            
         }
         
-
-        protected void ddlCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dlPlan dlpl = new dlPlan();
-            int planID = dlpl.getTrackedDietPlan();
-            gvDailyLog.DataSource = CatalogAccess.GetCustomerDailyLog(planID.ToString());
-            gvDailyLog.DataBind();
-           
-        }/*
+/*
         public void chkStatus_OnCheckedChanged(object sender, EventArgs e)
         {
             CheckBox chkStatus = (CheckBox)sender;
@@ -109,8 +101,15 @@ namespace WebApplication1
             {
                 dlPlan dlpl = new dlPlan();
                 dlpl.updateDailyLog();
-
             }
+        }
+
+        protected void btnView_Click(object sender, EventArgs e)
+        {
+            dlPlan dlpl = new dlPlan();
+            int planID = dlpl.getTrackedDietPlan();
+            gvDailyLog.DataSource = CatalogAccess.GetCustomerDailyLog(planID.ToString());
+            gvDailyLog.DataBind();
         }
 
        

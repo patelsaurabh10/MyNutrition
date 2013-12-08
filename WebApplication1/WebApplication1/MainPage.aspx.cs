@@ -15,7 +15,12 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session["CustomerID"] = 2; 
+
+            if (Session["CustomerID"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+
             Customer customer = dlCustomer.getCustomerByCustID((Int32)Session["CustomerID"]);
             String custFirstName = customer.FirstName;
             String custLastName = customer.LastName;

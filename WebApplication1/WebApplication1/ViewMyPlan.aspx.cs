@@ -58,6 +58,11 @@ namespace WebApplication1
             {
                 PlaceHolder1.Visible = true;
             }
+            //display tracked plan
+            int trackedPlan = CatalogAccess.getTrackedPlanByCustID(custID);
+            String planDescription = CatalogAccess.getPlanDesc(trackedPlan);
+            lblTrackedPlan.Text = planDescription;
+
 
             GridView2.DataSource = CatalogAccess.GetCastomerPlans(PlanID.ToString());
             GridView2.DataBind();
@@ -134,6 +139,7 @@ namespace WebApplication1
            "err_msg",
            "alert('your plan" + PlanID + " has been deleted!');",
            true);
+                    Session.Remove("PlanID");
                     Response.Redirect("~/ViewMyPlan.aspx");
                 }
                 else
@@ -160,7 +166,7 @@ namespace WebApplication1
         {
 
             dlPlan opln = new dlPlan();
-            bool flag = opln.trackDietPlan(PlanID);
+            bool flag = opln.trackDietPlan(PlanID,custID);
             if (flag == true)
             {
                 Session["PlanID"] = PlanID;
@@ -169,17 +175,20 @@ namespace WebApplication1
                     "alert('your plan has been tracked!');",
                     true);
                 lbltest.Text = "your plan has been tracked!";
+
+                //display tracked plan
+                int trackedPlan = CatalogAccess.getTrackedPlanByCustID(custID);
+                String planDescription = CatalogAccess.getPlanDesc(trackedPlan);
+                lblTrackedPlan.Text = planDescription;
             }
             else
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-                   "err_msg",
-                   "alert('You can't track more plan, becuase it has already tracked before');",
-                   true);
+                    "err_msg",
+                    "alert('You can't track more plan, becuase it has already tracked before!');",
+                    true);
                 lbltest.Text = "You can't track more plan, becuase it has already tracked before";
             }
-
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -384,11 +393,6 @@ namespace WebApplication1
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnBack_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/MainPage.aspx");
         }
     }
 

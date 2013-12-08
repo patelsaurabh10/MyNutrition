@@ -1137,8 +1137,10 @@
 
     <asp:Button ID="btnCopy" runat="server" OnClick="btnCopy_Click" Text="Copy this plan to your own" Visible="False" />
 &nbsp;<asp:Label ID="lblCopyResult" runat="server" />
-
+<br />
+         <asp:PlaceHolder runat="server" ID="PlaceHolder1" Visible="false">
     &nbsp;You can
          <asp:Button ID="btnManagePlan" runat="server" OnClick="btnManagePlan_Click" Text="Manage your plan" />
-&nbsp;now!</div>
+&nbsp;now!</asp:PlaceHolder>
+             </div>
     </asp:Content>

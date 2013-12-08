@@ -13,13 +13,13 @@ namespace WebApplication1 {
     public partial class WebForm3 {
         
         /// <summary>
-        /// ddlCustomer control.
+        /// btnView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
+        protected global::System.Web.UI.WebControls.Button btnView;
         
         /// <summary>
         /// gvDailyLog control.
