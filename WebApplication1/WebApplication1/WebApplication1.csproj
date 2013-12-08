@@ -138,7 +138,6 @@
     <Content Include="Content\BMICalculation.css" />
     <Content Include="BMR.aspx" />
     <Content Include="CheckFoodCalories.aspx" />
-    <Content Include="ChoosePlan.aspx" />
     <Content Include="Content\ChoosePlan.css" />
     <Content Include="Content\Default.css" />
     <Content Include="Content\MainPage.css" />
@@ -199,7 +198,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ViewDailyLog.css" />
     <Content Include="Content\ViewMyPlan.css" />
-    <Content Include="CustomizeDietPlan.aspx" />
     <Content Include="Content\CustomizeDietPlan.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
@@ -222,7 +220,6 @@
     <Content Include="NutritionLogo.png" />
     <Content Include="packages.config" />
     <Content Include="Content\Template.css" />
-    <Content Include="ViewActualPlans.aspx" />
     <Content Include="ViewMyPlan.aspx" />
     <Content Include="viewProvidedPlans.aspx" />
     <Content Include="ViewDailyLog.aspx" />
@@ -342,20 +339,6 @@
     <Compile Include="CheckFoodCalories.aspx.designer.cs">
       <DependentUpon>CheckFoodCalories.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ChoosePlan.aspx.cs">
-      <DependentUpon>ChoosePlan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ChoosePlan.aspx.designer.cs">
-      <DependentUpon>ChoosePlan.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CustomizeDietPlan.aspx.cs">
-      <DependentUpon>CustomizeDietPlan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustomizeDietPlan.aspx.designer.cs">
-      <DependentUpon>CustomizeDietPlan.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -388,13 +371,6 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ViewActualPlans.aspx.cs">
-      <DependentUpon>ViewActualPlans.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewActualPlans.aspx.designer.cs">
-      <DependentUpon>ViewActualPlans.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewMyPlan.aspx.cs">
       <DependentUpon>ViewMyPlan.aspx</DependentUpon>

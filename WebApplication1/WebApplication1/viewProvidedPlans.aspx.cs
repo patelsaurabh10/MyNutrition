@@ -20,28 +20,30 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //delete the below line when deploy
-            Session["CustID"] = 2;
+            if (Session["CustomerID"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
 
             if (Request.QueryString["PlanID"] != "0")
             {
                 PlanID = Convert.ToInt32(Request.QueryString["PlanID"]);
             }
-            if (Session["CustID"] != null)
+            if (Session["CustomerID"] != null)
             {
-                CustID = (int)Session["CustID"];
+                CustID = (int)Session["CustomerID"];
             }
 
             planDesc = CatalogAccess.getPlanDesc(PlanID);
             lblPlanDesc.Text = planDesc;
 
-            lblMonSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewMonBreak) + CatalogAccess.getGridViewSumCalorie(GridViewMonLunch) + CatalogAccess.getGridViewSumCalorie(GridViewMonDinner) + CatalogAccess.getGridViewSumCalorie(GridViewMonSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewMonSnack2));
-            lblTueSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewTueBreak) + CatalogAccess.getGridViewSumCalorie(GridViewTueLunch) + CatalogAccess.getGridViewSumCalorie(GridViewTueDinner) + CatalogAccess.getGridViewSumCalorie(GridViewTueSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewTueSnack2));
-            lblWesSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewWedBreak) + CatalogAccess.getGridViewSumCalorie(GridViewWedLunch) + CatalogAccess.getGridViewSumCalorie(GridViewWedDinner) + CatalogAccess.getGridViewSumCalorie(GridViewWedSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewWedSnack2));
-            lblThurSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewThurBreak) + CatalogAccess.getGridViewSumCalorie(GridViewThurLunch) + CatalogAccess.getGridViewSumCalorie(GridViewThurDinner) + CatalogAccess.getGridViewSumCalorie(GridViewThurSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewThurSnack2));
-            lblFriSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewFriBreak) + CatalogAccess.getGridViewSumCalorie(GridViewFriLunch) + CatalogAccess.getGridViewSumCalorie(GridViewFriDinner) + CatalogAccess.getGridViewSumCalorie(GridViewFriSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewFriSnack2));
-            lblSatSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSatBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSatLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSatDinner) + CatalogAccess.getGridViewSumCalorie(GridViewSatSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewSatSnack2));
-            lblSunSumCalorie.Text = Convert.ToString(CatalogAccess.getGridViewSumCalorie(GridViewSunBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSunLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSunDinner) + CatalogAccess.getGridViewSumCalorie(GridViewSunSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewSunSnack2));
+            lblMonSumCalorie.Text = Convert.ToString(Math.Round(CatalogAccess.getGridViewSumCalorie(GridViewMonBreak) + CatalogAccess.getGridViewSumCalorie(GridViewMonLunch) + CatalogAccess.getGridViewSumCalorie(GridViewMonDinner) + CatalogAccess.getGridViewSumCalorie(GridViewMonSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewMonSnack2),2));
+            lblTueSumCalorie.Text = Convert.ToString(Math.Round(CatalogAccess.getGridViewSumCalorie(GridViewTueBreak) + CatalogAccess.getGridViewSumCalorie(GridViewTueLunch) + CatalogAccess.getGridViewSumCalorie(GridViewTueDinner) + CatalogAccess.getGridViewSumCalorie(GridViewTueSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewTueSnack2),2));
+            lblWesSumCalorie.Text = Convert.ToString(Math.Round(CatalogAccess.getGridViewSumCalorie(GridViewWedBreak) + CatalogAccess.getGridViewSumCalorie(GridViewWedLunch) + CatalogAccess.getGridViewSumCalorie(GridViewWedDinner) + CatalogAccess.getGridViewSumCalorie(GridViewWedSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewWedSnack2),2));
+            lblThurSumCalorie.Text = Convert.ToString(Math.Round(CatalogAccess.getGridViewSumCalorie(GridViewThurBreak) + CatalogAccess.getGridViewSumCalorie(GridViewThurLunch) + CatalogAccess.getGridViewSumCalorie(GridViewThurDinner) + CatalogAccess.getGridViewSumCalorie(GridViewThurSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewThurSnack2),2));
+            lblFriSumCalorie.Text = Convert.ToString(Math.Round(CatalogAccess.getGridViewSumCalorie(GridViewFriBreak) + CatalogAccess.getGridViewSumCalorie(GridViewFriLunch) + CatalogAccess.getGridViewSumCalorie(GridViewFriDinner) + CatalogAccess.getGridViewSumCalorie(GridViewFriSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewFriSnack2),2));
+            lblSatSumCalorie.Text = Convert.ToString(Math.Round(CatalogAccess.getGridViewSumCalorie(GridViewSatBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSatLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSatDinner) + CatalogAccess.getGridViewSumCalorie(GridViewSatSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewSatSnack2),2));
+            lblSunSumCalorie.Text = Convert.ToString(Math.Round(CatalogAccess.getGridViewSumCalorie(GridViewSunBreak) + CatalogAccess.getGridViewSumCalorie(GridViewSunLunch) + CatalogAccess.getGridViewSumCalorie(GridViewSunDinner) + CatalogAccess.getGridViewSumCalorie(GridViewSunSnack1) + CatalogAccess.getGridViewSumCalorie(GridViewSunSnack2), 2));
         }
        
         protected void Button1_Click(object sender, EventArgs e)
@@ -89,6 +91,7 @@ namespace WebApplication1
             "alert('Congratulations! your plan has been successfully generated!');",
             true);
                         lblCopyResult.Text = "Congratulations!" + custFirstName + " " + custLastName + ", " + planName + " has been successfully generated!";
+                        PlaceHolder1.Visible = true;
                     }
                 }
             }

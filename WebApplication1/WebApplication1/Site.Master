@@ -59,6 +59,7 @@
                 <li><a href="../ViewMyPlan.aspx">Diet Plan</a></li>
                 <li><a href="../ViewDailyLog.aspx">Daily Log</a></li>
                 <li><a href="../AnualReport.aspx">Reports</a></li>
+               <li>  <a href="../MainPage.aspx">Main Page</a></li>
             </ul>            
         </div>
 </body>

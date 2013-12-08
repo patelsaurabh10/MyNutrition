@@ -19,9 +19,13 @@ namespace WebApplication1
         double totalCalorie = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["CustomerID"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
             calorie = CatalogAccess.getFoodCalorie(ddlFoodName.Text);
             unit = CatalogAccess.getFoodUnit(ddlFoodName.Text);
-            
+
         }
         protected void ddlFoodName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -72,6 +76,13 @@ namespace WebApplication1
                     totalCalorie = (double)calorie * quantity;
                     lblQuantityResult.Text = tbxQuantity.Text;
                 }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+              "err_msg",
+              "alert('Please enter a number to indicate your food Weight/Quantity');",
+              true);
+                }
             }
             //This is for food unit as 'g' or 'oz'
             //The default unit in database is 'g'
@@ -82,17 +93,24 @@ namespace WebApplication1
                     lblQuantityResult.Text = tbxQuantity.Text + ddlUnit.Text;
                     if (ddlUnit.Text == "g")
                     {
-                      
+
                     }
                     else if (ddlUnit.Text == "oz")
                     {
-                        quantity = quantity* 28.3495;
+                        quantity = quantity * 28.3495;
                     }
                     totalCalorie = (double)calorie * quantity / unit;
                 }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+            "err_msg",
+            "alert('Please enter a number to indicate your food Weight/Quantity');",
+            true);
+                }
             }
 
-            lblCalories.Text = Convert.ToString(Math.Round(totalCalorie,2));
+            lblCalories.Text = Convert.ToString(Math.Round(totalCalorie, 2));
             lblFoodName.Text = ddlFoodName.Text;
         }
         protected void ddlFoodCategory_SelectedIndexChanged(object sender, EventArgs e)

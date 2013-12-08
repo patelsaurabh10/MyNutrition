@@ -791,10 +791,18 @@ namespace WebApplication1.App_Code
 
         public static bool authorizeCustomer(String account, String inputPassword)
         {
+            bool result = false;
             Customer customer = dlCustomer.getCustomerByAccount(account);
-            String password = customer.password;
+            if (customer == null)
+            {
 
-            bool result = password.Equals(inputPassword, StringComparison.Ordinal);
+            }
+            else
+            {
+                String password = customer.password;
+                result = password.Equals(inputPassword, StringComparison.Ordinal);
+               
+            }
             return result;
         }
     }

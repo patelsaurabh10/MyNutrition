@@ -17,15 +17,46 @@ namespace WebApplication1
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            String account = txbAccount.Text;
-            String inputPassword = txbPassword.Text;
+            String account = null;
+            String inputPassword = null;
 
-            if (CatalogAccess.authorizeCustomer(account, inputPassword))
+            if (String.IsNullOrEmpty(txbAccount.Text))
             {
-                Customer customer = dlCustomer.getCustomerByAccount(account);
-                Session["CustomerID"] = customer.CustID;
-                Response.Redirect("~/MainPage.aspx");
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                                "err_msg",
+                                "alert('Account is empty!');",
+                                true);
             }
+            else if (String.IsNullOrEmpty(txbPassword.Text))
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                                               "err_msg",
+                                               "alert('Password is empty!');",
+                                               true);
+
+            }
+            else
+            {
+                account = txbAccount.Text;
+                inputPassword = txbPassword.Text;
+                if (CatalogAccess.authorizeCustomer(account, inputPassword))
+                {
+                    Customer customer = dlCustomer.getCustomerByAccount(account);
+
+                    Session["CustomerID"] = customer.CustID;
+                    Response.Redirect("~/MainPage.aspx");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                 "err_msg",
+                 "alert('Incorrect Password or Account!');",
+                 true);
+                }
+            }
+
+
+
         }
     }
 }

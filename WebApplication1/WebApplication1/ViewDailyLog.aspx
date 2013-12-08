@@ -11,11 +11,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-   <link href="Content/ViewDailyLog.css" rel="stylesheet" />
+    <link href="Content/ViewDailyLog.css" rel="stylesheet" />
     <br />
     <div id="center">
-    <asp:DropDownList ID="ddlCustomer" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCustomer_SelectedIndexChanged">
-    </asp:DropDownList>
+        <asp:Button ID="btnView" runat="server" OnClick="btnView_Click" Text="View Daily Log" />
     <br />
     <br />
     <asp:GridView ID="gvDailyLog" runat="server">
@@ -205,6 +204,4 @@
     </script>
 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
  Your followed diet plan calories will be:</asp:TableCell><asp:TableCell><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
-Please keep track of your diet plan every day.</asp:TableCell></asp:TableRow></asp:Table>
-        </div>
-</asp:Content>
+Please keep track of your diet plan every day.</asp:TableCell></asp:TableRow></asp:Table></div></asp:Content>

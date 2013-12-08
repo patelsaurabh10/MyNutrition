@@ -12,6 +12,8 @@
     <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="planDesc2" Visible="False" />
     <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="planDesc3" Visible="False" />
     <br />
+        Current Tracked Plan:
+        <asp:Label ID="lblTrackedPlan" runat="server" Text="None"></asp:Label>
     <br />
 
     <br />
@@ -35,18 +37,16 @@
     <hr />
 
     <br />
-    Edit Plan:<br />
+        <br />
     
 <br />
     <asp:Button ID="btnDeletePlan" runat="server" OnClick="btnDeletePlan_Click" Text="Delete Plan" OnClientClick = "return confirm('Are you sure you want to delete?');"/>
 
     <asp:Button ID="btnTrack" runat="server" OnClick="btnTrack_Click" Text="Track Plan" />
-    <asp:Label ID="lbltest" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="lbltest" runat="server"></asp:Label>
 
     <br />
     <asp:Button ID="btnUpdatePlan" runat="server" OnClick="btnUpdatePlan_Click" Text="Update Plan" />
-    (update selected plan)
-    <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Go Back" />
     <br />
     <br />
     <link href="Content/CustomizeDietPlan.css" rel="stylesheet" />
