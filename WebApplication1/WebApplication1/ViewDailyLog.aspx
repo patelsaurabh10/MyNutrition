@@ -11,14 +11,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-   <link href="Content/ViewDailyLog.css" rel="stylesheet" />
+    <link href="Content/ViewDailyLog.css" rel="stylesheet" />
     <br />
     <div id="center">
-    <asp:DropDownList ID="ddlCustomer" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCustomer_SelectedIndexChanged">
-    </asp:DropDownList>
+        <asp:Button ID="btnView" runat="server" OnClick="btnView_Click" Text="View Daily Log" />
     <br />
     <br />
-    <asp:GridView ID="gvDailyLog" runat="server">
+    <asp:GridView ID="gvDailyLog" runat="server" ForeColor="#333333">
+        <AlternatingRowStyle BackColor="White" />
+        <EditRowStyle BackColor="#2461BF" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
+        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+        <SortedDescendingHeaderStyle BackColor="#4870BE" />
         <Columns>
         <asp:TemplateField>
                     <ItemTemplate>
@@ -205,6 +215,4 @@
     </script>
 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
  Your followed diet plan calories will be:</asp:TableCell><asp:TableCell><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></asp:TableCell></asp:TableRow><asp:TableRow><asp:TableCell>
-Please keep track of your diet plan every day.</asp:TableCell></asp:TableRow></asp:Table>
-        </div>
-</asp:Content>
+Please keep track of your diet plan every day.</asp:TableCell></asp:TableRow></asp:Table></div></asp:Content>

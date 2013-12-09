@@ -16,9 +16,14 @@ namespace WebApplication1
         Plan plan = new Plan();
         double calorie;
         int PlanID;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["CustomerID"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
+
             if (!IsPostBack)
             {
                 calorie = 0;
@@ -30,14 +35,16 @@ namespace WebApplication1
                 BMRResult = Convert.ToDouble(Request.QueryString["BMR"]);
             }
 
-          
+
         }
 
         protected void BMRCal_Click(object sender, EventArgs e)
         {
 
+
             Regex regex = new Regex("^[0-9]*$");
-            double BMR =0;
+            double BMR = 0;
+            
             if (txtAge.Text.Length == 0 || txtHeightcm.Text.Length == 0 || txtWeight.Text.Length == 0)
             {
 
@@ -52,78 +59,127 @@ namespace WebApplication1
                 //  Response.Write("<script LANGUAGE='JavaScript' >alert('Please input the valid information')</script>");
                 ClientScript.RegisterOnSubmitStatement(this.GetType(),
        "alert", "alert('Please input the valid information')");
-            }
-            else
-            {
-                if (DropListGender.SelectedValue == "Female")
+            } if (DropListGender.SelectedValue == "Female")
                 {
-                    if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "KG")
+                    if (DropDownList1.SelectedValue == "cm" && DropDownList2.SelectedValue == "kg")
                     {
-                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text)));
-                       
+                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text) * 2.20462) + (4.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (4.7 * Convert.ToDouble(txtAge.Text)));
                     }
-                    else if (DropDownList1.SelectedValue == "Inches" && DropDownList2.SelectedValue == "Lb")
-                    {
-
-                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (4.7 * Convert.ToDouble(txtAge.Text)));
-                    }
-                    else if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "Lb")
+                    else if (DropDownList1.SelectedValue == "inch" && DropDownList2.SelectedValue == "lb")
                     {
                         BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text)));
+
+                    }
+                    else if (DropDownList1.SelectedValue == "cm" && DropDownList2.SelectedValue == "lb")
+                    {
+                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (4.7 * Convert.ToDouble(txtAge.Text)));
                     }
                     else
                     {
-                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (4.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (4.7 * Convert.ToDouble(txtAge.Text)));
+                        BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text) * 2.20462) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text)));
                     }
                 }
                 if (DropListGender.SelectedValue == "Male")
                 {
-                    if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "KG")
+                    if (DropDownList1.SelectedValue == "cm" && DropDownList2.SelectedValue == "kg")
                     {
-                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text)));
-                       
+                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text) * 2.20462) + (12.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (6.8 * Convert.ToDouble(txtAge.Text)));
                     }
-                    else if (DropDownList1.SelectedValue == "Inches" && DropDownList2.SelectedValue == "Lb")
-                    {
-                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (6.8 * Convert.ToDouble(txtAge.Text)));
-                        
-                    }
-                    else if (DropDownList1.SelectedValue == "CM" && DropDownList2.SelectedValue == "Lb")
+                    else if (DropDownList1.SelectedValue == "inch" && DropDownList2.SelectedValue == "lb")
                     {
                         BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text)));
-                       
+                    }
+                    else if (DropDownList1.SelectedValue == "cm" && DropDownList2.SelectedValue == "lb")
+                    {
+                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (6.8 * Convert.ToDouble(txtAge.Text)));
                     }
                     else
                     {
-                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text) / 0.45359) + (12.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (6.8 * Convert.ToDouble(txtAge.Text)));
-                         
+                        BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text) * 2.20462) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text)));
                     }
-                    
+
                 }
 
 
-             if (DropDownList3.SelectedValue == "No exercise")
+                if (DropDownList3.SelectedValue == "No exercise")
                 {
-                    BMR = BMR*1.2;
+                    BMR = BMR * 1.2;
                 }
-                else if (DropDownList3.SelectedValue == "Light exercise (1–3 days per week)")
+                else if (DropDownList3.SelectedValue == "Light exercise (1-3 days per week)")
                 {
-                    BMR = BMR*1.375;
-                }else if (DropDownList3.SelectedValue =="Moderate exercise (3–5 days per week)")
-                {
-                    BMR = BMR*1.55;
-                }else if (DropDownList3.SelectedValue =="Heavy exercise (6–7 days per week)")
-                {
-                    BMR = BMR*1.725;
+                    BMR = BMR * 1.375;
                 }
-                else if (DropDownList3.SelectedValue =="Very heavy exercise (twice per day, extra heavy workouts)")
+                else if (DropDownList3.SelectedValue == "Moderate exercise (3–5 days per week)")
                 {
-                    BMR = BMR*1.9;
+                    BMR = BMR * 1.55;
                 }
-
+                else if (DropDownList3.SelectedValue == "Heavy exercise (6–7 days per week)")
+                {
+                    BMR = BMR * 1.725;
+                }
+                else if (DropDownList3.SelectedValue == "Very heavy exercise (twice per day, extra heavy workouts)")
+                {
+                    BMR = BMR * 1.9;
+                }
+                BMR = Math.Round(BMR, 2);
                 txtResult.Text = BMR.ToString();
-            }        
+           
+        
+                
+               //BMI = ( Weight in Kilograms / ( Height in Meters x Height in Meters ) )
+
+          
+            
+
+              
+                txtBMI.Text = getBMI().ToString();
+
+            
+       }
+        protected double getBMI()
+               //BMI = ( Weight in Kilograms / ( Height in Meters x Height in Meters ) )
+        {
+            double BMI = 0;
+            double weight = 0;
+            double height = 0;
+           // BMI = (Convert.ToDouble(txtWeight.Text)/((Convert.ToDouble(txtHeightcm.Text)*Convert.ToDouble(txtHeightcm.Text))/10000);
+            if (DropDownList1.SelectedValue == "cm")
+            {
+                height = Convert.ToDouble(txtHeightcm.Text) / 100;
+            }
+            else if (DropDownList1.SelectedValue == "inch")
+            {
+                height = Convert.ToDouble(txtHeightcm.Text) /100 *2.54;
+            }
+            if (DropDownList2.SelectedValue == "kg")
+            {
+                weight = Convert.ToDouble(txtWeight.Text);
+            }
+            else if (DropDownList2.SelectedValue == "lb")
+            {
+                weight = Convert.ToDouble(txtWeight.Text) * 0.453592;
+            }
+            
+            BMI = weight / (height * height);
+            if (BMI <= 18.5)
+            {
+                lblBMIResult.Text = "UderWeight";
+            }
+            else if (18.5 < BMI && BMI<= 24.9)
+            {
+                lblBMIResult.Text = "Normal Weight";
+            }
+            else if (BMI > 24.9 && BMI < 30)
+            {
+                lblBMIResult.Text = "OverWeight";
+            }
+            else if (BMI > 30)
+            {
+                lblBMIResult.Text = "Obesity";
+            }
+            return Math.Round(BMI,2);
         }
+        
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -140,7 +196,7 @@ namespace WebApplication1
 
         protected void BtnMaintain_Click(object sender, EventArgs e)
         {
-            calorie = Convert.ToDouble(txtResult.Text); 
+            calorie = Convert.ToDouble(txtResult.Text);
             PlanID = plan.choosePlanID(calorie);
             if (PlanID != 0)
             {
@@ -151,7 +207,7 @@ namespace WebApplication1
 
         protected void BtnGain_Click(object sender, EventArgs e)
         {
-            calorie = Convert.ToDouble(txtResult.Text) +500;
+            calorie = Convert.ToDouble(txtResult.Text) + 500;
             PlanID = plan.choosePlanID(calorie);
             if (PlanID != 0)
             {
@@ -166,7 +222,7 @@ namespace WebApplication1
 
         protected void BtnLoose_Click(object sender, EventArgs e)
         {
-            calorie = Convert.ToDouble(txtResult.Text) -500;
+            calorie = Convert.ToDouble(txtResult.Text) - 500;
             PlanID = plan.choosePlanID(calorie);
             if (PlanID != 0)
             {
