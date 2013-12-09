@@ -13,16 +13,17 @@
 <body>
      <div id="header"><br />
         <div id="banner">
-            <a href="#"><img alt="Logo" id="logo" src="NutritionLogo.png" /></a>
+            <a href="../MainPage.aspx"><img alt="Logo" id="logo" src="NutritionLogo.png" /></a>
         </div>
         <div id="login">
-            <h6><a href="#">Logout</a></h6>
+            <h6><a href="../Default.aspx" id ="logout">Logout</a></h6>
         </div>
         
     </div>
         <div id="centermenu"> 
         <nav>
 		<ul class="menu">
+            <li><a href="../MainPage.aspx">Home</a></li>
 			<li><a href="../BMR.aspx">BMR</a></li>
 			<li><a href="../ViewMyPlan.aspx"><span>Diet Plan</span></a>
 				<!--<ul class="menu-hover">

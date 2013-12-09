@@ -153,11 +153,11 @@ namespace WebApplication1
             }
             if (DropDownList2.SelectedValue == "kg")
             {
-                height = Convert.ToDouble(txtWeight.Text);
+                weight = Convert.ToDouble(txtWeight.Text);
             }
             else if (DropDownList2.SelectedValue == "lb")
             {
-                height = Convert.ToDouble(txtWeight.Text) * 0.453592;
+                weight = Convert.ToDouble(txtWeight.Text) * 0.453592;
             }
             
             BMI = weight / (height * height);
