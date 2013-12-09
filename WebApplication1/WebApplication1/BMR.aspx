@@ -18,18 +18,12 @@
  <asp:table runat="server" style="margin: 0 auto 0 auto;">
      <asp:TableRow>
          <asp:TableCell style="text-align:right;">
-      Height:</asp:TableCell><asp:TableCell style="text-align:left"><asp:TextBox ID="txtHeightcm" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem>cm</asp:ListItem>
-          <asp:ListItem>inches</asp:ListItem>
-  </asp:DropDownList></asp:TableCell>
+      Height:</asp:TableCell><asp:TableCell style="text-align:left"><asp:TextBox ID="txtHeightcm" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList1" runat="server"><asp:ListItem>cm</asp:ListItem><asp:ListItem>inch</asp:ListItem></asp:DropDownList></asp:TableCell>
  </asp:TableRow>
           <asp:TableRow>
          <asp:TableCell style="text-align:right;">
         Weight:</asp:TableCell><asp:TableCell style="text-align:left">
-      <asp:TextBox ID="txtWeight" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList2" runat="server">
-            <asp:ListItem>kg</asp:ListItem>
-          <asp:ListItem>lb</asp:ListItem>
-  </asp:DropDownList></asp:TableCell>
+      <asp:TextBox ID="txtWeight" runat="server"></asp:TextBox><asp:DropDownList ID="DropDownList2" runat="server" ><asp:ListItem>kg</asp:ListItem><asp:ListItem>lb</asp:ListItem></asp:DropDownList></asp:TableCell>
  </asp:TableRow>
      <asp:TableRow>
          <asp:TableCell style="text-align:right;">
@@ -63,6 +57,11 @@
   
       <br />
      </form>
+
+            Your BMI will be:
+            <asp:TextBox ID="txtBMI" runat="server"> </asp:TextBox>
+
+            <asp:Label ID="lblBMIResult" runat="server"></asp:Label>
 
     <br />
     <asp:Label ID="Label1" runat="server" Text="Choose a plan now"></asp:Label>

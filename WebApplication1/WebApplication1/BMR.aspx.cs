@@ -41,8 +41,10 @@ namespace WebApplication1
         protected void BMRCal_Click(object sender, EventArgs e)
         {
 
+
             Regex regex = new Regex("^[0-9]*$");
             double BMR = 0;
+            
             if (txtAge.Text.Length == 0 || txtHeightcm.Text.Length == 0 || txtWeight.Text.Length == 0)
             {
 
@@ -57,16 +59,13 @@ namespace WebApplication1
                 //  Response.Write("<script LANGUAGE='JavaScript' >alert('Please input the valid information')</script>");
                 ClientScript.RegisterOnSubmitStatement(this.GetType(),
        "alert", "alert('Please input the valid information')");
-            }
-            else
-            {
-                if (DropListGender.SelectedValue == "Female")
+            } if (DropListGender.SelectedValue == "Female")
                 {
                     if (DropDownList1.SelectedValue == "cm" && DropDownList2.SelectedValue == "kg")
                     {
                         BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text) * 2.20462) + (4.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (4.7 * Convert.ToDouble(txtAge.Text)));
                     }
-                    else if (DropDownList1.SelectedValue == "inches" && DropDownList2.SelectedValue == "lb")
+                    else if (DropDownList1.SelectedValue == "inch" && DropDownList2.SelectedValue == "lb")
                     {
                         BMR = (655 + (4.35 * Convert.ToDouble(txtWeight.Text)) + (4.7 * Convert.ToDouble(txtHeightcm.Text)) - (4.7 * Convert.ToDouble(txtAge.Text)));
 
@@ -86,7 +85,7 @@ namespace WebApplication1
                     {
                         BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text) * 2.20462) + (12.7 * Convert.ToDouble(txtHeightcm.Text) / 2.54) - (6.8 * Convert.ToDouble(txtAge.Text)));
                     }
-                    else if (DropDownList1.SelectedValue == "inches" && DropDownList2.SelectedValue == "lb")
+                    else if (DropDownList1.SelectedValue == "inch" && DropDownList2.SelectedValue == "lb")
                     {
                         BMR = (66 + (6.23 * Convert.ToDouble(txtWeight.Text)) + (12.7 * Convert.ToDouble(txtHeightcm.Text)) - (6.8 * Convert.ToDouble(txtAge.Text)));
                     }
@@ -124,8 +123,63 @@ namespace WebApplication1
                 }
                 BMR = Math.Round(BMR, 2);
                 txtResult.Text = BMR.ToString();
+           
+        
+                
+               //BMI = ( Weight in Kilograms / ( Height in Meters x Height in Meters ) )
+
+          
+            
+
+              
+                txtBMI.Text = getBMI().ToString();
+
+            
+       }
+        protected double getBMI()
+               //BMI = ( Weight in Kilograms / ( Height in Meters x Height in Meters ) )
+        {
+            double BMI = 0;
+            double weight = 0;
+            double height = 0;
+           // BMI = (Convert.ToDouble(txtWeight.Text)/((Convert.ToDouble(txtHeightcm.Text)*Convert.ToDouble(txtHeightcm.Text))/10000);
+            if (DropDownList1.SelectedValue == "cm")
+            {
+                height = Convert.ToDouble(txtHeightcm.Text) / 100;
             }
+            else if (DropDownList1.SelectedValue == "inch")
+            {
+                height = Convert.ToDouble(txtHeightcm.Text) /100 *2.54;
+            }
+            if (DropDownList2.SelectedValue == "kg")
+            {
+                weight = Convert.ToDouble(txtWeight.Text);
+            }
+            else if (DropDownList2.SelectedValue == "lb")
+            {
+                weight = Convert.ToDouble(txtWeight.Text) * 0.453592;
+            }
+            
+            BMI = weight / (height * height);
+            if (BMI <= 18.5)
+            {
+                lblBMIResult.Text = "UderWeight";
+            }
+            else if (18.5 < BMI && BMI<= 24.9)
+            {
+                lblBMIResult.Text = "Normal Weight";
+            }
+            else if (BMI > 24.9 && BMI < 30)
+            {
+                lblBMIResult.Text = "OverWeight";
+            }
+            else if (BMI > 30)
+            {
+                lblBMIResult.Text = "Obesity";
+            }
+            return Math.Round(BMI,2);
         }
+        
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
